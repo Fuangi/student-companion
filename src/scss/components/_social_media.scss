@@ -1,0 +1,25 @@
+@use "./../variables" as *;
+
+.media {
+  display: flex;
+  height: rem;
+  width: 2rem;
+  text-align: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+
+  & span {
+    align-self: center;
+    display: block;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 0.5rem;
+    // background-color: $color_white;
+  }
+  & .media_icon {
+    color: $color_white;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 0.5rem;
+  }
+}

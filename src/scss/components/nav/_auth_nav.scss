@@ -1,0 +1,29 @@
+@use "../../variables" as *;
+
+.auth-nav {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  background: $color-primary;
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+
+  & ul {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+  }
+  & a:link,
+  & a:visited {
+    color: $color-white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+    display: inline-block;
+    width: 7rem;
+    text-align: center;
+  }
+  & a.active {
+    background: $color-primary-dark;
+  }
+}

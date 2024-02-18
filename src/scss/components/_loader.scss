@@ -1,6 +1,5 @@
-body {
-  margin: 0;
-}
+@use "./../variables" as *;
+
 .loader_container {
   width: 100%;
   height: 100vh;
@@ -22,15 +21,15 @@ body {
 }
 
 .loader_container span:nth-child(1) {
-  background-color: #ed5ce1;
+  background-color: $color-secondary;
 }
 
 .loader_container span:nth-child(2) {
-  background-color: rgb(238, 113, 68);
+  background-color: $button_color;
   animation-delay: 0.4s;
 }
 .loader_container span:last-child {
-  background-color: rgb(59, 226, 59);
+  background-color: $color_secondary;
   animation-delay: 0.9s;
 }
 

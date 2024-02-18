@@ -1,0 +1,28 @@
+@use "../../variables" as *;
+
+.form-sidebar {
+  width: 50%;
+
+  & .side-images {
+    display: flex;
+    gap: 5rem;
+
+    & img {
+      width: 20rem;
+      border-radius: 2rem;
+    }
+  }
+
+  & .side-text {
+    color: $color-white;
+    font-size: 2rem;
+    text-align: justify;
+  }
+
+  & .side-btn {
+    text-align: center;
+    & .form-btn {
+      width: 15rem;
+    }
+  }
+}

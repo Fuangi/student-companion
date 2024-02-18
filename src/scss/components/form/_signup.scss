@@ -1,0 +1,59 @@
+@use "../../variables" as *;
+
+.form {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  align-items: center;
+  background-color: #f9f9f9;
+
+  & .form-head {
+    text-align: center;
+    font-size: 1.5rem;
+
+    & h1,
+    & p {
+      margin: 0.7rem;
+    }
+  }
+
+  & .form-inputs {
+    border-bottom: 1px solid black;
+    border-radius: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 2rem;
+    height: 3rem;
+
+    & label {
+      height: 2rem;
+      width: 1.5rem;
+      & .label {
+        height: 100%;
+        width: 100%;
+        color: $color-primary;
+      }
+    }
+
+    & input {
+      border: none;
+      outline: none;
+      padding: 0;
+      width: 30rem;
+      background-color: inherit;
+    }
+  }
+  & .other-form {
+    font-size: 1.3rem;
+    margin: 0.5rem;
+  }
+  .change-form {
+    text-decoration: none;
+    color: $color-primary;
+    font-size: 1.3rem;
+  }
+}

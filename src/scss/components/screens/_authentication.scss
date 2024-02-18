@@ -1,0 +1,12 @@
+@use "../../variables" as *;
+
+.authentication {
+  margin: 0;
+  padding: 5rem;
+  background: $color-primary-dark;
+  display: flex;
+  gap: 5rem;
+  // align-items: center;
+  justify-content: space-between;
+  min-height: 90vh;
+}
