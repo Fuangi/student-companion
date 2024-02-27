@@ -5,12 +5,15 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  height: 5rem;
 
   & ul {
     list-style: none;
+    height: inherit;
     display: flex;
     gap: 4rem;
     justify-content: flex-end;
+    align-items: center;
     margin-right: 1rem;
   }
 

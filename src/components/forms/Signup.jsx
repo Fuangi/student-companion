@@ -1,6 +1,5 @@
 import {
   FaEnvelope,
-  FaGraduationCap,
   FaLocationPin,
   FaLock,
   FaPhone,
@@ -8,7 +7,7 @@ import {
 } from "react-icons/fa6";
 import FormButton from "./FormButton";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
@@ -17,7 +16,6 @@ function Signup() {
   const [telephone, setTelephone] = useState("");
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
-  const [specialty, setSpecialty] = useState("");
   const [confPassword, setconfPassword] = useState("");
 
   const [isSignedUp, setIsSignedUp] = useState(false);
@@ -99,18 +97,7 @@ function Signup() {
           onChange={(e) => setAddress(e.target.value)}
         />
       </div>
-      <div className="form-inputs">
-        <label htmlFor="specialty">
-          {<FaGraduationCap className="label" />}
-        </label>
-        <input
-          type="text"
-          placeholder="Specialty"
-          id="specialty"
-          value={specialty}
-          onChange={(e) => setSpecialty(e.target.value)}
-        />
-      </div>
+
       <div className="form-inputs">
         <label htmlFor="password">{<FaLock className="label" />}</label>
         <input

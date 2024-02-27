@@ -1,5 +1,5 @@
 import { logo } from "../../assets";
-import SocialMedia from "../SocialMedia";
+import { SocialMedia } from "../icons/";
 
 function Footer() {
   return (
