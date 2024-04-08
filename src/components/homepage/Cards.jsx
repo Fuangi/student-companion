@@ -1,17 +1,17 @@
-import { header_image } from "../../assets";
-
 function Cards({
   cardName = "Features",
-  cardBackground = header_image,
-  cardDetails = "This is one of the features of the student companion app...",
+  cardBackground,
+  cardDetails = "This is one of the amazing features of the student companion app... It's so nice and yeah, I'm a genius 😄",
 }) {
   return (
     <div className="feature-card">
       <img src={cardBackground} alt={cardName} />
-      <h2>{cardName}</h2>
-      <p>{cardDetails}</p>
+      <div className="feature-details">
+        <h3>{cardName}</h3>
+        <p>{cardDetails}</p>
 
-      <button>Explore {cardName}</button>
+        <button>Explore {cardName}</button>
+      </div>
     </div>
   );
 }

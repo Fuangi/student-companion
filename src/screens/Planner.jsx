@@ -1,15 +1,18 @@
 import { Loader } from "../components/Layout";
 import AppLayout from "../components/Layout/AppLayout";
 import MyCalendar from "../components/planner/Calendar";
+import CalendarEvents from "../components/planner/CalendarEvents";
 
 function Planner() {
   return (
-    <>
-      <AppLayout>
-        {" "}
+    <div className="main_calendar">
+      <div style={{ width: "60%", height: "90vh" }}>
         <MyCalendar />
-      </AppLayout>
-    </>
+      </div>
+      <div className="events_container">
+        <CalendarEvents />
+      </div>
+    </div>
   );
 }
 

@@ -1,0 +1,58 @@
+/* the headers of the week, month and agenda */
+.rbc-header {
+  background: #79b8e4;
+  color: white;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.rb-calendar {
+  height: 80vh;
+}
+
+/* thw whole event (from start time to stop time */
+.rbc-event {
+  padding: 0;
+  border-radius: 0;
+  border: none !important;
+  /* background: transparent; */
+  background-color: rgba(116, 164, 195, 0.1);
+}
+
+/* the event head (shows time) */
+.rbc-event-label {
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* time slots */
+.rbc-time-slot {
+  background: #eaf3fa;
+  color: #74a4c3;
+}
+
+.rbc-timeslot-group {
+  min-height: 80px;
+}
+
+.rbc-events-container {
+  width: 100%;
+}
+
+/* my custom components */
+.appointment {
+  background-color: #79b8e4;
+  font-size: 18px;
+  display: block;
+  height: 100%;
+  text-align: center;
+}
+.blockout {
+  background-color: #1094f2;
+  font-size: 18px;
+  text-align: center;
+  display: block;
+  height: 100%;
+}

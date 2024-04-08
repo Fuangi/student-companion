@@ -1,6 +1,10 @@
 @import "./components/";
+@import "./screens/";
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+@import "react-big-calendar/lib/sass/styles";
+@import "react-big-calendar/lib/addons/dragAndDrop/styles"; // if using DnD
 
 html {
   font-size: 62.5%;

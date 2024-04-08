@@ -1,0 +1,17 @@
+@use "../../variables" as *;
+
+.forum-container {
+  display: flex;
+  border: 1px solid black;
+
+  & .forum-list {
+    border: 1px solid red;
+    width: 30%;
+    background-color: $color-primary-20;
+  }
+
+  & .conversations {
+    border: 1px solid rgb(115, 0, 255);
+    width: 70%;
+  }
+}
