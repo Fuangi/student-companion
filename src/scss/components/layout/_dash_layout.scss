@@ -1,0 +1,17 @@
+@use "../../variables" as *;
+
+.dash-layout {
+  min-height: 100vh;
+
+  & .mid-layout {
+    display: flex;
+
+    & .layout-children {
+      width: 93%;
+      min-height: 90vh;
+      // padding: 0.8rem;
+      margin: auto;
+      margin-top: 0;
+    }
+  }
+}

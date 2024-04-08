@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa6";
 import FormButton from "./FormButton";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
@@ -42,12 +42,12 @@ function Signup() {
     setIsSignedUp(true);
   }
 
-  /*   useEffect(
+  useEffect(
     function () {
       localStorage.setItem("user", JSON.stringify([username, email, password]));
     },
     [username, email, password]
-  ); */
+  );
 
   return (
     <form action="" className="form">

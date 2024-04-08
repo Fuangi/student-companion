@@ -1,0 +1,43 @@
+@use "../../variables" as *;
+
+.dash-side {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  height: 100dvh;
+  width: 8rem;
+  color: $color-white;
+  background-color: $color-primary;
+
+  // list part
+  list-style-type: none;
+
+  & li {
+    // border-bottom: 5px solid $color-grey;
+
+    & a {
+      color: $color-white;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      width: 100%;
+
+      & .nav-icon {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+
+      &.active {
+        color: $color-secondary;
+      }
+
+      & span {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

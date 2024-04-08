@@ -46,6 +46,7 @@ const events = [
   }, */
 ];
 
+// Creating custom components to render the different event types in
 const components = {
   event: (props) => {
     const eventType = props?.event?.data?.type;

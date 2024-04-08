@@ -8,17 +8,16 @@ const sentMsg = [
   "Hello",
   "Hi",
   "Hello",
-  "Hi",
   "Hello",
   "Hi",
   "Hello",
   "Hi",
   "Hello",
-  "Hi",
   "Hello",
   "Hi",
   "Hello",
   "Hi",
+  "Hello",
 ];
 
 function Conversation() {

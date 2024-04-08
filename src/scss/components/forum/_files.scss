@@ -1,0 +1,19 @@
+@use "../../variables" as *;
+
+.forum-files {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  gap: 1rem;
+  border: 1px solid $grey-light;
+  border-radius: 0.5rem;
+
+  & h5 {
+    font-size: 1.2rem;
+  }
+
+  & h2 {
+    font-size: 1.5rem;
+  }
+}

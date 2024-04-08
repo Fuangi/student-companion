@@ -1,8 +1,13 @@
 import { Loader } from "../components/Layout";
-// import AppLayout from "../components/Layout/AppLayout";
+import AppLayout from "../components/Layout/AppLayout";
 
 function Resources() {
-  return <Loader />;
+  return (
+    <AppLayout>
+      {" "}
+      <Loader />
+    </AppLayout>
+  );
 }
 
 export default Resources;

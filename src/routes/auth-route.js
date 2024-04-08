@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Signup, Login, ForgotPassword } from "../components/forms";
-import { Forums, Planner, Resources } from "../screens/index";
 // import AuthLayout from "../components/Layout/AuthLayout";
 import Authentication from "../screens/Authentication";
 
@@ -14,9 +13,6 @@ function AuthRoute() {
         <Route path="login" element={<Login />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
       </Route>
-      <Route path="/resources" element={<Resources />} />
-      <Route path="/forums" element={<Forums />} />
-      <Route path="/planner" element={<Planner />} />
     </Routes>
   );
 }
