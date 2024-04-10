@@ -1,16 +1,27 @@
+@use "../../variables" as *;
+
 /* the headers of the week, month and agenda */
 .rbc-header {
-  background: #79b8e4;
+  background: rgba($color: $color-secondary, $alpha: 0.8);
   color: white;
-  padding: 10px;
-  font-size: 12px;
+  padding: 0.5rem !important;
+  font-size: 1.2rem !important;
 }
 
 .rb-calendar {
   height: 80vh;
 }
 
-/* thw whole event (from start time to stop time */
+// the buttons on the header
+.rbc-btn-group {
+  border: none;
+
+  & button {
+    color: $grey-dark !important;
+  }
+}
+
+/* the whole event (from start time to stop time */
 .rbc-event {
   padding: 0;
   border-radius: 0;

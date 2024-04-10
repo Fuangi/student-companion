@@ -1,17 +1,24 @@
+@use "../../variables" as *;
+
 .file-type {
   display: flex;
-  justify-content: space-between;
+  gap: 2rem;
   align-items: center;
   margin: 0.7rem;
 
   & p {
     &:first-of-type {
-      background-color: rgb(53, 203, 203);
       width: 4rem;
       height: 4rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 0.7rem;
+    }
+
+    &:last-of-type {
+      margin-left: auto;
+      color: $grey-dark;
     }
   }
 
@@ -23,4 +30,22 @@
     font-size: 1rem;
     font-weight: lighter;
   }
+}
+
+// The document types
+.documents {
+  background-color: lavender;
+  color: purple;
+}
+.pictures {
+  background-color: rgb(250, 228, 188);
+  color: orange;
+}
+.videos {
+  background-color: rgb(195, 247, 195);
+  color: $color-green;
+}
+.others {
+  background-color: rgb(249, 191, 191);
+  color: $color-red;
 }

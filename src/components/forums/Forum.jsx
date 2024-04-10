@@ -15,7 +15,7 @@ function Forum() {
   return (
     <div className="forum-container">
       <div className="forum-list">
-        <div className="list-header">My Chats</div>
+        <div className="list-header">Chats</div>
         <div className="user-details">
           <img src="" alt="Name" />
           <h3>Username</h3>
@@ -62,35 +62,41 @@ function Forum() {
             <Files
               icon={<FaFolder className="file-icon" />}
               name="All Files"
+              allClass="all-files"
               number="100"
             />
             <Files
               icon={<FaLink className="file-icon" />}
               name="All Links"
               number="30"
+              allClass="links"
             />
           </div>
           <div className="file-types">
-            <h3>File Types</h3>
+            <h4>File Types</h4>
             <FileTypes
               icon={<FaFile className="type-icon" />}
               fileType="Documents"
               fileSize="1800, 380MB"
+              docType="documents"
             />
             <FileTypes
               icon={<FaPhotoFilm className="type-icon" />}
               fileType="Photos"
               fileSize="1800, 380MB"
+              docType="pictures"
             />
             <FileTypes
               icon={<FaVideo className="type-icon" />}
               fileType="Videos"
               fileSize="1800, 380MB"
+              docType="videos"
             />
             <FileTypes
               icon={<FaFileZipper className="type-icon" />}
               fileType="Others"
               fileSize="1800, 380MB"
+              docType="others"
             />
           </div>
         </div>

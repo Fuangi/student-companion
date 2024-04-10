@@ -1,20 +1,27 @@
+@use "../../variables" as *;
+
 .event_form {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
   margin: 30px;
-  background-color: beige;
 }
 
 .events-form-head {
   text-align: center;
-  background-color: #79b8e4;
-  color: whitesmoke;
+  background-color: $color-secondary;
+  font-size: 1.5rem;
+  color: $color-white;
+}
+
+label {
+  font-size: 1.2rem;
 }
 
 .form-input {
   display: flex;
   justify-content: space-evenly;
-  gap: 20px;
+  gap: 3rem;
   margin: 10px;
 }
 
@@ -31,7 +38,7 @@
 .event_form button {
   margin: 10px;
   align-self: center;
-  background-color: #79b8e4;
+  background-color: $color-secondary;
   border: none;
   color: white;
   font-size: 16px;

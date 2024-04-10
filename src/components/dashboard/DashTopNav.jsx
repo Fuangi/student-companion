@@ -1,11 +1,20 @@
+import { FaUser } from "react-icons/fa6";
+import { MdLogin, MdNotifications } from "react-icons/md";
+import { NavLink } from "react-router-dom";
+
 function DashTopNav() {
   return (
-    <div className="dash-topnav">
-      <div className="left-top">
-        <h1>Hello...</h1>
-      </div>
-      <div className="user-profile">
-        <h1>My profile</h1>
+    <div className="user-profile">
+      <div className="user-actions">
+        <NavLink to="/notifications">
+          <MdNotifications />
+        </NavLink>
+        <NavLink to="/me">
+          <FaUser />
+        </NavLink>
+        <NavLink to="#">
+          <MdLogin />
+        </NavLink>
       </div>
     </div>
   );

@@ -15,8 +15,8 @@
 
   & img {
     border: 1px solid $grey-light;
-    height: 4rem;
-    width: 4rem;
+    height: 2.7rem;
+    width: 2.7rem;
     border-radius: 100%;
   }
 
@@ -27,5 +27,6 @@
 
   & p {
     font-size: 1.1rem;
+    color: $grey-dark;
   }
 }

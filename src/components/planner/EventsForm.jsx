@@ -24,11 +24,14 @@ function EventsForm() {
     alert("Event Created Successfully");
   }
 
+  function handleCancelEvent(e) {
+    e.preventDefault();
+  }
+
   return (
     <form className="event_form">
-      <div className="events-form-head">
-        <h3>Create a new event</h3>
-      </div>
+      <h3 className="events-form-head">Create a new event</h3>
+
       <div className="form-input">
         <label htmlFor="Ename">Event Name</label>
         <input
@@ -45,6 +48,7 @@ function EventsForm() {
           name="desc"
           cols="20"
           rows="3"
+          placeholder="What is the event for?"
           value={eventDesc}
           onChange={(e) => setEventDesc(e.target.value)}
         ></textarea>
@@ -85,6 +89,7 @@ function EventsForm() {
         />
       </div>
       <button onClick={handleCreateEvent}>Create Event</button>
+      <button onClick={handleCancelEvent}>Create Event</button>
     </form>
   );
 }

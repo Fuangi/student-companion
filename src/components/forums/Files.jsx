@@ -1,6 +1,6 @@
-function Files({ icon, name, number }) {
+function Files({ icon, name, number, allClass }) {
   return (
-    <div className="forum-files">
+    <div className={`forum-files ${allClass}`}>
       {icon}
       <div>
         <h5>{name}</h5>

@@ -1,20 +1,22 @@
-import PageNav from "../components/nav/PageNav";
 import MyCalendar from "../components/planner/Calendar";
-import CalendarEvents from "../components/planner/CalendarEvents";
+import Plans from "../components/planner/Plans";
+import { DashLayout } from "../components/Layout";
 
 function Planner() {
   return (
-    <div className="event-planner">
-      <PageNav />
-      <div className="main_calendar">
-        <div style={{ width: "60%", height: "90vh" }}>
-          <MyCalendar />
-        </div>
-        <div className="events_container">
-          <CalendarEvents />
+    <DashLayout>
+      <div className="event-planner">
+        <div className="main_calendar">
+          <div className="events_container">
+            <h1>All your events</h1>
+            <Plans />
+          </div>
+          <div style={{ width: "40%", height: "50vh" }}>
+            <MyCalendar />
+          </div>
         </div>
       </div>
-    </div>
+    </DashLayout>
   );
 }
 

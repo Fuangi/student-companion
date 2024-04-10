@@ -4,6 +4,7 @@ import AuthRoute from "./auth-route";
 import PlanRoute from "./planner.routes";
 import ForumRoute from "./forums.routes";
 import ResourceRoute from "./resources.routes";
+import DashRoute from "./dashboard.routes";
 
 function MyRoutes() {
   return (
@@ -12,6 +13,7 @@ function MyRoutes() {
       <PlanRoute />
       <ForumRoute />
       <ResourceRoute />
+      <DashRoute />
     </React.Fragment>
   );
 }

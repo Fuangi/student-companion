@@ -1,16 +1,18 @@
 @use "../../variables" as *;
 
 .dash-layout {
-  min-height: 100vh;
+  height: 90dvh !important;
 
   & .mid-layout {
     display: flex;
 
     & .layout-children {
+      border-left: 1px solid $grey-light;
+      border-radius: 2rem;
       width: 93%;
       min-height: 90vh;
       // padding: 0.8rem;
-      margin: auto;
+      // margin: auto;
       margin-top: 0;
     }
   }

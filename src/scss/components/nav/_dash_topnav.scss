@@ -1,5 +1,31 @@
-.dash-topnav {
+@use "../../variables" as *;
+
+.user-profile {
   display: flex;
+  position: fixed;
+  padding-right: 1.5rem;
+  right: 0;
   justify-content: space-between;
-  align-items: center;
+  background: whitesmoke;
+  gap: 3rem;
+  // padding-right: 0.7rem;
+
+  & .user-actions {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+
+    & a {
+      // color: $grey-light;
+      color: $color-secondary;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 0rem;
+
+      &:active {
+        background-color: rgba($color-secondary, 0.2);
+        border-radius: 0.5rem;
+      }
+    }
+  }
 }

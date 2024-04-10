@@ -1,26 +1,53 @@
 import { NavLink } from "react-router-dom";
+import {
+  FaClipboardList,
+  FaFolder,
+  FaHouse,
+  FaPeopleGroup,
+  FaTrash,
+} from "react-icons/fa6";
+import { MdSettings } from "react-icons/md";
+import { logo } from "../../assets";
 
 function DashSideNav() {
   return (
-    <ul className="dash-side">
-      <li>
-        <NavLink to="/" end>
-          Home
+    <div className="dashboard-side-nav">
+      <div className="logo">
+        <img src={logo} alt="" />
+      </div>
+      <ul className="dash-side">
+        <li>
+          <NavLink to="/" end>
+            <FaHouse className="dash-side-icon" />
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/planner">
+            <FaClipboardList className="dash-side-icon" />
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/forums">
+            <FaPeopleGroup className="dash-side-icon" />
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/files">
+            <FaFolder className="dash-side-icon" />
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/trash">
+            <FaTrash className="dash-side-icon" />
+          </NavLink>
+        </li>
+      </ul>
+      <div className="settings">
+        <NavLink to="/setting">
+          <MdSettings className="dash-side-icon" />
         </NavLink>
-      </li>
-      <li>
-        <NavLink to="/planner">Plans</NavLink>
-      </li>
-      <li>
-        <NavLink to="/forums">Forums</NavLink>
-      </li>
-      <li>
-        <NavLink to="#">Files</NavLink>
-      </li>
-      <li>
-        <NavLink to="#">Trash</NavLink>
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 }
 
