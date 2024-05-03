@@ -24,10 +24,6 @@ function EventsForm() {
     alert("Event Created Successfully");
   }
 
-  function handleCancelEvent(e) {
-    e.preventDefault();
-  }
-
   return (
     <form className="event_form">
       <h3 className="events-form-head">Create a new event</h3>
@@ -89,7 +85,6 @@ function EventsForm() {
         />
       </div>
       <button onClick={handleCreateEvent}>Create Event</button>
-      <button onClick={handleCancelEvent}>Create Event</button>
     </form>
   );
 }

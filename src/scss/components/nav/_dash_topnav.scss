@@ -2,14 +2,25 @@
 
 .user-profile {
   display: flex;
-  position: fixed;
+  height: 6vh;
   padding-right: 1.5rem;
   right: 0;
   justify-content: space-between;
-  background: whitesmoke;
+  color: $color-white;
+  background-color: rgba($color-secondary, 0.1);
+  // background-color: rgb(167, 12, 228);
   gap: 3rem;
-  // padding-right: 0.7rem;
 
+  & .logo {
+    margin-left: 4rem;
+    padding: 0.5rem;
+    & img {
+      width: 4rem;
+      background-color: $color-black;
+      border-radius: 100%;
+      height: 4rem;
+    }
+  }
   & .user-actions {
     display: flex;
     gap: 3rem;

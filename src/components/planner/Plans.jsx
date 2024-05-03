@@ -1,4 +1,6 @@
 import moment from "moment";
+import { useState } from "react";
+import EventsForm from "./EventsForm";
 
 const events = [
   {
@@ -25,31 +27,18 @@ const events = [
       type: "class", //appointment
     },
   },
-  {
-    start: moment("2024-02-19T16:00:00").toDate().toLocaleDateString(), //for today's date
-    end: moment("2024-02-19T18:30:00").toDate().toLocaleDateString(),
-    title: "Play Games and Snack",
-    data: {
-      type: "others", //appointment
-    },
-  },
-  /*   {
-    start: storedValue.eventStart,
-    end: storedValue.eventEnd,
-    title: storedValue.eventName,
-    data: storedValue.data,
-  },  */
 ];
 
-// const events = [];
-
 function Plans() {
+  const [addEvents, setAddEvents] = useState(false);
   return (
     <div>
       <div className="add-events">
-        <button>Add Events</button>
+        <button onClick={() => setAddEvents(!addEvents)}>Add Events</button>
       </div>
-      {events.length === 0 ? (
+      {addEvents ? (
+        <EventsForm />
+      ) : events.length === 0 ? (
         <p className="no-events">
           You don't have any events. Click on the buttons to add some
         </p>

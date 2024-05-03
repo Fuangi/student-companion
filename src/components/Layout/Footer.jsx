@@ -12,18 +12,15 @@ function Footer() {
         <div className="footer_menu">
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam
-            deleniti unde sapiente facilis itaque, porro expedita quaerat alias
-            eligendi sunt necessitatibus quis soluta eveniet. Doloribus.
+            deleniti unde sapiente
           </p>
           <p>
             Eveniet repellat eaque nesciunt sunt, unde quidem! Officia aliquam
-            tenetur numquam quo labore, iusto in, aperiam deleniti aut
-            architecto, repudiandae commodi consequuntur illo dolorem.
+            tenetur numquam quo labore, iusto in
           </p>
           <p>
             Eveniet iure, officiis doloribus saepe quasi debitis vitae accusamus
-            expedita mollitia nihil ducimus consequuntur aspernatur earum
-            maiores id architecto? Reiciendis dolorum amet qui consequatur
+            expedita mollitia nihil ducimus
           </p>
         </div>
         <div className="media_container">
@@ -34,7 +31,8 @@ function Footer() {
         </div>
       </footer>
       <div className="copyright">
-        Copyright &copy; 2023 Khink's Corp, All Rights Reserved
+        Copyright &copy; {new Date().getFullYear()} Khink's Corp, All Rights
+        Reserved
       </div>
     </div>
   );

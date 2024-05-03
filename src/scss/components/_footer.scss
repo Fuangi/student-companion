@@ -1,7 +1,7 @@
 @use "./../variables" as *;
 
 .footer_container {
-  background: $color-primary;
+  background: rgba($color-primary, 0.8);
   margin: 0;
 
   & footer {
@@ -43,7 +43,7 @@
 
       & h4 {
         text-align: center;
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: $color_white;
         margin: 1rem;
       }
@@ -56,7 +56,7 @@
         align-items: center;
 
         & h4 {
-          font-size: 2rem;
+          font-size: 1.2rem;
           color: $color_white;
           text-align: center;
         }
@@ -65,7 +65,7 @@
   }
 
   & .copyright {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: $color_white;
     text-align: center;
   }

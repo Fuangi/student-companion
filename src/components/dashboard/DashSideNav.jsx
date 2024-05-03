@@ -3,18 +3,15 @@ import {
   FaClipboardList,
   FaFolder,
   FaHouse,
+  FaList,
   FaPeopleGroup,
   FaTrash,
 } from "react-icons/fa6";
 import { MdSettings } from "react-icons/md";
-import { logo } from "../../assets";
 
 function DashSideNav() {
   return (
     <div className="dashboard-side-nav">
-      <div className="logo">
-        <img src={logo} alt="" />
-      </div>
       <ul className="dash-side">
         <li>
           <NavLink to="/" end>
@@ -24,6 +21,11 @@ function DashSideNav() {
         <li>
           <NavLink to="/planner">
             <FaClipboardList className="dash-side-icon" />
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/goals">
+            <FaList className="dash-side-icon" />
           </NavLink>
         </li>
         <li>

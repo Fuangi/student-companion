@@ -1,22 +1,15 @@
 @use "../../variables" as *;
 
 .dashboard-side-nav {
-  height: 95dvh;
-  // background: whitesmoke;
+  height: 93vh;
+  width: 8%;
+  background-color: rgba($color-secondary, 0.1);
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1rem;
-
-  & .logo {
-    padding-left: 2rem;
-    & img {
-      width: 3rem;
-      height: 3rem;
-    }
-  }
+  padding-bottom: 0.5rem;
 
   & .dash-side {
     display: flex;
@@ -25,12 +18,9 @@
     justify-content: space-between;
     gap: 3rem;
     align-items: center;
-    // height: 95dvh;
     width: 8rem;
     // list part
     list-style-type: none;
-
-    // border-bottom: 5px solid $color-grey;
   }
   & a {
     display: flex;
@@ -42,7 +32,8 @@
 
     &.active {
       color: $color-secondary;
-      background-color: rgba($color-secondary, 0.2);
+      // background-color: rgba($color-secondary, 0.2);
+      font-weight: bolder;
       border-radius: 0.5rem;
     }
 
@@ -55,7 +46,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: 0.7rem;
     width: 100%;
   }

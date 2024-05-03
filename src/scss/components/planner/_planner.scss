@@ -2,8 +2,18 @@
   display: flex;
   justify-content: space-between;
   margin-left: 0.2rem;
-}
 
-.events_container {
-  width: 35%;
+  & .events_container {
+    width: 40%;
+    margin: 2rem 1rem;
+    border: 1px solid black;
+
+    & h1 {
+      text-align: center;
+    }
+  }
+
+  & .calendar-container {
+    margin-top: 2rem;
+  }
 }

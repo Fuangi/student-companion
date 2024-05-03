@@ -1,12 +1,11 @@
-import { Loader } from "../components/Layout";
-import AppLayout from "../components/Layout/AppLayout";
+import { DashLayout } from "../components/Layout";
 
 function Resources() {
   return (
-    <AppLayout>
+    <DashLayout>
       {" "}
-      <Loader />
-    </AppLayout>
+      <div>Hello World, my resources</div>
+    </DashLayout>
   );
 }
 

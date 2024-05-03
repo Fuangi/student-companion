@@ -1,14 +1,9 @@
-import { backgrnd1, backgrnd2, backgrnd3 } from "../../assets/images";
 import FormButton from "./FormButton";
 
 function FormSidebar() {
   return (
     <div className="form-sidebar">
-      <div className="side-images">
-        <img src={backgrnd1} alt="First" />
-        <img src={backgrnd2} alt="Second" />
-        <img src={backgrnd3} alt="Third" />
-      </div>
+      <div className="side-images"></div>
       <div className="side-text">
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium
