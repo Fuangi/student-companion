@@ -19,10 +19,10 @@ function Header() {
         </p>
         <div className="header_buttons">
           <Link to="auth">Join Us</Link>
-          <Outlet />
           <button>Explore</button>
         </div>
       </div>
+      <Outlet />
     </header>
   );
 }

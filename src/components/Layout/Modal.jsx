@@ -8,12 +8,12 @@ function Modal() {
   const navigate = useNavigate();
 
   function handleCloseModal() {
-    setShowModal(!false);
+    setShowModal(false);
     navigate("/");
   }
 
   return (
-    <div className="modal-background">
+    <div className="modal-background" onClick={handleCloseModal}>
       <div className="modal-body">
         <div className="close-modal">
           <button onClick={handleCloseModal}>X</button>

@@ -46,7 +46,8 @@
       align-items: center;
       gap: 4rem;
 
-      & button {
+      & button,
+      & a {
         width: 15rem;
         height: 4rem;
         border: none;
@@ -58,8 +59,16 @@
 
         &:hover {
           cursor: pointer;
-          background-color: rgba($color-primary, 0.8);
+          background-color: $color-secondary;
         }
+      }
+
+      & a {
+        text-decoration: none;
+        font-size: 1.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
