@@ -58,7 +58,7 @@ function Login() {
       <FormButton children="Login" onClick={handleLogin} />
       <p className="other-form">
         Don't have an account ?
-        <Link className="change-form" to="/authentication/signup">
+        <Link className="change-form" to="/auth/signup">
           Signup
         </Link>
       </p>

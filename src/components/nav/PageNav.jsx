@@ -8,7 +8,7 @@ function PageNav() {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/authentication">Signin</NavLink>
+          <NavLink to="/auth">Signin</NavLink>
         </li>
         <li>
           <NavLink to="/forums">Forums</NavLink>

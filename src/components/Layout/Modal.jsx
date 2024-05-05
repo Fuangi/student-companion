@@ -1,31 +1,25 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import AuthLayout from "./AuthLayout";
+// import { Signup } from "../forms";
 
-function Modal({ closeModal, openedModal, children }) {
+function Modal() {
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  // const location = useLocation();
-  // const [auth, setAuth] = useState((location.pathname = "/authentication"));
+
+  function handleCloseModal() {
+    setShowModal(!false);
+    navigate("/");
+  }
 
   return (
-    <div
-      className="modal-background"
-      onClick={() => {
-        closeModal(false);
-        navigate("/");
-      }}
-    >
+    <div className="modal-background">
       <div className="modal-body">
         <div className="close-modal">
-          <button
-            onClick={() => {
-              closeModal(false);
-            }}
-          >
-            X
-          </button>
+          <button onClick={handleCloseModal}>X</button>
         </div>
         <div className="modal-content">
-          {/* <AuthNav /> */}
-          <Outlet />
+          <AuthLayout />
         </div>
       </div>
     </div>

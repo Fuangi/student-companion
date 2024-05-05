@@ -1,3 +1,4 @@
+import { Link, Outlet } from "react-router-dom";
 import PageNav from "../nav/PageNav";
 
 function Header() {
@@ -17,7 +18,8 @@ function Header() {
           with classmates! Let's ace this semester together!
         </p>
         <div className="header_buttons">
-          <button>Join us</button>
+          <Link to="auth">Join Us</Link>
+          <Outlet />
           <button>Explore</button>
         </div>
       </div>
