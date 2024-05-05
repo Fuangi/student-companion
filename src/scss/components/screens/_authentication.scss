@@ -10,3 +10,38 @@
   justify-content: space-between;
   min-height: 90vh;
 }
+
+// THE MODAL THAT WILL BE DISPLAYED4
+.modal-background {
+  width: inherit;
+  height: 100%;
+  top: 0;
+  background-color: rgba(200, 200, 200, 0.4);
+  backdrop-filter: blur(0.2rem);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .modal-body {
+    height: 95%;
+    border-radius: 2rem;
+    padding-top: 0.5rem;
+    background-color: rgba(249, 249, 249, 0.9);
+  }
+
+  & .close-modal {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+
+    & button {
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 2rem;
+      font-weight: bolder;
+      color: $color-primary;
+    }
+  }
+}

@@ -5,12 +5,12 @@ const sentMsg = ["Hello", "Hi", "Hello", "Hi", "Hello", "Hi", "Hello", "Hi"];
 
 function Conversation() {
   // states
-  const [isTyping, setIsTyping] = useState(false);
+  // const [isTyping, setIsTyping] = useState(false);
   const [message, setMessage] = useState("");
 
   function handleSendMessage(e) {
     e.preventDefault();
-    setIsTyping(false);
+    // setIsTyping(false);
     sentMsg.push(message);
   }
 
@@ -39,7 +39,7 @@ function Conversation() {
             name="message"
             value={message}
             onChange={(e) => {
-              setIsTyping(true);
+              // setIsTyping(true);
               setMessage(e.target.value);
             }}
             id="message"

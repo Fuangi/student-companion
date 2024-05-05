@@ -122,7 +122,7 @@ function Signup() {
       </div>
       <p className="other-form">
         Already have an account?
-        <Link className="change-form" to="/authentication/login">
+        <Link className="change-form" to="/auth/login">
           Login
         </Link>
       </p>

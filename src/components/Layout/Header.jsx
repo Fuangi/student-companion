@@ -1,9 +1,8 @@
-// import { header_image } from "../../assets";
 import PageNav from "../nav/PageNav";
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header modal-is-open">
       <div className="page-navigation">
         <PageNav />
       </div>
@@ -18,13 +17,10 @@ function Header() {
           with classmates! Let's ace this semester together!
         </p>
         <div className="header_buttons">
-          <button>Join Us</button>
+          <button>Join us</button>
           <button>Explore</button>
         </div>
       </div>
-      {/*       <div className="header_image">
-        <img src={header_image} alt="Relaxing Student" />
-      </div> */}
     </header>
   );
 }
