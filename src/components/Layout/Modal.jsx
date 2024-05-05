@@ -9,14 +9,20 @@ function Modal() {
 
   function handleCloseModal() {
     setShowModal(false);
+
     navigate("/");
   }
 
   return (
-    <div className="modal-background" onClick={handleCloseModal}>
+    <div className="modal-background">
       <div className="modal-body">
         <div className="close-modal">
-          <button onClick={handleCloseModal}>X</button>
+          <button
+            onClick={handleCloseModal}
+            style={{ color: `${showModal ? "black" : ""}` }}
+          >
+            X
+          </button>
         </div>
         <div className="modal-content">
           <AuthLayout />

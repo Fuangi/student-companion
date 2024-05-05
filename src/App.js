@@ -1,5 +1,5 @@
 import Modal from "./components/Layout/Modal";
-import { Login, Signup } from "./components/forms";
+import { ForgotPassword, Login, Signup } from "./components/forms";
 import MyRoutes from "./routes";
 import Homepage from "./screens/Homepage";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -16,6 +16,7 @@ function App() {
               <Route path="signup" element={<Signup />} />
             </Route>
           </Route>
+          <Route path="forgot-password" element={<ForgotPassword />} />
         </Routes>
         <MyRoutes />
       </BrowserRouter>

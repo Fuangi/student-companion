@@ -52,7 +52,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <Link to="/authentication/forgot-password" className="change-form">
+      <Link to="/forgot-password" className="change-form">
         Forgot Password?
       </Link>
       <FormButton children="Login" onClick={handleLogin} />
