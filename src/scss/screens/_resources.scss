@@ -1,0 +1,29 @@
+@use "../variables" as *;
+
+// THe whole resoource page and
+.resources {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5rem;
+}
+
+// The Tech resources section
+.tech-resource {
+  border: 1px solid red;
+  width: 30rem;
+
+  & h3 {
+    font-size: 1.5rem;
+  }
+
+  & h5 {
+    font-size: 1.3rem;
+    color: $color-primary;
+  }
+
+  & p {
+    font-size: 1.2rem;
+  }
+}

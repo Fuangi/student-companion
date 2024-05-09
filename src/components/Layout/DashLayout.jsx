@@ -1,5 +1,5 @@
 // import { Outlet } from "react-router-dom";
-import { DashSideNav, DashTopNav } from "../dashboard";
+import { DashSideNav } from "../dashboard";
 
 function DashLayout({ children }) {
   return (
