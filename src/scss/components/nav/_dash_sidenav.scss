@@ -1,9 +1,11 @@
 @use "../../variables" as *;
 
 .dashboard-side-nav {
-  height: 93vh;
-  width: 8%;
-  background-color: rgba($color-secondary, 0.1);
+  height: 98vh;
+  width: 10%;
+  background-color: $color-primary;
+  /* border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem; */
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -28,11 +30,10 @@
     text-decoration: none;
     font-size: 1.2rem;
     width: 100%;
-    color: $grey-light;
+    color: $color-white;
 
     &.active {
-      color: $color-secondary;
-      // background-color: rgba($color-secondary, 0.2);
+      color: $color-white;
       font-weight: bolder;
       border-radius: 0.5rem;
     }

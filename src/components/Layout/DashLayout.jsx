@@ -4,14 +4,11 @@ import { DashSideNav, DashTopNav } from "../dashboard";
 function DashLayout({ children }) {
   return (
     <div className="dash-layout">
-      <DashTopNav />
+      {/* <DashTopNav /> */}
       <div className="mid-layout">
         <DashSideNav />
 
-        <div className="layout-children">
-          {/* <Outlet /> */}
-          {children}
-        </div>
+        <main className="layout-children">{children}</main>
       </div>
     </div>
   );

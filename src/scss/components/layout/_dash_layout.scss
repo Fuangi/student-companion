@@ -2,15 +2,123 @@
 
 .dash-layout {
   height: 100vh;
-  // overflow-y: hidden;
+  overflow-y: hidden;
 
   & .mid-layout {
     display: flex;
 
     & .layout-children {
-      width: 93%;
-      height: 95vh;
+      width: 100%;
+      height: 100vh;
       margin-top: 0;
     }
+  }
+}
+
+// THE DASHBOARD STYLES
+.my-dashboard {
+  border: 1px solid red;
+  display: flex;
+  height: inherit;
+  gap: 3rem;
+
+  & .current-events {
+    width: 75%;
+    padding: 1rem;
+    border: 1px solid black;
+
+    & .welcome {
+      padding: 1rem;
+
+      & h2 {
+        font-size: 2rem;
+      }
+
+      & .recommendation {
+        padding: 0 1.5rem;
+        background-color: $color-secondary;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        color: $color-white;
+        font-size: 1.5rem;
+        border-radius: 2rem;
+
+        & button {
+          outline: none;
+          border: none;
+          padding: 1rem;
+          border-radius: 2rem;
+          width: 15rem;
+          background: $color-white;
+          color: $color-primary;
+        }
+
+        & p {
+          color: $color-white;
+          margin-bottom: 1rem;
+        }
+
+        & img {
+          height: 20rem;
+          width: 30%;
+        }
+      }
+    }
+
+    & .day-plans {
+      margin-top: 1.5rem;
+
+      & h3 {
+        font-size: 2rem;
+      }
+
+      & .stats {
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+
+        & p {
+          padding: 1rem;
+          font-size: 1.5rem;
+          border: 1px solid black;
+          text-align: center;
+
+          & span {
+            display: block;
+          }
+        }
+      }
+
+      & .recents {
+        display: flex;
+        gap: 5rem;
+
+        & .plans,
+        & .resources {
+          display: flex;
+          margin-top: 1rem;
+          border: 1px solid black;
+          padding: 1.5rem;
+          gap: 1rem;
+          flex-direction: column;
+
+          & ul {
+            list-style: none;
+
+            & li {
+              padding: 0.5rem;
+              font-size: 1.3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  & .other-events {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
   }
 }
