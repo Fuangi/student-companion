@@ -4,6 +4,7 @@ import {
   FaFolder,
   FaHouse,
   FaList,
+  FaNewspaper,
   FaPeopleGroup,
   FaTrash,
 } from "react-icons/fa6";
@@ -15,38 +16,44 @@ function DashSideNav() {
       <ul className="dash-side">
         <li>
           <NavLink to="/" end>
-            <FaHouse className="dash-side-icon" />
+            Home <FaHouse className="dash-side-icon" />
           </NavLink>
         </li>
         <li>
           <NavLink to="/planner">
-            <FaClipboardList className="dash-side-icon" />
+            Plans <FaClipboardList className="dash-side-icon" />
           </NavLink>
         </li>
         <li>
           <NavLink to="/goals">
-            <FaList className="dash-side-icon" />
+            Goals <FaList className="dash-side-icon" />
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/forums">
+            Forums <FaPeopleGroup className="dash-side-icon" />
           </NavLink>
         </li>
         <li>
-          <NavLink to="/forums">
-            <FaPeopleGroup className="dash-side-icon" />
+          <NavLink to="/resources">
+            Res <FaNewspaper className="dash-side-icon" />
           </NavLink>
         </li>
         <li>
           <NavLink to="/files">
-            <FaFolder className="dash-side-icon" />
+            Files <FaFolder className="dash-side-icon" />
           </NavLink>
         </li>
         <li>
           <NavLink to="/trash">
-            <FaTrash className="dash-side-icon" />
+            Trash <FaTrash className="dash-side-icon" />
           </NavLink>
         </li>
       </ul>
       <div className="settings">
         <NavLink to="/setting">
-          <MdSettings className="dash-side-icon" />
+          Settings <MdSettings className="dash-side-icon" />
         </NavLink>
       </div>
     </div>

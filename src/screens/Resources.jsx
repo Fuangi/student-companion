@@ -9,7 +9,7 @@ function Resources() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(function () {
-    var url = `https://newsapi.org/v2/top-headlines?category=technology&language=en&apiKey=${apiKey}`;
+    var url = `https://newsapi.org/v2/top-headlines?category=health&language=en&apiKey=${apiKey}`;
 
     var req = new Request(url);
 
