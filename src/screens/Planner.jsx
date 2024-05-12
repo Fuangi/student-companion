@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import { illustrations } from "../assets";
 import { DashLayout } from "../components/Layout";
 import Plans from "../components/planner/Plans";
-import Modal from "../components/Layout/Modal";
 
 function Planner() {
   return (
@@ -80,7 +79,7 @@ function Planner() {
             </div>
           </div>
         </div>
-        <Modal children={<Outlet />} prevLocation="/plans" />
+        <Outlet />
       </DashLayout>
     </div>
   );

@@ -1,7 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import AuthLayout from "./AuthLayout";
-// import { Signup } from "../forms";
 
 function Modal({ children, prevLocation }) {
   const [showModal, setShowModal] = useState(false);
