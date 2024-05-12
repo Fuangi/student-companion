@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function EventsForm() {
+function AddEvent() {
   const [eventName, setEventName] = useState("");
   const [eventDesc, setEventDesc] = useState("");
   const [eventStart, setEventStart] = useState("");
@@ -89,4 +89,4 @@ function EventsForm() {
   );
 }
 
-export default EventsForm;
+export default AddEvent;

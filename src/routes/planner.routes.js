@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Planner } from "../screens";
 import Plans from "../components/planner/Plans";
 import Modal from "../components/Layout/Modal";
+import AddEvent from "../components/planner/AddEvent";
 
 function PlanRoute() {
   return (
@@ -13,7 +14,7 @@ function PlanRoute() {
         />
         <Route
           path="new"
-          element={<Modal children={<p>New Plan</p>} prevLocation="/plans" />}
+          element={<Modal children={<AddEvent />} prevLocation="/plans" />}
         />
         <Route
           path="delete"

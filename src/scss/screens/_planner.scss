@@ -1,15 +1,24 @@
 @use "../variables" as *;
 
 // THe header on the Planner page
-/* .all-plans-head {
-  padding: 1.5rem;
+.all-plans-head {
   font-size: 2rem;
   text-align: center;
-} */
+
+  & h2 {
+    color: $color-primary;
+
+    & span {
+      font-family: cursive;
+    }
+  }
+}
+
 .plans-routine {
   display: flex;
   justify-content: space-between;
   padding: 2rem;
+  position: relative;
 
   & .all-plans {
     width: 75%;
@@ -26,6 +35,11 @@
 
   & .routines {
     width: 20%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin-right: 3rem;
+    margin-top: 1.5rem;
 
     & div {
       margin-top: 2rem;
