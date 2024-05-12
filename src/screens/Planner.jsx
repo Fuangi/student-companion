@@ -6,8 +6,8 @@ import Modal from "../components/Layout/Modal";
 
 function Planner() {
   return (
-    <DashLayout>
-      <div className="modal-background">
+    <div>
+      <DashLayout>
         <div className="all-plans-head">
           <h2>
             <span>My</span> Plans
@@ -80,9 +80,9 @@ function Planner() {
             </div>
           </div>
         </div>
-      </div>
-      <Modal children={<Outlet />} />
-    </DashLayout>
+        <Modal children={<Outlet />} prevLocation="/plans" />
+      </DashLayout>
+    </div>
   );
 }
 

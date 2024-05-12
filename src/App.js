@@ -11,7 +11,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />}>
-            <Route path="/auth" element={<Modal children={<AuthLayout />} />}>
+            <Route
+              path="/auth"
+              element={<Modal children={<AuthLayout />} prevLocation="/" />}
+            >
               <Route index element={<Navigate to="signup" />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />

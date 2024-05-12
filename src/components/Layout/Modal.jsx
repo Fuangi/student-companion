@@ -3,16 +3,16 @@ import { useState } from "react";
 import AuthLayout from "./AuthLayout";
 // import { Signup } from "../forms";
 
-function Modal({ children }) {
+function Modal({ children, prevLocation }) {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   console.log(location);
-  function handleCloseModal() {
+  function handleCloseModal(prevLocation) {
     setShowModal(false);
 
-    // navigate(-1);
+    navigate(prevLocation);
   }
 
   return (
@@ -20,7 +20,7 @@ function Modal({ children }) {
       <div className="modal-body">
         <div className="close-modal">
           <button
-            onClick={handleCloseModal}
+            onClick={() => handleCloseModal(prevLocation)}
             style={{ color: `${showModal ? "black" : ""}` }}
           >
             X
