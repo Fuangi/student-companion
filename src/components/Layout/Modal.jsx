@@ -1,16 +1,18 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AuthLayout from "./AuthLayout";
 // import { Signup } from "../forms";
 
-function Modal() {
+function Modal({ children }) {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
+  console.log(location);
   function handleCloseModal() {
     setShowModal(false);
 
-    navigate("/");
+    // navigate(-1);
   }
 
   return (
@@ -24,9 +26,7 @@ function Modal() {
             X
           </button>
         </div>
-        <div className="modal-content">
-          <AuthLayout />
-        </div>
+        <div className="modal-content">{children}</div>
       </div>
     </div>
   );

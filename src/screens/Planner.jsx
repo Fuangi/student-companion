@@ -1,26 +1,87 @@
-import MyCalendar from "../components/planner/Calendar";
-import Plans from "../components/planner/Plans";
+import { Outlet } from "react-router-dom";
+import { illustrations } from "../assets";
 import { DashLayout } from "../components/Layout";
-import UpComingEvent from "../components/planner/UpComingEvent";
+import Plans from "../components/planner/Plans";
+import Modal from "../components/Layout/Modal";
 
 function Planner() {
   return (
     <DashLayout>
-      <div className="main_calendar">
-        <div className="events_container">
-          <h1>All your events</h1>
-          <Plans />
+      <div className="modal-background">
+        <div className="all-plans-head">
+          <h2>
+            <span>My</span> Plans
+          </h2>
         </div>
-        <div
-          style={{ width: "30%", height: "50vh" }}
-          className="calendar-container"
-        >
-          <MyCalendar />
-          <div className="event--upcoming">
-            <UpComingEvent />
+        <div className="plans-routine">
+          <div className="all-plans">
+            <div className="in-progress">
+              <h2>
+                Pending Plans <span>%number</span>
+              </h2>
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+            </div>
+            <div className="in-progress">
+              <h2>
+                in Progress Plans <span>%number</span>
+              </h2>
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+            </div>
+            <div className="in-progress">
+              <h2>
+                Completed Plans <span>%number</span>
+              </h2>
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+              <Plans />
+            </div>
+          </div>
+          <div className="routines">
+            <img
+              src={illustrations.studLearning}
+              alt="Relax"
+              style={{ width: "100%" }}
+            />
+            <div className="routine">
+              <h3>Daily Routine</h3>
+              <ul>
+                <li>Jog</li>
+                <li>Lorem</li>
+                <li>Dance</li>
+                <li>Pray</li>
+                <li>Something</li>
+              </ul>
+            </div>
+            <div className="priorities">
+              <h3>Your Priorities</h3>
+              <ul>
+                <li>Jog</li>
+                <li>Lorem</li>
+                <li>Dance</li>
+                <li>Pray</li>
+                <li>Something</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+      <Modal children={<Outlet />} />
     </DashLayout>
   );
 }

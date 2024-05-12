@@ -20,7 +20,7 @@ function DashSideNav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/planner">
+          <NavLink to="/plans">
             Plans <FaClipboardList className="dash-side-icon" />
           </NavLink>
         </li>

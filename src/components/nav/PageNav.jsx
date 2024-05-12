@@ -14,7 +14,7 @@ function PageNav() {
           <NavLink to="/forums">Forums</NavLink>
         </li>
         <li>
-          <NavLink to="/planner">Planner</NavLink>
+          <NavLink to="/plans">Planner</NavLink>
         </li>
         <li>
           <NavLink to="/resources">Resources</NavLink>

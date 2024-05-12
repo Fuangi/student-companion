@@ -1,19 +1,45 @@
-.main_calendar {
+@use "../variables" as *;
+
+// THe header on the Planner page
+/* .all-plans-head {
+  padding: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+} */
+.plans-routine {
   display: flex;
   justify-content: space-between;
-  margin-left: 0.2rem;
+  padding: 2rem;
 
-  & .events_container {
-    width: 40%;
-    margin: 2rem 1rem;
-    border: 1px solid black;
+  & .all-plans {
+    width: 75%;
+    display: flex;
+    gap: 5rem;
+    padding: 1.5rem;
 
-    & h1 {
-      text-align: center;
+    & .in-progress {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
   }
 
-  & .calendar-container {
-    margin-top: 2rem;
+  & .routines {
+    width: 20%;
+
+    & div {
+      margin-top: 2rem;
+
+      & h3 {
+        background-color: $color-secondary;
+        color: $color-white;
+        padding: 0.7rem;
+      }
+
+      & ul {
+        padding-left: 3rem;
+        font-size: 1.3rem;
+      }
+    }
   }
 }
