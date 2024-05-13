@@ -1,3 +1,56 @@
+@use "../variables" as *;
+
 .create-goal-form {
-  border: 1px solid red;
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+// THe goals page
+
+.my-goals {
+  // padding: 1rem;
+
+  &-header {
+    padding: 2rem;
+    text-align: center;
+    background-color: $color-secondary;
+    color: white;
+    font-family: cursive;
+  }
+
+  & h3 {
+    font-size: 1.7rem;
+    font-family: cursive;
+    padding: 1.5rem;
+    border-bottom: 2px solid $grey-light;
+    margin: 0 3.5rem;
+  }
+
+  &-body {
+    margin: 0 3.5rem;
+    margin-top: 2rem;
+
+    & h4 {
+      background-color: $color-secondary;
+      color: $color-white;
+      font-size: 1.5rem;
+      padding: 0.6rem;
+    }
+
+    & .goals-container {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+
+      & .goals {
+        width: 70%;
+        border: 1px solid $color-primary;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+    }
+  }
 }
