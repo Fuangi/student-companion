@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { DashLayout, Loader } from "../components/Layout";
-import TechResource from "../components/TechResource";
+import TechResource from "../components/resources/TechResource";
+import Error from "../components/Layout/Error";
 
 const apiKey = "5a3d3bda13294d7f9b0b9708b186aedd";
 
@@ -9,6 +10,7 @@ function Resources() {
   const [healthResources, setHealthResources] = useState([]);
   const [bizResources, setBizResources] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(function () {
     setIsLoading(!isLoading);
@@ -36,6 +38,7 @@ function Resources() {
       .catch((err) => {
         console.log(err.message);
         setIsLoading(false);
+        setError(true);
       });
     // setIsLoading(false);
 
@@ -44,7 +47,9 @@ function Resources() {
 
   return (
     <DashLayout>
-      {isLoading ? (
+      {error ? (
+        <Error />
+      ) : isLoading ? (
         <Loader />
       ) : (
         <div className="resources">
