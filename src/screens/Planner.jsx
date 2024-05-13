@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { illustrations } from "../assets";
 import { DashLayout } from "../components/Layout";
 import Plans from "../components/planner/Plans";
+import { FaPlus } from "react-icons/fa6";
 
 function Planner() {
   return (
@@ -11,6 +12,11 @@ function Planner() {
           <h2>
             <span>My</span> Plans
           </h2>
+          <div className="new-actions">
+            <button>
+              <FaPlus /> New Plan
+            </button>
+          </div>
         </div>
         <div className="plans-routine">
           <div className="all-plans">

@@ -3,7 +3,10 @@
 // THe header on the Planner page
 .all-plans-head {
   font-size: 2rem;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
 
   & h2 {
     color: $color-primary;
@@ -30,6 +33,11 @@
       display: flex;
       flex-direction: column;
       gap: 2rem;
+
+      & h2 {
+        color: $color-primary;
+        font-size: 1.8rem;
+      }
     }
   }
 
