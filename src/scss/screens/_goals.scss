@@ -79,6 +79,15 @@
             }
           }
         }
+
+        & button {
+          height: 3.5rem;
+          width: 5rem;
+          border: none;
+          font-size: 3rem;
+          background-color: whitesmoke;
+          align-self: center;
+        }
       }
 
       & .affirmations {

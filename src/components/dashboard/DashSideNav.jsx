@@ -15,7 +15,7 @@ function DashSideNav() {
     <div className="dashboard-side-nav">
       <ul className="dash-side">
         <li>
-          <NavLink to="/" end>
+          <NavLink to="/dashboard" end>
             Home <FaHouse className="dash-side-icon" />
           </NavLink>
         </li>

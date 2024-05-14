@@ -36,6 +36,7 @@ function Goals() {
               <Goal />
               <Goal />
               <Goal />
+              <button>+</button>
             </div>
             <div className="affirmations">
               <div className="datetime">
