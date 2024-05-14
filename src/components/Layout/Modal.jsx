@@ -1,12 +1,10 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function Modal({ children, prevLocation }) {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
 
-  console.log(location);
   function handleCloseModal(prevLocation) {
     setShowModal(false);
 

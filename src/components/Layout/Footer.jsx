@@ -1,4 +1,4 @@
-import { logo } from "../../assets";
+import { logoIcon } from "../../assets";
 import { SocialMedia } from "../icons/";
 
 function Footer() {
@@ -6,7 +6,7 @@ function Footer() {
     <div className="footer_container">
       <footer>
         <div className="logo_container">
-          <img src={logo} alt="Khing's Corp" />
+          <img src={logoIcon} alt="Khing's Corp" />
           <h4>KHING'S CORP</h4>
         </div>
         <div className="footer_menu">

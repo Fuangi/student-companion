@@ -85,8 +85,8 @@ function Planner() {
             </div>
           </div>
         </div>
-        <Outlet />
       </DashLayout>
+      <Outlet />
     </div>
   );
 }
