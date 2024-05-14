@@ -3,6 +3,7 @@ import { Planner } from "../screens";
 import Plans from "../components/planner/Plans";
 import Modal from "../components/Layout/Modal";
 import AddEvent from "../components/planner/AddEvent";
+import DeleteAlert from "../components/Layout/DeleteAlert";
 
 function PlanRoute() {
   return (
@@ -19,7 +20,14 @@ function PlanRoute() {
         <Route
           path="delete"
           element={
-            <Modal children={<p>Delete Plan</p>} prevLocation="/plans" />
+            <Modal
+              children={
+                <p>
+                  <DeleteAlert />
+                </p>
+              }
+              prevLocation="/plans"
+            />
           }
         />
         <Route
