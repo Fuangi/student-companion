@@ -1,10 +1,12 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { illustrations } from "../assets";
 import { DashLayout } from "../components/Layout";
 import Plans from "../components/planner/Plans";
 import { FaPlus } from "react-icons/fa6";
 
 function Planner() {
+  const navigate = useNavigate();
+
   return (
     <div>
       <DashLayout>
@@ -13,7 +15,7 @@ function Planner() {
             <span>My</span> Plans
           </h2>
           <div className="new-actions">
-            <button>
+            <button onClick={() => navigate("/plans/new")}>
               <FaPlus /> New Plan
             </button>
           </div>

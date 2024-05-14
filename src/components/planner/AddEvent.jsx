@@ -9,6 +9,7 @@ function AddEvent() {
 
   function handleCreateEvent(e) {
     e.preventDefault();
+
     const newEvent = {
       eventStart,
       eventEnd,
@@ -18,9 +19,9 @@ function AddEvent() {
       },
     };
 
-    console.log(newEvent);
-
-    localStorage.setItem("event", JSON.stringify(newEvent));
+    // Checking is any of the fields are empty
+    if (Object.values(newEvent).some((value) => value === ""))
+      localStorage.setItem("event", JSON.stringify(newEvent));
     alert("Event Created Successfully");
   }
 
@@ -34,6 +35,7 @@ function AddEvent() {
           type="text"
           name="Ename"
           placeholder="Event Name"
+          required
           value={eventName}
           onChange={(e) => setEventName(e.target.value)}
         />
@@ -44,6 +46,7 @@ function AddEvent() {
           name="desc"
           cols="20"
           rows="3"
+          required
           placeholder="What is the event for?"
           value={eventDesc}
           onChange={(e) => setEventDesc(e.target.value)}
@@ -54,6 +57,7 @@ function AddEvent() {
         <select
           name="type"
           id="type"
+          required
           value={eventType}
           onChange={(e) => setEventType(e.target.value)}
         >
@@ -70,6 +74,7 @@ function AddEvent() {
           type="datetime-local"
           name="start"
           id=""
+          required
           value={eventStart}
           onChange={(e) => setEventStart(e.target.value)}
         />
@@ -80,6 +85,7 @@ function AddEvent() {
           type="datetime-local"
           name="end"
           id=""
+          required
           value={eventEnd}
           onChange={(e) => setEventEnd(e.target.value)}
         />
