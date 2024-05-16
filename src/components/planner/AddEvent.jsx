@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function AddEvent() {
   const [eventName, setEventName] = useState("");
@@ -7,6 +8,9 @@ function AddEvent() {
   const [eventStart, setEventStart] = useState("");
   const [eventEnd, setEventEnd] = useState("");
   const [eventType, setEventType] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   function handleCreateEvent(e) {
     e.preventDefault();
@@ -19,8 +23,7 @@ function AddEvent() {
       eventType,
     };
 
-    console.log(newEvent);
-
+    setIsLoading(!isLoading);
     axios.post("http://localhost:4000/api/v1/plans", {
       data: newEvent,
       headers: {
@@ -28,6 +31,8 @@ function AddEvent() {
         mode: "cors",
       },
     });
+    setIsLoading(false);
+    navigate("/plans/view");
   }
 
   return (
@@ -70,7 +75,7 @@ function AddEvent() {
           <option value="studying">Studying</option>
           <option value="assignment">Assignment</option>
           <option value="rest">Resting / Relaxation</option>
-          <option value="others">Others</option>
+          <option value="other">Others</option>
         </select>
       </div>
       <div className="form-input">
