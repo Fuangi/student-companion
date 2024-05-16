@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 function AddEvent() {
   const [eventName, setEventName] = useState("");
@@ -19,10 +20,34 @@ function AddEvent() {
       },
     };
 
-    // Checking is any of the fields are empty
-    if (Object.values(newEvent).some((value) => value === ""))
-      localStorage.setItem("event", JSON.stringify(newEvent));
-    alert("Event Created Successfully");
+    axios.post("http://localhost:4000/api/v1/plans", {
+      data: newEvent,
+      headers: {
+        "Content-Type": "application/json",
+        mode: "cors",
+      },
+    });
+    /* axios({
+      // Endpoint to send files
+      url: "http://localhost:4000/ap1/v1/plans",
+      method: "POST",
+      headers: {
+        // Add any auth token here
+      },
+
+      // Attaching the form data
+      data: newEvent,
+    })
+      // Handle the response from backend here
+      .then((res) => {
+        console.log(res);
+      })
+
+      // Catch errors if any
+      .catch((err) => {
+        console.log(err);
+      });
+  } */
   }
 
   return (
