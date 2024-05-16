@@ -12,13 +12,14 @@ function AddEvent() {
     e.preventDefault();
 
     const newEvent = {
-      eventStart,
-      eventEnd,
-      eventName,
-      data: {
-        type: eventType,
-      },
+      name: eventName,
+      description: eventDesc,
+      eventStart: eventStart.toString(),
+      eventEnd: eventEnd.toString(),
+      eventType,
     };
+
+    console.log(newEvent);
 
     axios.post("http://localhost:4000/api/v1/plans", {
       data: newEvent,
@@ -27,27 +28,6 @@ function AddEvent() {
         mode: "cors",
       },
     });
-    /* axios({
-      // Endpoint to send files
-      url: "http://localhost:4000/ap1/v1/plans",
-      method: "POST",
-      headers: {
-        // Add any auth token here
-      },
-
-      // Attaching the form data
-      data: newEvent,
-    })
-      // Handle the response from backend here
-      .then((res) => {
-        console.log(res);
-      })
-
-      // Catch errors if any
-      .catch((err) => {
-        console.log(err);
-      });
-  } */
   }
 
   return (
@@ -89,7 +69,7 @@ function AddEvent() {
           <option value="class">Class</option>
           <option value="studying">Studying</option>
           <option value="assignment">Assignment</option>
-          <option value="resting">Resting / Relaxation</option>
+          <option value="rest">Resting / Relaxation</option>
           <option value="others">Others</option>
         </select>
       </div>
