@@ -32,7 +32,7 @@ function AddEvent() {
       },
     });
     setIsLoading(false);
-    navigate("/plans/view");
+    navigate("/plans");
   }
 
   return (
@@ -72,7 +72,7 @@ function AddEvent() {
           onChange={(e) => setEventType(e.target.value)}
         >
           <option value="class">Class</option>
-          <option value="studying">Studying</option>
+          <option value="study">Studying</option>
           <option value="assignment">Assignment</option>
           <option value="rest">Resting / Relaxation</option>
           <option value="other">Others</option>

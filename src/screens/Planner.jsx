@@ -9,7 +9,9 @@ import axios from "axios";
 function Planner() {
   const [plans, setPlans] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentDate, setCurrentDate] = useState(new Date()); //today's date to be compared
   const navigate = useNavigate();
+  const [sortedPlans, setSortedPlans] = useState([]);
 
   useEffect(function () {
     setIsLoading(!isLoading);
@@ -22,6 +24,52 @@ function Planner() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Updating the current time based on 1 hour intervals
+  const updateCurrentTime = () => {
+    setCurrentDate(new Date());
+  };
+
+  const intervalId = setInterval(updateCurrentTime, 60000); //update hourly
+
+  // clearInterval(intervalId); // clear the interval
+
+  //sorting the events based on the date (before, current, after)
+  useEffect(
+    function () {
+      // setIsLoading(true);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      // mySortedPlans.push(
+      setSortedPlans([]);
+      plans.map((plan) => {
+        // getting the start and end of the plan
+        const start = new Date(plan.eventStart);
+        const end = new Date(plan.eventEnd);
+        let planner;
+
+        if (currentDate < start)
+          planner = { ...plan, status: "pending" }; //future plans
+        else if (currentDate.getTime() === start.getTime())
+          //same date plans
+          planner = { ...plan, status: "ongoing" };
+        else if (currentDate >= start && currentDate < end)
+          //plans in range
+          planner = { ...plan, status: "ongoing" };
+        else planner = { ...plan, status: "past" }; //past
+
+        setSortedPlans((prev) => [...prev, planner]);
+        return planner;
+      });
+      // );
+      // setIsLoading(false);
+
+      return () => clearInterval(intervalId);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [plans, currentDate]
+  );
+
+  console.log(sortedPlans, sortedPlans.length);
 
   return (
     <div>
@@ -46,40 +94,55 @@ function Planner() {
                   <h2>
                     Pending Plans <span>%number</span>
                   </h2>
-                  {plans.map((plan) => (
-                    <Plans
-                      key={plan._id}
-                      title={plan?.name}
-                      description={plan?.description}
-                      start={plan?.eventStart}
-                      end={plan?.eventEnd}
-                      type={plan?.eventType}
-                    />
-                  ))}
+                  {sortedPlans?.map(
+                    (sorted) =>
+                      sorted.status === "pending" && (
+                        <Plans
+                          key={sorted?._id}
+                          title={sorted?.name}
+                          description={sorted?.description}
+                          start={sorted?.eventStart}
+                          end={sorted?.eventEnd}
+                          type={sorted?.eventType}
+                        />
+                      )
+                  )}
                 </div>
                 <div className="in-progress">
                   <h2>
                     in Progress Plans <span>%number</span>
                   </h2>
-                  <Plans />
-                  <Plans />
-                  <Plans />
-                  <Plans />
-                  <Plans />
-                  <Plans />
-                  <Plans />
+                  {sortedPlans?.map(
+                    (sorted) =>
+                      sorted.status === "ongoing" && (
+                        <Plans
+                          key={sorted?._id}
+                          title={sorted?.name}
+                          description={sorted?.description}
+                          start={sorted?.eventStart}
+                          end={sorted?.eventEnd}
+                          type={sorted?.eventType}
+                        />
+                      )
+                  )}
                 </div>
                 <div className="in-progress">
                   <h2>
                     Completed Plans <span>%number</span>
                   </h2>
-                  <Plans />
-                  <Plans />
-                  <Plans />
-                  <Plans />
-                  <Plans />
-                  <Plans />
-                  <Plans />
+                  {sortedPlans?.map(
+                    (sorted) =>
+                      sorted.status === "past" && (
+                        <Plans
+                          key={sorted?._id}
+                          title={sorted?.name}
+                          description={sorted?.description}
+                          start={sorted?.eventStart}
+                          end={sorted?.eventEnd}
+                          type={sorted?.eventType}
+                        />
+                      )
+                  )}
                 </div>
               </div>
               <div className="routines">
