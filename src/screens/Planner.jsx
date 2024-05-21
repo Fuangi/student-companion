@@ -1,33 +1,28 @@
 import { Outlet, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { illustrations } from "../assets";
 import { DashLayout, Loader } from "../components/Layout";
 import Plans from "../components/planner/Plans";
 import { FaPlus } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { getPlans, setCurrentDate, setIsLoading } from "../store/plannerSlice";
 
 function Planner() {
-  const [plans, setPlans] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentDate, setCurrentDate] = useState(new Date()); //today's date to be compared
   const [sortedPlans, setSortedPlans] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(function () {
-    setIsLoading(!isLoading);
-    axios({ method: "GET", url: "http://localhost:4000/api/v1/plans" }).then(
-      function (response) {
-        setPlans(response.data.data.data);
-        setIsLoading(false);
-      }
-    );
+  // reading the state from the redux store
+  const { plans, isLoading, currentDate } = useSelector((store) => store.plan);
+  const dispatch = useDispatch(); //to dispatch actions to the redux store
 
+  useEffect(function () {
+    dispatch(getPlans());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Updating the current time based on 1 hour intervals
   const updateCurrentTime = () => {
-    setCurrentDate(new Date());
+    dispatch(setCurrentDate(new Date()));
   };
 
   const intervalId = setInterval(updateCurrentTime, 3600 * 1000); //update hourly
@@ -35,10 +30,10 @@ function Planner() {
   //sorting the events based on the date (before, current, after)
   useEffect(
     function () {
-      setIsLoading(true);
+      dispatch(setIsLoading(true));
 
       setSortedPlans([]);
-      plans.map((plan) => {
+      plans?.map((plan) => {
         // getting the start and end of the plan
         const start = new Date(plan.eventStart);
         const end = new Date(plan.eventEnd);
@@ -58,7 +53,7 @@ function Planner() {
         return planner;
       });
 
-      setIsLoading(false);
+      dispatch(setIsLoading(false));
 
       return () => clearInterval(intervalId);
     },
