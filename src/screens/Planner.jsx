@@ -10,8 +10,8 @@ function Planner() {
   const [plans, setPlans] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentDate, setCurrentDate] = useState(new Date()); //today's date to be compared
-  const navigate = useNavigate();
   const [sortedPlans, setSortedPlans] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(function () {
     setIsLoading(!isLoading);
@@ -30,16 +30,13 @@ function Planner() {
     setCurrentDate(new Date());
   };
 
-  const intervalId = setInterval(updateCurrentTime, 60000); //update hourly
-
-  // clearInterval(intervalId); // clear the interval
+  const intervalId = setInterval(updateCurrentTime, 3600 * 1000); //update hourly
 
   //sorting the events based on the date (before, current, after)
   useEffect(
     function () {
-      // setIsLoading(true);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      // mySortedPlans.push(
+      setIsLoading(true);
+
       setSortedPlans([]);
       plans.map((plan) => {
         // getting the start and end of the plan
@@ -60,16 +57,14 @@ function Planner() {
         setSortedPlans((prev) => [...prev, planner]);
         return planner;
       });
-      // );
-      // setIsLoading(false);
+
+      setIsLoading(false);
 
       return () => clearInterval(intervalId);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [plans, currentDate]
   );
-
-  console.log(sortedPlans, sortedPlans.length);
 
   return (
     <div>

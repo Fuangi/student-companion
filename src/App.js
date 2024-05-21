@@ -1,13 +1,15 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Provider } from "react-redux";
 import AuthLayout from "./components/Layout/AuthLayout";
 import Modal from "./components/Layout/Modal";
 import { ForgotPassword, Login, Signup } from "./components/forms";
 import MyRoutes from "./routes";
 import Homepage from "./screens/Homepage";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import store from "./store/store";
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />}>
@@ -24,7 +26,7 @@ function App() {
         </Routes>
         <MyRoutes />
       </BrowserRouter>
-    </div>
+    </Provider>
   );
 }
 
