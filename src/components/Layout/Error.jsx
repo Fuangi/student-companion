@@ -1,8 +1,8 @@
-function Error() {
+function Error({ errCode, errMsg }) {
   return (
     <div className="error">
-      <h2>Error!</h2>
-      <p>Sorry an error occured</p>
+      <h2>{errCode} Error!</h2>
+      <p>{errMsg}</p>
     </div>
   );
 }

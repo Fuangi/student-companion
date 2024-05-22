@@ -6,13 +6,16 @@ import Plans from "../components/planner/Plans";
 import { FaPlus } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { getPlans, setCurrentDate, setIsLoading } from "../store/plannerSlice";
+import Error from "../components/Layout/Error";
 
 function Planner() {
   const [sortedPlans, setSortedPlans] = useState([]);
   const navigate = useNavigate();
 
   // reading the state from the redux store
-  const { plans, isLoading, date } = useSelector((store) => store.plan);
+  const { plans, isLoading, date, status, error } = useSelector(
+    (store) => store.plan
+  );
   const dispatch = useDispatch(); //to dispatch actions to the redux store (set state)
 
   useEffect(function () {
@@ -62,11 +65,16 @@ function Planner() {
     [plans, date]
   );
 
+  console.log("Status", status);
+  console.log(plans);
+
   return (
     <div>
       <DashLayout>
-        {isLoading ? (
+        {isLoading ? ( //to display either the loader, error or the loaded data
           <Loader />
+        ) : status === "error" ? (
+          <Error errMsg={error} />
         ) : (
           <>
             <div className="all-plans-head">

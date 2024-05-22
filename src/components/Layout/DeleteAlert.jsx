@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 function DeleteAlert({ prevLoc, resId }) {
   // getting the id of the data to be deleted from the URL - passed as a query string
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   console.log("search params", searchParams);
   resId = searchParams.get("id");

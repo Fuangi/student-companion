@@ -15,6 +15,7 @@ const initialState = {
   date: new Date(),
   plans: [],
   error: "",
+  status: "",
 };
 
 // creating the plan slice and its reducers
@@ -36,13 +37,16 @@ const planSlice = createSlice({
     builder
       .addCase(getPlans.pending, (state, action) => {
         state.isLoading = true;
+        state.status = "loading";
       })
       .addCase(getPlans.fulfilled, (state, action) => {
         state.plans = action.payload.fetchedPlans;
+        state.status = "success";
         state.isLoading = false;
       })
       .addCase(getPlans.rejected, (state, action) => {
         state.error = "There was an error fetching the plans";
+        state.status = "error";
         state.isLoading = false;
       });
   },
