@@ -1,11 +1,18 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function DeleteAlert({ prevLoc, resId }) {
+  // getting the id of the data to be deleted from the URL - passed as a query string
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  console.log("search params", searchParams);
+  resId = searchParams.get("id");
+  console.log(resId);
+
   function deleteResource() {
     axios({
       method: "DELETE",
-      url: `http://localhost:4000/api/v1/plans/:${resId}`,
+      url: `http://localhost:4000/api/v1/plans/${resId}`,
     })
       .then(function (response) {
         console.log("Deleted successfully");

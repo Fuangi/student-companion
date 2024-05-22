@@ -1,11 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 function Plans({
   title = "My Plan",
   description = "Lorem ispum something sometyhing, my go to",
-  start = Date.now(),
-  end = Date.now() + 5000,
+  start,
+  end,
   type,
+  _id,
 }) {
   const navigate = useNavigate();
 
@@ -17,8 +18,11 @@ function Plans({
         <p>Category: {type}</p>
         <span>Start: {start}</span> <span>End: {end}</span>
       </Link>
-      <button onClick={() => navigate("/plans/delete")}>Delete</button>
-      <button onClick={() => navigate("/plans/edit")}>Update</button>
+      {/* using query string to pass the id of the plan to be deleted in the URL */}
+      <button onClick={() => navigate(`/plans/delete?id=${_id}`)}>
+        Delete
+      </button>
+      <button onClick={() => navigate(`/plans/edit?${_id}`)}>Update</button>
     </div>
   );
 }

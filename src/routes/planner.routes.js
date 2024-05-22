@@ -19,16 +19,7 @@ function PlanRoute() {
         />
         <Route
           path="delete"
-          element={
-            <Modal
-              children={
-                <p>
-                  <DeleteAlert />
-                </p>
-              }
-              prevLocation="/plans"
-            />
-          }
+          element={<Modal children={<DeleteAlert />} prevLocation="/plans" />}
         />
         <Route
           path="edit"

@@ -131,6 +131,7 @@ function Planner() {
                           start={sorted?.eventStart}
                           end={sorted?.eventEnd}
                           type={sorted?.eventType}
+                          _id={sorted?._id}
                         />
                       )
                   )}
