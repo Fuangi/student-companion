@@ -12,8 +12,8 @@ function Planner() {
   const navigate = useNavigate();
 
   // reading the state from the redux store
-  const { plans, isLoading, currentDate } = useSelector((store) => store.plan);
-  const dispatch = useDispatch(); //to dispatch actions to the redux store
+  const { plans, isLoading, date } = useSelector((store) => store.plan);
+  const dispatch = useDispatch(); //to dispatch actions to the redux store (set state)
 
   useEffect(function () {
     dispatch(getPlans());
@@ -37,14 +37,15 @@ function Planner() {
         // getting the start and end of the plan
         const start = new Date(plan.eventStart);
         const end = new Date(plan.eventEnd);
+
         let planner;
 
-        if (currentDate < start)
+        if (date < start)
           planner = { ...plan, status: "pending" }; //future plans
-        else if (currentDate.getTime() === start.getTime())
+        else if (date.getTime() === start.getTime())
           //same date plans
           planner = { ...plan, status: "ongoing" };
-        else if (currentDate >= start && currentDate < end)
+        else if (date >= start && date < end)
           //plans in range
           planner = { ...plan, status: "ongoing" };
         else planner = { ...plan, status: "past" }; //past
@@ -58,7 +59,7 @@ function Planner() {
       return () => clearInterval(intervalId);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [plans, currentDate]
+    [plans, date]
   );
 
   return (

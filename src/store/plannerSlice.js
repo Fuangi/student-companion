@@ -12,7 +12,7 @@ export const getPlans = createAsyncThunk("plan/getAllPlans", async function () {
 // initial state of the plan slice
 const initialState = {
   isLoading: false,
-  date: new Date().toISOString(),
+  date: new Date(),
   plans: [],
   error: "",
 };
@@ -40,7 +40,6 @@ const planSlice = createSlice({
       .addCase(getPlans.fulfilled, (state, action) => {
         state.plans = action.payload.fetchedPlans;
         state.isLoading = false;
-        console.log(state.date);
       })
       .addCase(getPlans.rejected, (state, action) => {
         state.error = "There was an error fetching the plans";
