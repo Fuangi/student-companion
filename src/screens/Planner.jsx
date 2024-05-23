@@ -13,9 +13,7 @@ function Planner() {
   const navigate = useNavigate();
 
   // reading the state from the redux store
-  const { plans, isLoading, date, status, error } = useSelector(
-    (store) => store.plan
-  );
+  const { plans, date, status, error } = useSelector((store) => store.plan);
   const dispatch = useDispatch(); //to dispatch actions to the redux store (set state)
 
   useEffect(function () {
@@ -65,13 +63,10 @@ function Planner() {
     [plans, date]
   );
 
-  console.log("Status", status);
-  console.log(plans);
-
   return (
     <div>
       <DashLayout>
-        {isLoading ? ( //to display either the loader, error or the loaded data
+        {status === "loading" ? ( //to display either the loader, error or the loaded data
           <Loader />
         ) : status === "error" ? (
           <Error errMsg={error} />
