@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { illustrations } from "../assets";
 import { DashLayout, Loader } from "../components/Layout";
-import Plans from "../components/planner/Plans";
 import { FaPlus } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { getPlans, setCurrentDate, setIsLoading } from "../store/plannerSlice";
 import Error from "../components/Layout/Error";
+import PlanCard from "../components/planner/PlanCard";
 
 function Planner() {
   const [sortedPlans, setSortedPlans] = useState([]);
@@ -16,11 +15,6 @@ function Planner() {
   // reading the state from the redux store
   const { plans, date, status, error } = useSelector((store) => store.plan);
   const dispatch = useDispatch(); //to dispatch actions to the redux store (set state)
-
-  // To store the number of plans based on their statuses
-  let pending = 0,
-    progress = 0,
-    past = 0;
 
   useEffect(function () {
     dispatch(getPlans());
@@ -56,7 +50,6 @@ function Planner() {
         } else if (date >= start && date < end) {
           //plans in range
           planner = { ...plan, status: "ongoing" };
-          progress += 1;
         } else {
           planner = { ...plan, status: "past" }; //past
         }
@@ -95,69 +88,18 @@ function Planner() {
               </div>
             </div>
             <div className="plans-routine">
-              <div className="all-plans">
-                <div className="in-progress">
+              <div className="ongoing-routine">
+                <div className="ongoing">
                   <h2>
-                    Pending Plans <span>{pending}</span>
+                    Ongoing Plans <span>Today</span>
                   </h2>
-                  {sortedPlans?.map(
-                    (sorted) =>
-                      sorted.status === "pending" && (
-                        <Plans
-                          key={sorted?._id}
-                          title={sorted?.name}
-                          description={sorted?.description}
-                          start={sorted?.eventStart}
-                          end={sorted?.eventEnd}
-                          type={sorted?.eventType}
-                        />
+                  {sortedPlans.map(
+                    (plan) =>
+                      plan.status === "ongoing" && (
+                        <PlanCard plan={plan} color="green" key={plan._id} />
                       )
                   )}
                 </div>
-                <div className="in-progress">
-                  <h2>
-                    Ongoing Plans <span>{progress}</span>
-                  </h2>
-                  {sortedPlans?.map(
-                    (sorted) =>
-                      sorted.status === "ongoing" && (
-                        <Plans
-                          key={sorted?._id}
-                          title={sorted?.name}
-                          description={sorted?.description}
-                          start={sorted?.eventStart}
-                          end={sorted?.eventEnd}
-                          type={sorted?.eventType}
-                        />
-                      )
-                  )}
-                </div>
-                <div className="in-progress">
-                  <h2>
-                    Past Plans <span>{past}</span>
-                  </h2>
-                  {sortedPlans?.map(
-                    (sorted) =>
-                      sorted.status === "past" && (
-                        <Plans
-                          key={sorted?._id}
-                          title={sorted?.name}
-                          description={sorted?.description}
-                          start={sorted?.eventStart}
-                          end={sorted?.eventEnd}
-                          type={sorted?.eventType}
-                          _id={sorted?._id}
-                        />
-                      )
-                  )}
-                </div>
-              </div>
-              <div className="routines">
-                <img
-                  src={illustrations.studLearning}
-                  alt="Relax"
-                  style={{ width: "100%" }}
-                />
                 <div className="routine">
                   <h3>Daily Routine</h3>
                   <ul>
@@ -168,15 +110,25 @@ function Planner() {
                     <li>Something</li>
                   </ul>
                 </div>
-                <div className="priorities">
-                  <h3>Your Priorities</h3>
-                  <ul>
-                    <li>Jog</li>
-                    <li>Lorem</li>
-                    <li>Dance</li>
-                    <li>Pray</li>
-                    <li>Something</li>
-                  </ul>
+              </div>
+              <div className="pending-past">
+                <div className="pending">
+                  <h2>Upcoming Plans</h2>
+                  {sortedPlans.map(
+                    (plan) =>
+                      plan.status === "pending" && (
+                        <PlanCard plan={plan} color="blue" key={plan._id} />
+                      )
+                  )}
+                </div>
+                <div className="past">
+                  <h2>Past Plans</h2>
+                  {sortedPlans.map(
+                    (plan) =>
+                      plan.status === "past" && (
+                        <PlanCard plan={plan} color="orange" key={plan._id} />
+                      )
+                  )}
                 </div>
               </div>
             </div>
