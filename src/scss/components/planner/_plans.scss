@@ -16,7 +16,7 @@
   }
 }
 
-// Plans
+// Plans - in the Plans file
 .plan-link {
   text-decoration: none;
   color: $color-black;
@@ -24,7 +24,8 @@
 
 .my-plan {
   padding: 1rem;
-  box-shadow: 0.5px 0.5px 3px black;
+  border: 1px solid #eee;
+  width: inherit;
 
   & h3 {
     font-size: 1.7rem;

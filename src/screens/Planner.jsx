@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { illustrations } from "../assets";
@@ -15,6 +16,11 @@ function Planner() {
   // reading the state from the redux store
   const { plans, date, status, error } = useSelector((store) => store.plan);
   const dispatch = useDispatch(); //to dispatch actions to the redux store (set state)
+
+  // To store the number of plans based on their statuses
+  let pending = 0,
+    progress = 0,
+    past = 0;
 
   useEffect(function () {
     dispatch(getPlans());
@@ -41,15 +47,19 @@ function Planner() {
 
         let planner;
 
-        if (date < start)
-          planner = { ...plan, status: "pending" }; //future plans
-        else if (date.getTime() === start.getTime())
+        if (date < start) {
+          planner = { ...plan, status: "pending" };
+        } //future plans
+        else if (date.getTime() === start.getTime()) {
           //same date plans
           planner = { ...plan, status: "ongoing" };
-        else if (date >= start && date < end)
+        } else if (date >= start && date < end) {
           //plans in range
           planner = { ...plan, status: "ongoing" };
-        else planner = { ...plan, status: "past" }; //past
+          progress += 1;
+        } else {
+          planner = { ...plan, status: "past" }; //past
+        }
 
         setSortedPlans((prev) => [...prev, planner]);
         return planner;
@@ -59,9 +69,11 @@ function Planner() {
 
       return () => clearInterval(intervalId);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     [plans, date]
   );
+
+  // Calculating the number of plans in each status
 
   return (
     <div>
@@ -86,7 +98,7 @@ function Planner() {
               <div className="all-plans">
                 <div className="in-progress">
                   <h2>
-                    Pending Plans <span>%number</span>
+                    Pending Plans <span>{pending}</span>
                   </h2>
                   {sortedPlans?.map(
                     (sorted) =>
@@ -104,7 +116,7 @@ function Planner() {
                 </div>
                 <div className="in-progress">
                   <h2>
-                    in Progress Plans <span>%number</span>
+                    Ongoing Plans <span>{progress}</span>
                   </h2>
                   {sortedPlans?.map(
                     (sorted) =>
@@ -122,7 +134,7 @@ function Planner() {
                 </div>
                 <div className="in-progress">
                   <h2>
-                    Completed Plans <span>%number</span>
+                    Past Plans <span>{past}</span>
                   </h2>
                   {sortedPlans?.map(
                     (sorted) =>
