@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { updatePlan } from "../../services/apiPlans";
 
-function AddEvent() {
+function AddEvent({ plan }) {
   const [eventName, setEventName] = useState("");
   const [eventDesc, setEventDesc] = useState("");
   const [eventStart, setEventStart] = useState("");
@@ -35,6 +36,26 @@ function AddEvent() {
     navigate("/plans");
   }
 
+  async function handleUpdateEvent(e) {
+    e.preventDefault();
+    console.log("updated");
+
+    const event = {
+      name: eventName,
+      description: eventDesc,
+      eventStart: eventStart.toString(),
+      eventEnd: eventEnd.toString(),
+      eventType,
+    };
+    // Checking and removing any empty value (one that wasn't updated)
+    const updatedPlan = Object.fromEntries(
+      Object.entries(event).filter(([_, value]) => value)
+    );
+
+    setIsLoading(!isLoading);
+    const update = await updatePlan(plan._id, updatedPlan);
+    console.log(update);
+  }
   return (
     <form className="event_form">
       <h3 className="events-form-head">Create a new event</h3>
@@ -46,7 +67,7 @@ function AddEvent() {
           name="Ename"
           placeholder="Event Name"
           required
-          value={eventName}
+          defaultValue={plan ? plan.name : eventName}
           onChange={(e) => setEventName(e.target.value)}
         />
       </div>
@@ -55,10 +76,11 @@ function AddEvent() {
         <textarea
           name="desc"
           cols="20"
-          rows="3"
+          rows="5"
           required
+          defaultValue={plan ? plan.description : eventDesc}
           placeholder="What is the event for?"
-          value={eventDesc}
+          // value={eventDesc}
           onChange={(e) => setEventDesc(e.target.value)}
         ></textarea>
       </div>
@@ -68,7 +90,8 @@ function AddEvent() {
           name="type"
           id="type"
           required
-          value={eventType}
+          // value={eventType}
+          defaultValue={plan ? plan.eventType : eventType}
           onChange={(e) => setEventType(e.target.value)}
         >
           <option value="class">Class</option>
@@ -85,7 +108,8 @@ function AddEvent() {
           name="start"
           id=""
           required
-          value={eventStart}
+          // value={eventStart}
+          defaultValue={plan ? plan.eventStart : eventStart}
           onChange={(e) => setEventStart(e.target.value)}
         />
       </div>
@@ -96,11 +120,18 @@ function AddEvent() {
           name="end"
           id=""
           required
-          value={eventEnd}
+          // value={eventEnd}
+          defaultValue={plan ? plan.eventEnd : eventEnd}
           onChange={(e) => setEventEnd(e.target.value)}
         />
       </div>
-      <button onClick={handleCreateEvent}>Create Event</button>
+      <button
+        onClick={handleCreateEvent}
+        style={{ display: plan ? "none" : "" }}
+      >
+        Create Event
+      </button>
+      {plan && <button onClick={handleUpdateEvent}>Update Event</button>}
     </form>
   );
 }

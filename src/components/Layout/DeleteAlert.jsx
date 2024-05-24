@@ -7,7 +7,6 @@ function DeleteAlert({ prevLoc, resId }) {
 
   console.log("search params", searchParams);
   resId = searchParams.get("id");
-  console.log(resId);
 
   function deleteResource() {
     axios({

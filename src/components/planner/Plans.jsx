@@ -1,4 +1,4 @@
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Plans({
   title = "My Plan",
@@ -22,7 +22,7 @@ function Plans({
       <button onClick={() => navigate(`/plans/delete?id=${_id}`)}>
         Delete
       </button>
-      <button onClick={() => navigate(`/plans/edit?${_id}`)}>Update</button>
+      <button onClick={() => navigate(`/plans/edit?id=${_id}`)}>Update</button>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import Plans from "../components/planner/Plans";
 import Modal from "../components/Layout/Modal";
 import AddEvent from "../components/planner/AddEvent";
 import DeleteAlert from "../components/Layout/DeleteAlert";
+import UpdatePlan from "../components/planner/UpdatePlans";
 
 function PlanRoute() {
   return (
@@ -23,9 +24,7 @@ function PlanRoute() {
         />
         <Route
           path="edit"
-          element={
-            <Modal children={<p>Update Plan</p>} prevLocation="/plans" />
-          }
+          element={<Modal children={<UpdatePlan />} prevLocation="/plans" />}
         />
       </Route>
     </Routes>
