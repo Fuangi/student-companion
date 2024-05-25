@@ -42,6 +42,7 @@
     justify-content: space-between;
     align-items: center;
     color: $grey-dark;
+    border-bottom: 1px solid $grey-light;
     padding: 0.7rem 1.5rem;
 
     & span {
@@ -53,20 +54,27 @@
 
   & .ongoing-routine {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 8rem;
     width: inherit;
     padding: 1rem;
 
     & .ongoing {
-      border: 1px solid black;
       width: 40%;
       height: 22rem;
       font-size: 1.1rem;
+      background-color: $color-white;
     }
 
     & .routine {
-      border: 1px solid blue;
+      background-color: $color-white;
       width: 35%;
+      padding: 1rem;
+
+      & ol {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+      }
     }
   }
 
@@ -78,14 +86,19 @@
     padding: 1rem;
 
     & .pending {
-      border: 1px solid black;
-      width: 50%;
+      width: 35%;
       height: 30rem;
+      background-color: $color-white;
     }
 
     & .past {
-      border: 1px solid blue;
       width: 35%;
+      background-color: $color-white;
+    }
+
+    & .completed {
+      background-color: $color-white;
+      width: 25%;
     }
   }
 }
@@ -112,9 +125,19 @@
     color: $color-black;
     text-decoration: none;
   }
-
+  // THe delete and edit icons on the page
   & .card-action {
-    height: 1.9rem;
+    font-size: 1.5rem;
+  }
+
+  .delete {
+    color: red;
+  }
+  .edit {
+    color: green;
+  }
+  .update {
+    color: $color-secondary;
   }
 }
 

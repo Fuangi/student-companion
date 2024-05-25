@@ -101,19 +101,21 @@ function Planner() {
                   )}
                 </div>
                 <div className="routine">
-                  <h3>Daily Routine</h3>
-                  <ul>
+                  <h2>Daily Routine</h2>
+                  <ol>
                     <li>Jog</li>
                     <li>Lorem</li>
                     <li>Dance</li>
                     <li>Pray</li>
                     <li>Something</li>
-                  </ul>
+                  </ol>
                 </div>
               </div>
               <div className="pending-past">
                 <div className="pending">
-                  <h2>Upcoming Plans</h2>
+                  <h2>
+                    Upcoming Plans <span>Month/Year</span>
+                  </h2>
                   {sortedPlans.map(
                     (plan) =>
                       plan.status === "pending" && (
@@ -129,6 +131,9 @@ function Planner() {
                         <PlanCard plan={plan} color="orange" key={plan._id} />
                       )
                   )}
+                </div>
+                <div className="completed">
+                  <h2>Completed Tasks</h2>
                 </div>
               </div>
             </div>

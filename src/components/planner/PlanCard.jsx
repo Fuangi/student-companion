@@ -3,23 +3,29 @@ import { Link } from "react-router-dom";
 
 function PlanCard({ plan, color }) {
   const viewURL = `/plans/view?id=${plan?._id}`;
+  const start = new Date(plan.eventStart);
+  const end = new Date(plan.eventEnd);
+
   return (
     <div className="plan-card">
       <span className="category" style={{ backgroundColor: color }}></span>
       <Link to={viewURL}>
         <span>
-          {plan?.eventStart.split("T")[0]} - {plan.eventEnd.split("T")[0]}
+          {start.toLocaleDateString()} : {start.toLocaleTimeString()}
+        </span>
+        <span>
+          {end.toLocaleDateString()} : {end.toLocaleTimeString()}
         </span>
         <p>{plan?.name}</p>
       </Link>
       <span>
-        <MdDelete className="card-action" />
+        <MdDelete className="card-action delete" />
       </span>
       <span>
-        <MdEdit className="card-action" />
+        <MdEdit className="card-action edit" />
       </span>
       <span>
-        <MdCheckBoxOutlineBlank />
+        <MdCheckBoxOutlineBlank className="card-action update" />
       </span>
     </div>
   );
