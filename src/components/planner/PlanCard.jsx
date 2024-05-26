@@ -1,7 +1,9 @@
 import { MdCheckBoxOutlineBlank, MdDelete, MdEdit } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function PlanCard({ plan, color }) {
+  const navigate = useNavigate();
+
   const viewURL = `/plans/view?id=${plan?._id}`;
   const start = new Date(plan.eventStart);
   const end = new Date(plan.eventEnd);
@@ -18,15 +20,15 @@ function PlanCard({ plan, color }) {
         </span>
         <p>{plan?.name}</p>
       </Link>
-      <span>
+      <button onClick={() => navigate(`/plans/delete?id=${plan?._id}`)}>
         <MdDelete className="card-action delete" />
-      </span>
-      <span>
+      </button>
+      <button onClick={() => navigate(`/plans/edit?id=${plan?._id}`)}>
         <MdEdit className="card-action edit" />
-      </span>
-      <span>
-        <MdCheckBoxOutlineBlank className="card-action update" />
-      </span>
+      </button>
+      <button>
+        <MdCheckBoxOutlineBlank className="card-action complete" />
+      </button>
     </div>
   );
 }
