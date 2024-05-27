@@ -1,15 +1,24 @@
 import { MdDelete, MdEdit } from "react-icons/md";
+import { Link, useSearchParams } from "react-router-dom";
 
-export function Goal() {
+function Goal() {
+  const [searchParams] = useSearchParams();
+  const goalId = searchParams.get("goalId");
+
+  const editUrl = `/goals/edit?id=${goalId}`;
+  const deleteUrl = `/goals/delete?id=${goalId}`;
+
   return (
     <div className="goal-card">
       <p>This is my goal that I'll so something relating to bla bla bla</p>
-      <button>
+      <Link to={deleteUrl}>
         <MdDelete className="delete" />
-      </button>
-      <button>
+      </Link>
+      <Link to={editUrl}>
         <MdEdit className="edit" />
-      </button>
+      </Link>
     </div>
   );
 }
+
+export default Goal;

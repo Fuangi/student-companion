@@ -32,7 +32,7 @@
 
       & input,
       select,
-      button {
+      a {
         border: none;
         outline: none;
         padding-left: 0.5rem;
@@ -41,11 +41,16 @@
         align-self: center;
       }
 
-      & button {
+      & a {
         background: $color-secondary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: $color-white;
-        width: 10rem;
+        width: 8rem;
+        font-size: 1.3rem;
         padding: 0 1.5rem;
+        text-decoration: none;
       }
     }
   }
@@ -101,12 +106,17 @@
     font-size: 1.2rem;
   }
 
-  & button {
+  & a {
     height: 2rem;
     width: 2rem;
     border: none;
     font-size: 2rem;
     align-self: center;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.6;
+    }
 
     & .delete {
       color: red;

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DashLayout, Loader } from "../components/Layout";
 import { FaPlus } from "react-icons/fa6";
@@ -10,7 +10,7 @@ import PlanCard from "../components/planner/PlanCard";
 
 function Planner() {
   const [sortedPlans, setSortedPlans] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // reading the state from the redux store
   const { plans, date, status, error } = useSelector((store) => store.plan);
