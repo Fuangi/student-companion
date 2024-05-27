@@ -12,7 +12,6 @@ export const getPlans = createAsyncThunk("plan/getAllPlans", async function () {
 // initial state of the plan slice
 const initialState = {
   isLoading: false,
-  date: new Date(),
   plans: [],
   error: "",
   status: "",
@@ -23,14 +22,8 @@ const planSlice = createSlice({
   name: "plan",
   initialState,
   reducers: {
-    setDate(state, action) {
-      state.date = action.payload;
-    },
     setIsLoading(state, action) {
       state.isLoading = action.payload;
-    },
-    setCurrentDate(state, action) {
-      state.date = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -52,6 +45,6 @@ const planSlice = createSlice({
   },
 });
 
-export const { setDate, setIsLoading, setCurrentDate } = planSlice.actions;
+export const { setIsLoading } = planSlice.actions;
 
 export default planSlice.reducer;

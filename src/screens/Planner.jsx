@@ -4,16 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { DashLayout, Loader } from "../components/Layout";
 import { FaPlus } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import { getPlans, setCurrentDate, setIsLoading } from "../store/plannerSlice";
+import { getPlans, setIsLoading } from "../store/plannerSlice";
 import Error from "../components/Layout/Error";
 import PlanCard from "../components/planner/PlanCard";
 
 function Planner() {
   const [sortedPlans, setSortedPlans] = useState([]);
+  const [date, setDate] = useState(new Date());
   // const navigate = useNavigate();
 
   // reading the state from the redux store
-  const { plans, date, status, error } = useSelector((store) => store.plan);
+  const { plans, status, error } = useSelector((store) => store.plan);
   const dispatch = useDispatch(); //to dispatch actions to the redux store (set state)
 
   useEffect(function () {
@@ -23,7 +24,7 @@ function Planner() {
 
   // Updating the current time based on 1 hour intervals
   const updateCurrentTime = () => {
-    dispatch(setCurrentDate(new Date()));
+    setDate(new Date());
   };
 
   const intervalId = setInterval(updateCurrentTime, 3600 * 1000); //update hourly

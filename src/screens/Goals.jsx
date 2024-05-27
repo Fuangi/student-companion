@@ -2,15 +2,23 @@ import { FaPlus } from "react-icons/fa6";
 import { DashLayout } from "../components/Layout";
 import Goal from "../components/goals/Goal";
 import { Link, Outlet } from "react-router-dom";
-
-const goalCategories = [
-  { name: "life" },
-  { name: "educational" },
-  { name: "carer" },
-  { name: "other" },
-];
+import { useEffect, useState } from "react";
+import { getAllGoals } from "../services/apiGoals";
 
 function Goals() {
+  const [goals, setGoals] = useState([]);
+  let goalCategories = [];
+
+  useEffect(() => {
+    async function fetchGoals() {
+      const myGoals = await getAllGoals();
+      setGoals(myGoals);
+    }
+    fetchGoals();
+  }, []);
+  console.log(goals);
+  console.log(goalCategories);
+  goalCategories.push(goals.filter((goal) => goal.category === "life"));
   return (
     <div>
       <DashLayout>
@@ -35,18 +43,14 @@ function Goals() {
           </div>
           <div className="my-goals-body">
             <div className="goals-container">
-              {goalCategories.map((category, i) => (
+              {/*   {goalCategories.map((category, i) => (
                 <>
-                  <h3>{category?.name.toLocaleUpperCase()} GOALS</h3>
+                  <h3> GOALS</h3>
                   <div className="goals" key={i}>
-                    <Goal />
-                    <Goal />
-                    <Goal />
-                    <Goal />
                     <Goal />
                   </div>
                 </>
-              ))}
+              ))} */}
             </div>
             <div className="affirm">
               <h4>My affirmations</h4>
