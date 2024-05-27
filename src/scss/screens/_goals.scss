@@ -24,6 +24,7 @@
     padding: 1rem;
     border-bottom: 2px solid $grey-light;
     margin: 0 3rem;
+    margin-top: 0.5rem;
 
     & .goal-actions {
       display: flex;
@@ -35,6 +36,9 @@
         border: none;
         outline: none;
         padding-left: 0.5rem;
+        border-radius: 0.5rem;
+        height: 3rem;
+        align-self: center;
       }
 
       & button {

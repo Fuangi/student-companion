@@ -78,12 +78,18 @@ function Planner() {
         ) : (
           <>
             <div className="all-plans-head">
-              <h2>
-                <span>My</span> Plans
-              </h2>
-              <div className="new-actions">
-                <button onClick={() => navigate("/plans/new")}>
-                  <FaPlus /> New Plan
+              <h2>My Plans</h2>
+              <div className="goal-actions">
+                <input type="search" placeholder="Search..." />
+                <select name="sort" id="">
+                  <option value="">Sort by</option>
+                  <option value="life">Life</option>
+                  <option value="educational">Education</option>
+                  <option value="career">Career</option>
+                  <option value="other">Other</option>
+                </select>
+                <button>
+                  <FaPlus /> New
                 </button>
               </div>
             </div>
