@@ -58,12 +58,13 @@
     margin: 0 3rem;
     margin-top: 2rem;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 
     & .goals-container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      width: 80%;
 
       & h3 {
         margin: 0.5rem 0;
@@ -82,15 +83,21 @@
       }
     }
     & .affirm {
-      width: 24%;
+      width: 20%;
+      padding-left: 1rem;
       & h4 {
         margin: 0.5rem 0;
         font-size: 1.5rem;
+        color: $color-primary;
       }
       & ol {
         font-size: 1.3rem;
         margin-left: 2rem;
       }
+    }
+
+    & .priorities {
+      margin-top: 2rem;
     }
   }
 }

@@ -1,7 +1,7 @@
 import { MdDelete, MdEdit } from "react-icons/md";
 import { Link, useSearchParams } from "react-router-dom";
 
-function Goal() {
+function Goal({ goal }) {
   const [searchParams] = useSearchParams();
   const goalId = searchParams.get("goalId");
 
@@ -10,7 +10,7 @@ function Goal() {
 
   return (
     <div className="goal-card">
-      <p>This is my goal that I'll so something relating to bla bla bla</p>
+      <p>{goal}</p>
       <Link to={deleteUrl}>
         <MdDelete className="delete" />
       </Link>

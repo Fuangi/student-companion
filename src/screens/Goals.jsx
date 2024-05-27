@@ -43,14 +43,14 @@ function Goals() {
           </div>
           <div className="my-goals-body">
             <div className="goals-container">
-              {/*   {goalCategories.map((category, i) => (
+              {goals.map((goal, i) => (
                 <>
-                  <h3> GOALS</h3>
+                  <h3> {goal.category.toUpperCase()} GOALS</h3>
                   <div className="goals" key={i}>
-                    <Goal />
+                    <Goal goal={goal.goal} />
                   </div>
                 </>
-              ))} */}
+              ))}
             </div>
             <div className="affirm">
               <h4>My affirmations</h4>
