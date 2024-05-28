@@ -7,7 +7,6 @@ import { getAllGoals } from "../services/apiGoals";
 
 function Goals() {
   const [goals, setGoals] = useState([]);
-  let goalCategories = [];
 
   useEffect(() => {
     async function fetchGoals() {
@@ -16,9 +15,23 @@ function Goals() {
     }
     fetchGoals();
   }, []);
-  console.log(goals);
-  console.log(goalCategories);
-  goalCategories.push(goals.filter((goal) => goal.category === "life"));
+
+  // Grouping the objects based on their categories
+  const filteredGoalsObj = goals.reduce((acc, obj) => {
+    const key = obj["category"];
+
+    if (!acc[key]) acc[key] = [];
+
+    acc[key].push(obj);
+    return acc;
+  }, {});
+
+  // Converting the object groupings from above into an array of objects
+  const goalsfiltered = Object.entries(filteredGoalsObj).map((goal) => ({
+    category: goal[0],
+    goals: goal[1],
+  }));
+
   return (
     <div>
       <DashLayout>
@@ -43,13 +56,15 @@ function Goals() {
           </div>
           <div className="my-goals-body">
             <div className="goals-container">
-              {goals.map((goal, i) => (
-                <>
-                  <h3> {goal.category.toUpperCase()} GOALS</h3>
-                  <div className="goals" key={i}>
-                    <Goal goal={goal.goal} />
+              {goalsfiltered.map((goal, i) => (
+                <div key={i}>
+                  <h3>{goal.category.toLocaleUpperCase()} GOALS</h3>
+                  <div className="goals">
+                    {goal.goals.map((val, i) => (
+                      <Goal goal={val.goal} key={i} />
+                    ))}
                   </div>
-                </>
+                </div>
               ))}
             </div>
             <div className="affirm">

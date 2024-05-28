@@ -30,7 +30,6 @@ function Resources() {
       )
       .then(([techRes, healthRes, bizRes]) => {
         setTechResources(techRes.articles);
-        console.log("Tech", techRes.articles);
         setHealthResources(healthRes.articles);
         setBizResources(bizRes.articles);
         setIsLoading(false);

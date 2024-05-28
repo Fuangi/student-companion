@@ -19,7 +19,6 @@ function Planner() {
 
   useEffect(function () {
     dispatch(getPlans());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Updating the current time based on 1 hour intervals
@@ -66,8 +65,6 @@ function Planner() {
 
     [plans, date]
   );
-
-  // Calculating the number of plans in each status
 
   return (
     <div>
