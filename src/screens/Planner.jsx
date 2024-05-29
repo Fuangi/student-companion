@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DashLayout, Loader } from "../components/Layout";
-import { FaPlus } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { getPlans, setIsLoading } from "../store/plannerSlice";
 import Error from "../components/Layout/Error";
 import PlanCard from "../components/planner/PlanCard";
 import NoResource from "../components/Layout/NoResource";
+import ResHeader from "../components/Layout/ResHeader";
 
 function Planner() {
   const [sortedPlans, setSortedPlans] = useState([]);
@@ -107,19 +107,10 @@ function Planner() {
           <>
             <div className="all-plans-head">
               <h2>My Plans</h2>
-              <div className="goal-actions">
-                <input type="search" placeholder="Search..." id="search" />
-                <select name="sort" id="">
-                  <option value="">Sort by</option>
-                  <option value="life">Life</option>
-                  <option value="educational">Education</option>
-                  <option value="career">Career</option>
-                  <option value="other">Other</option>
-                </select>
-                <Link to="/plans/new">
-                  <FaPlus /> New
-                </Link>
-              </div>
+              <ResHeader
+                url="/plans/new"
+                sortVals={["start", "end", "type", "title"]}
+              />
             </div>
             <div className="plans-routine">
               <div className="ongoing-routine">

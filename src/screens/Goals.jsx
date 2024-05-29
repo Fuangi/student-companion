@@ -1,9 +1,9 @@
-import { FaPlus } from "react-icons/fa6";
 import { DashLayout } from "../components/Layout";
 import Goal from "../components/goals/Goal";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllGoals } from "../services/apiGoals";
+import ResHeader from "../components/Layout/ResHeader";
 
 function Goals() {
   const [goals, setGoals] = useState([]);
@@ -40,19 +40,10 @@ function Goals() {
           {/* <h2 className="my-goals-header">My Goals...</h2> */}
           <div className="goal-header">
             <h3>%Something inspirational here</h3>
-            <div className="goal-actions">
-              <input type="search" placeholder="Search..." id="search" />
-              <select name="sort" id="">
-                <option value="">Sort by</option>
-                <option value="life">Life</option>
-                <option value="educational">Education</option>
-                <option value="career">Career</option>
-                <option value="other">Other</option>
-              </select>
-              <Link to="/goals/new">
-                <FaPlus /> New
-              </Link>
-            </div>
+            <ResHeader
+              url="/goals/new"
+              sortVals={["life", "educational", "careere", "other"]}
+            />
           </div>
           <div className="my-goals-body">
             <div className="goals-container">

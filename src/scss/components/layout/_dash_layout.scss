@@ -139,3 +139,33 @@
   text-align: center;
   margin-top: 5rem;
 }
+
+// THE LITTLE HEADER ON THE GOAL AND PLAN NER COMMPONENTS
+
+.res-actions {
+  display: flex;
+  gap: 1.5rem;
+
+  & input,
+  select,
+  a {
+    border: none;
+    outline: none;
+    padding-left: 0.5rem;
+    border-radius: 0.5rem;
+    height: 3rem;
+    align-self: center;
+  }
+
+  & a {
+    background: $color-secondary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+    width: 8rem;
+    font-size: 1.3rem;
+    padding: 0 1.5rem;
+    text-decoration: none;
+  }
+}

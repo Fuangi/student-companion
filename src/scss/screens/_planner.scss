@@ -9,34 +9,6 @@
   border-bottom: 2px solid $grey-light;
   margin: 0 3rem;
   margin-top: 0.5rem;
-
-  & .goal-actions {
-    display: flex;
-    gap: 1.5rem;
-
-    & input,
-    select,
-    a {
-      border: none;
-      outline: none;
-      padding-left: 0.5rem;
-      border-radius: 0.5rem;
-      height: 3rem;
-      align-self: center;
-    }
-
-    & a {
-      background: $color-secondary;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: $color-white;
-      width: 8rem;
-      font-size: 1.3rem;
-      padding: 0 1.5rem;
-      text-decoration: none;
-    }
-  }
 }
 
 .plans-routine {
