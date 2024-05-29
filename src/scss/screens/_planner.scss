@@ -16,20 +16,25 @@
 
     & input,
     select,
-    button {
+    a {
       border: none;
-      height: 3rem;
       outline: none;
-      align-self: center;
       padding-left: 0.5rem;
       border-radius: 0.5rem;
+      height: 3rem;
+      align-self: center;
     }
 
-    & button {
+    & a {
       background: $color-secondary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: $color-white;
-      width: 10rem;
+      width: 8rem;
+      font-size: 1.3rem;
       padding: 0 1.5rem;
+      text-decoration: none;
     }
   }
 }

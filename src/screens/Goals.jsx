@@ -41,7 +41,7 @@ function Goals() {
           <div className="goal-header">
             <h3>%Something inspirational here</h3>
             <div className="goal-actions">
-              <input type="search" placeholder="Search..." />
+              <input type="search" placeholder="Search..." id="search" />
               <select name="sort" id="">
                 <option value="">Sort by</option>
                 <option value="life">Life</option>
@@ -58,7 +58,10 @@ function Goals() {
             <div className="goals-container">
               {goalsfiltered.map((goal, i) => (
                 <div key={i}>
-                  <h3>{goal.category.toLocaleUpperCase()} GOALS</h3>
+                  <h3>
+                    {goal.category.toLocaleUpperCase()} GOALS -
+                    <span> {goal.goals.length}</span>
+                  </h3>
                   <div className="goals">
                     {goal.goals.map((val, i) => (
                       <Goal goal={val.goal} key={i} />

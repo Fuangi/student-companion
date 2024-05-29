@@ -56,6 +56,7 @@ function AddEvent({ plan }) {
     const update = await updatePlan(plan._id, updatedPlan);
     console.log(update);
   }
+
   return (
     <form className="event_form">
       <h3 className="events-form-head">Create a new event</h3>
