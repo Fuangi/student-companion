@@ -168,12 +168,12 @@
 
   .ongoing-routine {
     flex-wrap: wrap;
-    padding: 0.5rem;
+    padding: 0 !important;
     gap: 2rem !important;
 
     & .ongoing,
     & .routine {
-      width: 98% !important;
+      width: 100% !important;
       min-height: 22rem;
     }
   }
@@ -183,6 +183,7 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    padding: 0 !important;
 
     & .pending,
     & .past,
