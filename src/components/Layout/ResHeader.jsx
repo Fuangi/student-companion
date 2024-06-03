@@ -1,10 +1,19 @@
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-function ResHeader({ sortVals, url }) {
+function ResHeader({ sortVals, url, data }) {
+  const [searchRes, setSearchRes] = useState("");
+
   return (
     <div className="res-actions">
-      <input type="search" placeholder="Search..." id="search" />
+      <input
+        type="search"
+        placeholder="Search..."
+        id="search"
+        value={searchRes}
+        onChange={(e) => setSearchRes(e.target.value)}
+      />
       <select name="sort" id="">
         <option value="">Sort by</option>
         {sortVals?.map((val, i) => (

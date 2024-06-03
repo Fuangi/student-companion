@@ -5,7 +5,7 @@ function AppLayout({ children }) {
     <div>
       <Header />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
