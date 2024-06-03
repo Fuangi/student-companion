@@ -107,3 +107,41 @@
     }
   }
 }
+
+// Mobile responsive
+@media only screen and (max-width: 700px) {
+  .my-goals {
+    & .goal-header {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    &-body {
+      flex-wrap: wrap;
+      margin: 0 1.5rem;
+      margin-top: 1.5rem;
+
+      & .goals-container {
+        width: 100%;
+        gap: 1.5rem;
+      }
+    }
+
+    & .affirm {
+      width: 100%;
+
+      & h4 {
+        font-size: 1.7rem;
+      }
+    }
+  }
+
+  .goal-card {
+    width: 90%;
+
+    & p {
+      font-size: 1.5rem;
+    }
+  }
+}
