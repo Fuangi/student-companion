@@ -7,19 +7,21 @@ import {
 } from "react-icons/fa6";
 import FormButton from "./FormButton";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [telephone, setTelephone] = useState("");
   const [address, setAddress] = useState("");
+  const [problem, setProblem] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setconfPassword] = useState("");
 
   const [isSignedUp, setIsSignedUp] = useState(false);
-  // const [isFilled, setIsFilled] = useState(false)
+  const [error, setError] = useState(false);
 
   // to help navigate the user back to the home page - this returns a function that takes a url (as a string)
   const navigate = useNavigate();
@@ -27,27 +29,39 @@ function Signup() {
   function handleSignup(e) {
     e.preventDefault();
 
-    if (password.length === 0 && email.length === 0 && username.length === 0)
-      return alert(
-        "Please fill out all the necessary fileds (name, email and password"
-      );
-
-    if (password !== confPassword) return alert("Passwords do not match");
-    // using 3 for test cases
+    if (confPassword !== password) return alert("Passwords dont't match");
     if (password.length < 3)
-      return alert("Password must have atleast 3 characters");
+      return alert("Password length must be greater than 3");
 
-    alert(`Welcome ${username}`);
+    const user = {
+      name: username,
+      email,
+      phone: telephone,
+      address,
+      problem,
+      password,
+      passwordConfirm: confPassword,
+    };
 
-    setIsSignedUp(true);
+    Object.values(user).map((field) => {
+      return field === "" && setError(!error);
+    });
+
+    console.log(user);
+
+    try {
+      axios({
+        method: "POST",
+        url: "http://localhost:4000/api/v1/users/signup",
+        data: user,
+      });
+      alert(`Account created successfully! 🤗 Welcome ${username}`);
+      setIsSignedUp(true);
+    } catch (error) {
+      console.log(error);
+      setError(true);
+    }
   }
-
-  useEffect(
-    function () {
-      localStorage.setItem("user", JSON.stringify([username, email, password]));
-    },
-    [username, email, password]
-  );
 
   return (
     <form action="" className="form">
@@ -88,7 +102,9 @@ function Signup() {
         />
       </div>
       <div className="form-inputs">
-        <label htmlFor="address">{<FaLocationPin className="label" />}</label>
+        <label htmlFor="address">
+          <FaLocationPin className="label" />
+        </label>
         <input
           type="address"
           placeholder="Address"
@@ -96,6 +112,23 @@ function Signup() {
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         />
+      </div>
+
+      <div className="form-inputs">
+        <select
+          name="problem"
+          id="problem"
+          value={problem}
+          onChange={(e) => setProblem(e.target.value)}
+        >
+          <option value="">Choose your problem type</option>
+          <option value="life">Life</option>
+          <option value="time">Time Management</option>
+          <option value="distraction">Distraction</option>
+          <option value="health">Health Issues</option>
+          <option value="motivation">Motivation</option>
+          <option value="other">Other</option>
+        </select>
       </div>
 
       <div className="form-inputs">
