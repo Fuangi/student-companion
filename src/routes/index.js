@@ -9,10 +9,10 @@ import GoalsRoute from "./goals.routes";
 function MyRoutes() {
   return (
     <React.Fragment>
+      <DashRoute />
       <PlanRoute />
       <ForumRoute />
       <ResourceRoute />
-      <DashRoute />
       <GoalsRoute />
     </React.Fragment>
   );

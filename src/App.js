@@ -21,6 +21,7 @@ function App() {
         </Route>
         <Route path="forgot-password" element={<ForgotPassword />} />
       </Routes>
+
       <MyRoutes />
     </BrowserRouter>
   );

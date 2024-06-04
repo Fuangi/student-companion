@@ -30,7 +30,7 @@ function Signup() {
     e.preventDefault();
 
     if (confPassword !== password) return alert("Passwords dont't match");
-    if (password.length < 3)
+    if (password.length < 8)
       return alert("Password length must be greater than 3");
 
     const user = {
@@ -46,8 +46,6 @@ function Signup() {
     Object.values(user).map((field) => {
       return field === "" && setError(!error);
     });
-
-    console.log(user);
 
     try {
       axios({

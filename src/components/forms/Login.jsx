@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaLock, FaEnvelope } from "react-icons/fa6";
 
 import FormButton from "./FormButton";
+import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -15,15 +16,23 @@ function Login() {
   function handleLogin(e) {
     e.preventDefault();
 
-    const userDetails = localStorage.getItem("user");
-    const [username, userEmail, userPassword] = JSON.parse(userDetails);
+    if (email === "" || password === "")
+      return alert("Please fill every field");
 
-    if (email === userEmail && password === userPassword) {
-      alert(`Welcome ${username}`);
+    const user = { email, password };
+
+    try {
+      axios({
+        method: "POST",
+        url: "http://localhost:4000/api/v1/users/login",
+        data: user,
+      });
       setIsLoggedIn(true);
-    } else {
-      alert("No user was found with this information ☹️");
+    } catch (error) {
+      console.log(error);
     }
+
+    console.log("Done executing");
   }
 
   return (
@@ -63,7 +72,7 @@ function Login() {
         </Link>
       </p>
       {/* moving the user to the home page after they are logged in */}
-      {isLoggedIn && navigate("/")}
+      {/* {isLoggedIn && navigate("/")} */}
     </form>
   );
 }
