@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Error from "../Layout/Error";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -26,12 +27,12 @@ function Signup() {
   // to help navigate the user back to the home page - this returns a function that takes a url (as a string)
   const navigate = useNavigate();
 
-  function handleSignup(e) {
+  async function handleSignup(e) {
     e.preventDefault();
 
     if (confPassword !== password) return alert("Passwords dont't match");
     if (password.length < 8)
-      return alert("Password length must be greater than 3");
+      return alert("Password length must be greater than 8");
 
     const user = {
       name: username,
@@ -48,11 +49,15 @@ function Signup() {
     });
 
     try {
-      axios({
+      const res = await axios({
         method: "POST",
         url: "http://localhost:4000/api/v1/users/signup",
         data: user,
       });
+      console.log(res);
+
+      console.log(res.status, "then", res.statusText);
+
       alert(`Account created successfully! 🤗 Welcome ${username}`);
       setIsSignedUp(true);
     } catch (error) {
@@ -160,7 +165,6 @@ function Signup() {
       <FormButton children="Signup" onClick={handleSignup} />
 
       {/* moving the user to the home page after they are logged in */}
-      {isSignedUp && navigate("/")}
     </form>
   );
 }

@@ -5,26 +5,70 @@ import Modal from "../components/Layout/Modal";
 import AddEvent from "../components/planner/AddEvent";
 import DeleteAlert from "../components/Layout/DeleteAlert";
 import UpdatePlan from "../components/planner/UpdatePlans";
+import Protected from "../services/Protected";
 
 function PlanRoute() {
   return (
     <Routes>
-      <Route path="/plans" element={<Planner />}>
+      <Route
+        path="/plans"
+        element={
+          <Protected>
+            <Planner />
+          </Protected>
+        }
+      >
         <Route
           path="view"
-          element={<Modal children={<Plans />} prevLocation="/plans" />}
+          element={
+            <Modal
+              children={
+                <Protected>
+                  <Plans />
+                </Protected>
+              }
+              prevLocation="/plans"
+            />
+          }
         />
         <Route
           path="new"
-          element={<Modal children={<AddEvent />} prevLocation="/plans" />}
+          element={
+            <Modal
+              children={
+                <Protected>
+                  <AddEvent />
+                </Protected>
+              }
+              prevLocation="/plans"
+            />
+          }
         />
         <Route
           path="delete"
-          element={<Modal children={<DeleteAlert />} prevLocation="/plans" />}
+          element={
+            <Modal
+              children={
+                <Protected>
+                  <DeleteAlert />
+                </Protected>
+              }
+              prevLocation="/plans"
+            />
+          }
         />
         <Route
           path="edit"
-          element={<Modal children={<UpdatePlan />} prevLocation="/plans" />}
+          element={
+            <Modal
+              children={
+                <Protected>
+                  <UpdatePlan />
+                </Protected>
+              }
+              prevLocation="/plans"
+            />
+          }
         />
       </Route>
     </Routes>
