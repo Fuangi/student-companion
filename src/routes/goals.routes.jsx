@@ -36,7 +36,7 @@ function GoalsRoute() {
             <Modal
               children={
                 <Protected>
-                  <DeleteAlert />
+                  <DeleteAlert res="goals" />
                 </Protected>
               }
               prevLocation="/goals"

@@ -50,7 +50,7 @@ function PlanRoute() {
             <Modal
               children={
                 <Protected>
-                  <DeleteAlert />
+                  <DeleteAlert res="plans" />
                 </Protected>
               }
               prevLocation="/plans"
