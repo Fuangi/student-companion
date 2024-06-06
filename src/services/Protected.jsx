@@ -1,9 +1,9 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-function Protected({ isLoggedIn, children }) {
-  const navigate = useNavigate();
+function Protected({ children }) {
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-  return isLoggedIn ? children : <Navigate to="/auth/login" />;
+  return isLoggedIn ? <div>{children}</div> : <Navigate to="/auth/login" />;
 }
 
 export default Protected;

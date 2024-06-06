@@ -5,14 +5,7 @@ import Protected from "../services/Protected";
 function ForumRoute() {
   return (
     <Routes>
-      <Route
-        path="/forums"
-        element={
-          <Protected>
-            <Forums />
-          </Protected>
-        }
-      />
+      <Route path="/forums" element={<Forums />} />
     </Routes>
   );
 }

@@ -1,87 +1,26 @@
 @use "../../variables" as *;
 
 .forum-conversation {
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
-
-  & .received-msg {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    width: 25%;
-    min-width: 2rem;
-    padding: 1rem;
-
-    & img {
-      width: 2rem;
-      align-self: flex-end;
-      height: 2rem;
-      border-radius: 100%;
-      border: 1px solid black;
-    }
-
-    & p {
-      background-color: #fff;
-      width: 90%;
-      padding: 1rem;
-      border-radius: 1rem;
-      border-bottom-left-radius: 0;
-    }
-  }
-
-  & .sent-msg {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    width: 25%;
-    min-width: 2rem;
-    align-self: flex-end;
-    padding: 1rem;
-
-    & p {
-      background-color: rgb(190, 189, 189);
-      width: 90%;
-      padding: 1rem;
-      border-radius: 1rem;
-      border-bottom-right-radius: 0;
-    }
-  }
+  border: 1px solid red;
+  padding: 1rem;
 
   & .message-input {
-    background-color: white;
-    margin-top: 1rem;
-    width: 90%;
-    height: 4rem;
-    border-radius: 1rem;
+    display: flex;
 
     & input {
+      width: 30rem;
       outline: none;
-      height: 100%;
       border: none;
-      background-color: inherit;
-      border-radius: inherit;
-      padding-left: 1rem;
-      width: 80%;
+      padding: 1rem;
     }
 
     & button {
-      border: none;
       outline: none;
-      background: none;
-      margin: 0 1rem;
-      font-size: 1.5rem;
-      color: $grey-light;
-
-      &:last-of-type {
-        color: $color-secondary;
-        text-align: center;
-        padding: 0.5rem;
-        border-radius: 1rem;
-        background-color: rgba($color-secondary, 0.3);
-      }
+      border: none;
+      padding: 1rem;
+      color: $color-white;
+      background-color: $color-primary;
+      width: 8rem;
     }
   }
 }

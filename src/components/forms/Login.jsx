@@ -8,12 +8,11 @@ import axios from "axios";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // to help navigate the user back to the home page
   const navigate = useNavigate();
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
 
     if (email === "" || password === "")
@@ -22,12 +21,20 @@ function Login() {
     const user = { email, password };
 
     try {
-      axios({
+      const res = await axios({
         method: "POST",
         url: "http://localhost:4000/api/v1/users/login",
         data: user,
+        headers: {
+          Authorization: "Bearer Token",
+        },
       });
-      setIsLoggedIn(true);
+
+      if (res.status === 200) {
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("isLoggedIn", true);
+        navigate("/dashboard");
+      }
     } catch (error) {
       console.log(error);
     }
