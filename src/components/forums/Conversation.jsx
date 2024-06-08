@@ -1,48 +1,77 @@
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import { useSelector } from "react-redux";
 
-// To setup connection to the socket.io that is in our backend
-const socket = io.connect("http://localhost:4000"); //connect to use it to emit or listen to events
-
-function Conversation() {
-  // states
+function Conversation({ userId, groupId }) {
   const [message, setMessage] = useState("");
-  const [msgRcvd, setMsgRcvd] = useState([]);
+  const [messageList, setMessageList] = useState([]);
+  const [typing, setTyping] = useState(false);
 
-  /*  const [room, setRoom] = useState("");
+  // State from the slice
+  const { socket } = useSelector((store) => store.message);
 
-  const joinRoom = () => {
-    if (room !== "") {
-      socket.emit("join_room", room);
-    }
-  }; */
+  useEffect(
+    function () {
+      if (socket === null) return;
 
-  // Emit message to those listening on the server - send message to others
-  // We cannot emit to another client directly, so we emit to the backend and when it receives the event, another is emiitted to the frontend - a connector btn the events
-  function handleSendMessage(e) {
+      socket.emit("joinRoom", { groupId, userId });
+
+      socket.on("receiveMessage", (message) => {
+        setMessageList((prevMessages) => [...prevMessages, message]);
+      });
+
+      socket.on("typing", (userId) => {
+        console.log(`${userId} is typing...`);
+      });
+
+      socket.on("stopTyping", (userId) => {
+        console.log(`${userId} stopped typing.`);
+      });
+
+      return () => {
+        socket.emit("leaveRoom", { groupId, userId });
+      };
+    },
+    [socket, userId, groupId]
+  );
+
+  // Message handlers
+  async function handleSendMessage(e) {
     e.preventDefault();
-    socket.emit("send_message", { message });
-    //sending to the backend
+
+    if (message.trim() === "") return;
+
+    socket.emit("sendMessage", { groupId, message });
+    setMessage("");
   }
 
-  // Listening to messages from the server in response to sent messages (whenever any event is thrown to use from the backend)
-  useEffect(() => {
-    socket.on("receive_message", (data) => {
-      // setMsgRcvd(data.message);
-      console.log(data);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [socket]);
+  const handleTyping = () => {
+    if (!typing) {
+      setTyping(true);
+      socket.emit("typing", { groupId, userId });
+    }
+
+    setTimeout(() => {
+      setTyping(false);
+      socket.emit("stopTyping", { groupId, userId });
+    }, 1000);
+  };
 
   return (
     <div className="forum-conversation">
-      <div className="message-list"></div>
+      <div className="message-list">
+        {messageList.length > 0 ? (
+          messageList.map((msg, i) => <div key={i}>{msg.message}</div>)
+        ) : (
+          <p>No Messages yet. Send a message for it to appear here!</p>
+        )}
+      </div>
       <div className="message-input">
         <input
           type="text"
           placeholder="Your message..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          onKeyPress={handleTyping}
         />
         <button onClick={handleSendMessage}>Send</button>
       </div>

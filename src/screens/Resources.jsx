@@ -35,7 +35,7 @@ function Resources() {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log(err);
         setIsLoading(false);
         setError(true);
       });

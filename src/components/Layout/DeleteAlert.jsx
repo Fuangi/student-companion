@@ -12,13 +12,21 @@ function DeleteAlert({ prevLoc, resId, res }) {
   resId = searchParams.get("id");
 
   function deleteResource() {
+    const token = localStorage.getItem("token");
+
     axios({
       method: "DELETE",
       url: `http://localhost:4000/api/v1/${res}/${resId}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then(function (response) {
         console.log("Deleted successfully");
-        console.log(response);
+        if (response.status === 204) {
+          alert("Deleted successfully");
+          setTimeout((navigate(prevLoc), 5));
+        }
       })
       .catch(function (error) {
         console.log("Error deleting the resource");

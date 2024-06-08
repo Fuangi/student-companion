@@ -1,9 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { updatePlan } from "../../services/apiPlans";
 
-function AddEvent({ plan }) {
+function AddEvent() {
   const [eventName, setEventName] = useState("");
   const [eventDesc, setEventDesc] = useState("");
   const [eventStart, setEventStart] = useState("");
@@ -15,46 +14,29 @@ function AddEvent({ plan }) {
 
   function handleCreateEvent(e) {
     e.preventDefault();
+    const token = localStorage.getItem("token");
 
     const newEvent = {
       name: eventName,
       description: eventDesc,
-      eventStart: eventStart.toString(),
-      eventEnd: eventEnd.toString(),
+      eventStart: new Date(eventStart).getTime(),
+      eventEnd: new Date(eventEnd).getTime(),
       eventType,
     };
 
+    console.log(newEvent);
+
     setIsLoading(!isLoading);
-    axios.post("http://localhost:4000/api/v1/plans", {
+    axios({
+      method: "POST",
+      url: "http://localhost:4000/api/v1/plans",
       data: newEvent,
       headers: {
-        "Content-Type": "application/json",
-        mode: "cors",
+        Authorization: `Bearer ${token}`,
       },
     });
     setIsLoading(false);
     navigate("/plans");
-  }
-
-  async function handleUpdateEvent(e) {
-    e.preventDefault();
-    console.log("updated");
-
-    const event = {
-      name: eventName,
-      description: eventDesc,
-      eventStart: eventStart.toString(),
-      eventEnd: eventEnd.toString(),
-      eventType,
-    };
-    // Checking and removing any empty value (one that wasn't updated)
-    const updatedPlan = Object.fromEntries(
-      Object.entries(event).filter(([_, value]) => value)
-    );
-
-    setIsLoading(!isLoading);
-    const update = await updatePlan(plan._id, updatedPlan);
-    console.log(update);
   }
 
   return (
@@ -68,7 +50,6 @@ function AddEvent({ plan }) {
           name="Ename"
           placeholder="Event Name"
           required
-          defaultValue={plan ? plan.name : eventName}
           onChange={(e) => setEventName(e.target.value)}
         />
       </div>
@@ -79,7 +60,6 @@ function AddEvent({ plan }) {
           cols="20"
           rows="5"
           required
-          defaultValue={plan ? plan.description : eventDesc}
           placeholder="What is the event for?"
           // value={eventDesc}
           onChange={(e) => setEventDesc(e.target.value)}
@@ -91,8 +71,6 @@ function AddEvent({ plan }) {
           name="type"
           id="type"
           required
-          // value={eventType}
-          defaultValue={plan ? plan.eventType : eventType}
           onChange={(e) => setEventType(e.target.value)}
         >
           <option value="class">Class</option>
@@ -109,8 +87,6 @@ function AddEvent({ plan }) {
           name="start"
           id=""
           required
-          // value={eventStart}
-          defaultValue={plan ? plan.eventStart : eventStart}
           onChange={(e) => setEventStart(e.target.value)}
         />
       </div>
@@ -121,18 +97,10 @@ function AddEvent({ plan }) {
           name="end"
           id=""
           required
-          // value={eventEnd}
-          defaultValue={plan ? plan.eventEnd : eventEnd}
           onChange={(e) => setEventEnd(e.target.value)}
         />
       </div>
-      <button
-        onClick={handleCreateEvent}
-        style={{ display: plan ? "none" : "" }}
-      >
-        Create Event
-      </button>
-      {plan && <button onClick={handleUpdateEvent}>Update Event</button>}
+      <button onClick={handleCreateEvent}>Create Event</button>
     </form>
   );
 }

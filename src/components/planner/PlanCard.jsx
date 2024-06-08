@@ -1,12 +1,28 @@
-import { MdCheckBoxOutlineBlank, MdDelete, MdEdit } from "react-icons/md";
+import { useState } from "react";
+import {
+  MdCheckBox,
+  MdCheckBoxOutlineBlank,
+  MdDelete,
+  MdEdit,
+} from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
+import { updatePlan } from "../../services/apiPlans";
 
 function PlanCard({ plan, color }) {
   const navigate = useNavigate();
+  const [isCompleted, setIsCompleted] = useState(false);
 
   const viewURL = `/plans/view?id=${plan?._id}`;
   const start = new Date(plan.eventStart);
   const end = new Date(plan.eventEnd);
+
+  async function handleCompletedPlan() {
+    setIsCompleted(!isCompleted);
+
+    const updateStatus = await updatePlan(plan._id, { isCompleted });
+
+    console.log(updateStatus);
+  }
 
   return (
     <div className="plan-card">
@@ -26,8 +42,12 @@ function PlanCard({ plan, color }) {
       <button onClick={() => navigate(`/plans/edit?id=${plan?._id}`)}>
         <MdEdit className="card-action edit" />
       </button>
-      <button>
-        <MdCheckBoxOutlineBlank className="card-action complete" />
+      <button onClick={() => handleCompletedPlan()}>
+        {isCompleted ? (
+          <MdCheckBox className="card-action complete" />
+        ) : (
+          <MdCheckBoxOutlineBlank className="card-action complete" />
+        )}
       </button>
     </div>
   );

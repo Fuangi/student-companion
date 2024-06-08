@@ -72,6 +72,9 @@
       height: 30rem;
       background-color: $color-white;
       overflow: scroll;
+      scroll-behavior: smooth;
+      scrollbar-width: 1rem;
+      scrollbar-color: $color-secondary;
     }
 
     & .past {

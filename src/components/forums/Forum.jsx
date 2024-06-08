@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Conversation from "./Conversation";
 import FileTypes from "./FileType";
 import Files from "./Files";
@@ -10,8 +11,24 @@ import {
   FaPhotoFilm,
   FaVideo,
 } from "react-icons/fa6";
+import { getAllGroups } from "../../services/apiGroups";
 
 function Forum() {
+  /*  const [groups, setGroups] = useState([]);
+  const [currentGroup, setCurrentGroup] = useState(null); */
+
+  useEffect(() => {
+    const fetchGroups = async () => {
+      try {
+        const res = await getAllGroups();
+        console.log(res);
+      } catch (err) {
+        console.log("Failed to fetch groups", err);
+      }
+    };
+    fetchGroups();
+  }, []);
+
   return (
     <div className="forum-container">
       <div className="forum-list">
