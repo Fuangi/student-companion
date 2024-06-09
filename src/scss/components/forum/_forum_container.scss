@@ -4,7 +4,7 @@
   display: flex;
 
   & .forum-list {
-    width: 25%;
+    width: 22%;
     margin-top: 1rem;
 
     & .list-header {
@@ -99,40 +99,13 @@
   & .conversations {
     margin-top: 1rem;
     position: relative;
-    height: 95dvh;
+    height: 97dvh;
     // overflow-y: scroll;
-    width: 70%;
-
-    // customize the scroll bar
-
-    & .message-tab {
-      display: flex;
-      /*       position: fixed;
-      left: 0; */
-      border-top-left-radius: 1.5rem;
-      border-top-right-radius: 1.5rem;
-      justify-content: space-between;
-      align-items: center;
-      height: 6rem;
-      padding: 0 1.5rem;
-      background-color: whitesmoke;
-      border-bottom: 1px solid $grey-light;
-
-      & h2 {
-        color: $grey-dark;
-        font-size: 1.5rem;
-      }
-
-      & .tab {
-        display: flex;
-        gap: 2rem;
-      }
-    }
+    width: 78%;
   }
 
   & .group-details {
-    width: 22%;
-    margin-top: 1rem;
+    width: 25%;
 
     & .group-header {
       height: 6rem;

@@ -31,8 +31,10 @@ function Login() {
       });
 
       if (res.status === 200) {
+        console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("user", JSON.stringify(res.data.data.user));
         navigate("/dashboard");
       }
     } catch (error) {

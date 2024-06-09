@@ -1,26 +1,65 @@
 @use "../../variables" as *;
 
 .forum-conversation {
-  border: 1px solid red;
-  padding: 1rem;
+  height: inherit;
+  display: flex;
+  width: 100%;
 
-  & .message-input {
+  & .header-messages {
     display: flex;
+    flex-direction: column;
+    width: 75%;
 
-    & input {
-      width: 30rem;
-      outline: none;
-      border: none;
-      padding: 1rem;
+    & .message-tab {
+      display: flex;
+      border-top-left-radius: 1.5rem;
+      border-top-right-radius: 1.5rem;
+      justify-content: space-between;
+      align-items: center;
+      height: 6rem;
+      padding: 0 1.5rem;
+      background-color: whitesmoke;
+      border-bottom: 1px solid $grey-light;
+
+      & h2 {
+        color: $grey-dark;
+        font-size: 1.5rem;
+      }
+
+      & .tab {
+        display: flex;
+        gap: 2rem;
+      }
     }
 
-    & button {
-      outline: none;
-      border: none;
+    & .message-list {
+      flex-grow: 1;
       padding: 1rem;
-      color: $color-white;
-      background-color: $color-primary;
-      width: 8rem;
+
+      & .no-msg {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+
+    & .message-input {
+      display: flex;
+
+      & input {
+        width: 30rem;
+        outline: none;
+        border: none;
+        padding: 1rem;
+      }
+
+      & button {
+        outline: none;
+        border: none;
+        padding: 1rem;
+        color: $color-white;
+        background-color: $color-primary;
+        width: 8rem;
+      }
     }
   }
 }
