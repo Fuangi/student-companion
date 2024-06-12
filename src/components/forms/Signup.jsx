@@ -51,8 +51,8 @@ function Signup() {
     try {
       const res = await axios({
         method: "POST",
-        url: "https://companion-backend.onrender.com/api/v1/users/signup",
-        // url: "http://localhost:4000/api/v1/users/signup",
+        // url: "https://companion-backend.onrender.com/api/v1/users/signup",
+        url: "http://localhost:4000/api/v1/users/signup",
         data: user,
       });
       console.log(res);

@@ -32,8 +32,8 @@ function AddEvent() {
     setIsLoading(!isLoading);
     axios({
       method: "POST",
-      url: "https://companion-backend.onrender.com/api/v1/plans",
-      // url: "http://localhost:4000/api/v1/plans",
+      // url: "https://companion-backend.onrender.com/api/v1/plans",
+      url: "http://localhost:4000/api/v1/plans",
       data: newEvent,
       headers: {
         Authorization: `Bearer ${token}`,

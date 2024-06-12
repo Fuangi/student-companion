@@ -29,6 +29,7 @@ function Forums() {
       try {
         const res = await getAllGroups();
         setGroups(res);
+        console.log(res);
       } catch (err) {
         console.log("Failed to fetch groups", err);
       }

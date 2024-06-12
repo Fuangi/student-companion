@@ -2,13 +2,13 @@ import axios from "axios";
 
 const token = localStorage.getItem("token");
 
-const webURL = "https://companion-backend.onrender.com";
+// const webURL = "https://companion-backend.onrender.com";
 
 export const getAllGroups = async () => {
   const res = await axios({
     method: "GET",
-    // url: "http://localhost:4000/api/v1/groups",
-    url: `${webURL}/api/v1/groups`,
+    url: "http://localhost:4000/api/v1/groups",
+    // url: `${webURL}/api/v1/groups`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -23,8 +23,8 @@ export const getAllGroups = async () => {
 export const getGroup = async (id) => {
   const res = await axios({
     method: "GET",
-    // url: `http://localhost:4000/api/v1/groups/${id}`,
-    url: `${webURL}/api/v1/groups/${id}`,
+    url: `http://localhost:4000/api/v1/groups/${id}`,
+    // url: `${webURL}/api/v1/groups/${id}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -40,8 +40,8 @@ export const getGroup = async (id) => {
 export const deletePlan = async (id) => {
   const res = await axios({
     method: "DELETE",
-    // url: `http://localhost:4000/api/v1/groups/${id}`,
-    url: `${webURL}/api/v1/groups/${id}`,
+    url: `http://localhost:4000/api/v1/groups/${id}`,
+    // url: `${webURL}/api/v1/groups/${id}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -53,8 +53,8 @@ export const deletePlan = async (id) => {
 export const updatePlan = async (id, body) => {
   const res = await axios({
     method: "PATCH",
-    // url: `http://localhost:4000/api/v1/groups/${id}`,
-    url: `${webURL}/api/v1/groups/${id}`,
+    url: `http://localhost:4000/api/v1/groups/${id}`,
+    // url: `${webURL}/api/v1/groups/${id}`,
     data: { body },
     headers: {
       Authorization: `Bearer ${token}`,
