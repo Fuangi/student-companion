@@ -6,9 +6,6 @@ import { NavLink } from "react-router-dom";
 function DashTopNav() {
   return (
     <div className="user-profile">
-      <div className="logo">
-        <img src="" alt="" />
-      </div>
       <div className="user-actions">
         <NavLink to="/notifications">
           <MdNotifications />

@@ -19,109 +19,172 @@
 
 // THE DASHBOARD STYLES
 .my-dashboard {
-  border: 1px solid red;
-  display: flex;
-  height: inherit;
-  gap: 3rem;
+  margin-left: 3rem;
 
-  & .current-events {
-    width: 75%;
-    padding: 1rem;
-    border: 1px solid black;
+  & .dash-top {
+    display: flex;
+    // gap: 2rem;
 
-    & .welcome {
+    & .right {
       padding: 1rem;
+      width: 30%;
+      background-color: $color-secondary;
+      color: $color-white;
 
       & h2 {
-        font-size: 2rem;
+        text-align: center;
+        font-size: 1.8rem;
       }
 
-      & .recommendation {
-        padding: 0 1.5rem;
-        background-color: $color-secondary;
-        width: 80%;
-        display: flex;
-        align-items: center;
-        gap: 5rem;
-        color: $color-white;
-        font-size: 1.5rem;
-        border-radius: 2rem;
+      & p {
+        font-size: 1.3rem;
+        margin: 0.5rem;
+      }
 
-        & button {
-          outline: none;
-          border: none;
-          padding: 1rem;
-          border-radius: 2rem;
-          width: 15rem;
-          background: $color-white;
-          color: $color-primary;
-        }
-
-        & p {
-          color: $color-white;
-          margin-bottom: 1rem;
-        }
-
-        & img {
-          height: 20rem;
-          width: 30%;
-        }
+      & button {
+        outline: none;
+        border: none;
+        padding: 1rem;
+        background-color: $color-white;
+        color: $color-primary;
+        display: block;
+        margin: auto;
       }
     }
 
-    & .day-plans {
-      margin-top: 1.5rem;
+    & .top-left {
+      width: 70%;
+    }
+  }
 
-      & h3 {
-        font-size: 2rem;
-      }
+  .introduction {
+    padding: 1.5rem;
+    background-color: $color-secondary;
+    width: 80%;
+    color: $color-white;
+    margin-left: 5rem;
 
-      & .stats {
-        padding: 1rem;
+    & h2 {
+      font-size: 2.5rem;
+      padding: 0.5rem;
+    }
+
+    & p {
+      font-size: 1.4rem;
+      padding: 0.5rem;
+    }
+  }
+
+  & .statistics {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 2rem;
+
+    & .stats {
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      background-color: $color-white;
+
+      width: 25rem;
+
+      & .name {
         display: flex;
         justify-content: space-between;
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid $grey-dark;
 
-        & p {
-          padding: 1rem;
-          font-size: 1.5rem;
-          border: 1px solid black;
-          text-align: center;
+        & h3 {
+          font-size: 1.7rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
 
-          & span {
-            display: block;
-          }
+        & .name-icon {
+          color: $color-primary;
+        }
+
+        & a {
+          color: $grey-dark;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1.3rem;
         }
       }
 
-      & .recents {
-        display: flex;
-        gap: 5rem;
+      & .res {
+        margin-top: 0.3rem;
 
-        & .plans,
-        & .resources {
+        & h3 {
           display: flex;
-          margin-top: 1rem;
-          border: 1px solid black;
-          padding: 1.5rem;
-          gap: 1rem;
-          flex-direction: column;
+          justify-content: space-between;
+          font-size: 1.5rem;
+          padding: 0.3rem;
+          justify-content: center;
+        }
 
-          & ul {
-            list-style: none;
-
-            & li {
-              padding: 0.5rem;
-              font-size: 1.3rem;
-            }
-          }
+        & h5 {
+          padding: 0.3rem;
+          display: flex;
+          justify-content: space-between;
+          font-size: 1.2rem;
+          justify-content: center;
+          color: $grey-dark;
         }
       }
     }
   }
-  & .other-events {
+
+  & .dashboard-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  // The cards on the dashbaoard
+  & .dash-card {
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    padding: 2rem !important;
+    width: 38rem;
+    height: 23rem;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: $color-white;
+
+    & h2 {
+      border-bottom: 1px solid $grey-light;
+      padding-bottom: 0.3rem;
+    }
+
+    & .recents {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      & h3 {
+        text-align: center;
+        font-size: 1.5rem;
+      }
+
+      & p {
+        font-size: 1.4rem;
+      }
+
+      & button {
+        outline: none;
+        border: none;
+        background-color: $color-secondary;
+        color: $color-white;
+        padding: 1rem;
+        width: 10rem;
+        font-size: 1.3rem;
+        margin-top: 1rem;
+        align-self: center;
+      }
+    }
   }
 }
 
