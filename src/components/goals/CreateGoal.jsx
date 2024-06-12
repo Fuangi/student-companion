@@ -16,13 +16,17 @@ function CreateGoal() {
     };
 
     try {
-      axios.post("http://localhost:4000/api/v1/goals", {
-        data: newGoal,
-        headers: {
-          "content-type": "application/json",
-          mode: "cors",
-        },
-      });
+      axios.post(
+        // "http://localhost:4000/api/v1/goals",
+        "https://companion-backend.onrender.com/api/v1/goals",
+        {
+          data: newGoal,
+          headers: {
+            "content-type": "application/json",
+            mode: "cors",
+          },
+        }
+      );
       setTimeout(() => {
         alert("Goal created successfully");
         navigate("/goals");
