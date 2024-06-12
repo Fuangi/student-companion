@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Error from "../Layout/Error";
+// import Error from "../Layout/Error";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -21,7 +21,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confPassword, setconfPassword] = useState("");
 
-  const [isSignedUp, setIsSignedUp] = useState(false);
+  // const [isSignedUp, setIsSignedUp] = useState(false);
   const [error, setError] = useState(false);
 
   // to help navigate the user back to the home page - this returns a function that takes a url (as a string)
@@ -51,7 +51,8 @@ function Signup() {
     try {
       const res = await axios({
         method: "POST",
-        url: "http://localhost:4000/api/v1/users/signup",
+        url: "https://companion-backend.onrender.com/api/v1/users/signup",
+        // url: "http://localhost:4000/api/v1/users/signup",
         data: user,
       });
       console.log(res);
@@ -59,7 +60,8 @@ function Signup() {
       console.log(res.status, "then", res.statusText);
 
       alert(`Account created successfully! 🤗 Welcome ${username}`);
-      setIsSignedUp(true);
+      // setIsSignedUp(true);
+      navigate("/auth/login");
     } catch (error) {
       console.log(error);
       setError(true);
