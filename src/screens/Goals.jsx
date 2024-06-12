@@ -42,24 +42,31 @@ function Goals() {
             <h3>%Something inspirational here</h3>
             <ResHeader
               url="/goals/new"
-              sortVals={["life", "educational", "careere", "other"]}
+              sortVals={["life", "educational", "career", "other"]}
             />
           </div>
           <div className="my-goals-body">
             <div className="goals-container">
-              {goalsfiltered.map((goal, i) => (
-                <div key={i}>
-                  <h3>
-                    {goal.category.toLocaleUpperCase()} GOALS -
-                    <span> {goal.goals.length}</span>
-                  </h3>
-                  <div className="goals">
-                    {goal.goals.map((val, i) => (
-                      <Goal goal={val.goal} key={i} />
-                    ))}
+              {goalsfiltered.length > 0 ? (
+                goalsfiltered.map((goal, i) => (
+                  <div key={i}>
+                    <h3>
+                      {goal.category.toLocaleUpperCase()} GOALS -
+                      <span> {goal.goals.length}</span>
+                    </h3>
+                    <div className="goals">
+                      {goal.goals.map((val, i) => (
+                        <Goal goal={val.goal} key={i} />
+                      ))}
+                    </div>
                   </div>
+                ))
+              ) : (
+                <div className="no-goals">
+                  <h2>You don't have any saved goals yet...</h2>
+                  <p>Click the New buton to start adding goals</p>
                 </div>
-              ))}
+              )}
             </div>
             <div className="affirm">
               <h4>My affirmations</h4>

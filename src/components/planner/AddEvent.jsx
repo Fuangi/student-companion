@@ -16,12 +16,15 @@ function AddEvent() {
     e.preventDefault();
     const token = localStorage.getItem("token");
 
+    const user = JSON.parse(localStorage.getItem("user"));
+
     const newEvent = {
       name: eventName,
       description: eventDesc,
       eventStart: new Date(eventStart).getTime(),
       eventEnd: new Date(eventEnd).getTime(),
       eventType,
+      userId: user._id,
     };
 
     console.log(newEvent);
