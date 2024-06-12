@@ -1,5 +1,5 @@
 import { FaUser } from "react-icons/fa6";
-import { MdLogin, MdNotifications } from "react-icons/md";
+import { MdLogout, MdNotifications } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 // import { logo } from "../../assets";
 
@@ -14,7 +14,7 @@ function DashTopNav() {
           <FaUser />
         </NavLink>
         <NavLink to="#">
-          <MdLogin />
+          <MdLogout />
         </NavLink>
       </div>
     </div>

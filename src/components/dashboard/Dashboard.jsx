@@ -65,7 +65,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <h2>Your Recents</h2>
+        <h2 className="head">Your Recents</h2>
         <div className="dashboard-body">
           <DashCard />
           <DashCard />

@@ -57,12 +57,18 @@
     }
   }
 
+  // All the headings in the main div
+  .head {
+    font-size: 2rem;
+  }
+
   .introduction {
     padding: 1.5rem;
     background-color: $color-secondary;
     width: 80%;
     color: $color-white;
     margin-left: 5rem;
+    margin-bottom: 0.9rem;
 
     & h2 {
       font-size: 2.5rem;
@@ -78,14 +84,13 @@
   & .statistics {
     display: flex;
     gap: 2rem;
-    padding: 1rem 2rem;
+    padding: 1rem;
 
     & .stats {
       display: flex;
       flex-direction: column;
       padding: 1.5rem;
       background-color: $color-white;
-
       width: 25rem;
 
       & .name {
@@ -139,7 +144,8 @@
   & .dashboard-body {
     display: flex;
     flex-wrap: wrap;
-    gap: 4rem;
+    padding: 1rem;
+    gap: 3rem;
     align-items: center;
   }
 
@@ -149,7 +155,7 @@
     flex-direction: column;
     padding: 2rem !important;
     width: 38rem;
-    height: 23rem;
+    height: 20rem;
     gap: 1rem;
     padding: 1rem;
     background-color: $color-white;
