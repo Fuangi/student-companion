@@ -5,7 +5,8 @@ export const connectSocket = createAsyncThunk(
   "connect/socket",
   async function () {
     const socketIo = io("http://localhost:4000"); //connect to the websocket server
-    return socketIo;
+    const res = socketIo;
+    return res;
   }
 );
 
@@ -32,6 +33,7 @@ const messageSlice = createSlice({
       })
       .addCase(connectSocket.fulfilled, (state, action) => {
         state.socket = action.payload;
+
         state.status = "success";
         state.isLoading = false;
       })

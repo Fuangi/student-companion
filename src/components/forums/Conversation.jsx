@@ -20,6 +20,8 @@ function Conversation() {
   useEffect(function () {
     if (socket === null) return;
     socket.emit("joinRoom", { groupId, userId });
+    socket.emit("userJoined", userId);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -30,18 +32,6 @@ function Conversation() {
       socket.on("receiveMessage", (message) => {
         setMessageList((prevMessages) => [...prevMessages, message]);
       });
-
-      socket.on("typing", (userId) => {
-        console.log(`${userId} is typing...`);
-      });
-
-      socket.on("stopTyping", (userId) => {
-        console.log(`${userId} stopped typing.`);
-      });
-
-      return () => {
-        socket.emit("leaveRoom", { groupId, userId });
-      };
     },
     [socket, userId, groupId]
   );
@@ -50,7 +40,7 @@ function Conversation() {
   async function handleSendMessage(e) {
     e.preventDefault();
 
-    if (message.trim() === "") return;
+    if (message === "") return;
 
     socket.emit("sendMessage", { groupId, message, userId });
     setMessage("");

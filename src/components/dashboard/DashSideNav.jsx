@@ -70,12 +70,12 @@ function DashSideNav() {
                 Trash <FaTrash className="dash-side-icon" />
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/setting">
+                Settings <MdSettings className="dash-side-icon" />
+              </NavLink>
+            </li>
           </ul>
-          <div className="settings" style={{ marginBottom: "2rem" }}>
-            <NavLink to="/setting">
-              Settings <MdSettings className="dash-side-icon" />
-            </NavLink>
-          </div>
         </>
       </div>
     </>

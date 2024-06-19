@@ -1,5 +1,4 @@
 import DashLayout from "../Layout/DashLayout";
-import DashTopNav from "./DashTopNav";
 import DashStats from "./DashStats";
 import { FaClipboard, FaList, FaPeopleGroup } from "react-icons/fa6";
 import DashCard from "./DashCard";
@@ -7,7 +6,6 @@ import DashCard from "./DashCard";
 function Dashboard() {
   return (
     <DashLayout>
-      <DashTopNav />
       <div className="my-dashboard">
         <div className="dash-top">
           <div className="top-left">
