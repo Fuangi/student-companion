@@ -15,8 +15,8 @@ function CreateForum() {
     try {
       const res = await axios({
         method: "POST",
-        url: "http://localhost:4000/api/v1/groups",
-        // url: "https://companion-backend.onrender.com/api/v1/groups",
+        // url: "http://localhost:4000/api/v1/groups",
+        url: "https://companion-backend.onrender.com/api/v1/groups",
         headers: {
           Authorization: `Bearer ${token}`,
         },

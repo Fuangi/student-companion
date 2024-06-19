@@ -17,8 +17,8 @@ function CreateGoal() {
 
     try {
       axios.post(
-        "http://localhost:4000/api/v1/goals",
-        // "https://companion-backend.onrender.com/api/v1/goals",
+        // "http://localhost:4000/api/v1/goals",
+        "https://companion-backend.onrender.com/api/v1/goals",
         {
           data: newGoal,
           headers: {
