@@ -19,8 +19,10 @@ function Conversation() {
 
   useEffect(function () {
     if (socket === null) return;
-    socket.emit("joinRoom", { groupId, userId });
-    socket.emit("userJoined", userId);
+    socket.on("userJoined", (userId) => {
+      const message = { message: `User ${userId} joined` };
+      setMessageList((prevMsgs) => [...prevMsgs, message]);
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
