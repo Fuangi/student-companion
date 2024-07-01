@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { DashLayout, Loader } from "../components/Layout";
 import TechResource from "../components/resources/TechResource";
 import Error from "../components/Layout/Error";
@@ -12,23 +13,25 @@ function Resources() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  useEffect(function () {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
     setIsLoading(!isLoading);
-    Promise.all([
-      fetch(
-        `https://newsapi.org/v2/top-headlines?category=technology&language=en&apiKey=${apiKey}`
-      ),
-      fetch(
-        `https://newsapi.org/v2/top-headlines?category=health&language=en&apiKey=${apiKey}`
-      ),
-      fetch(
-        `https://newsapi.org/v2/top-headlines?category=business&language=en&apiKey=${apiKey}`
-      ),
-    ])
-      .then(([techRes, healthRes, bizRes]) =>
-        Promise.all([techRes.json(), healthRes.json(), bizRes.json()])
-      )
-      .then(([techRes, healthRes, bizRes]) => {
+
+    const getData = async () => {
+      try {
+        const res = await axios({
+          method: "GET",
+          url: `https://newsapi.org/v2/top-headlines?category=${user.problem}&language=en&apiKey=${apiKey}`,
+        });
+        console.log(res);
+      } catch (err) {
+        alert("An error occurred while fetching resources");
+        console.log(err);
+      }
+    };
+
+    /*   .then(([techRes, healthRes, bizRes]) => {
         setTechResources(techRes.articles);
         setHealthResources(healthRes.articles);
         setBizResources(bizRes.articles);
@@ -38,7 +41,7 @@ function Resources() {
         console.log(err);
         setIsLoading(false);
         setError(true);
-      });
+      }); */
     // setIsLoading(false);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
