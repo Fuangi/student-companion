@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ForumFiles from "./ForumFiles";
@@ -9,6 +9,9 @@ function Conversation() {
   const [typing, setTyping] = useState(false);
 
   const [searchParams] = useSearchParams();
+
+  // Referemce for auto scroll
+  const msgRef = useRef(null);
 
   // State from the slice
   const { socket } = useSelector((store) => store.message);
@@ -84,7 +87,7 @@ function Conversation() {
             <p>Participants</p>
           </div>
         </div>
-        <div className="message-list">
+        <div className="message-list" ref={msgRef}>
           {messageList.length > 0 ? (
             messageList.map((msgData, i) => (
               <div
