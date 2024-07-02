@@ -87,7 +87,11 @@ function Conversation() {
         <div className="message-list">
           {messageList.length > 0 ? (
             messageList.map((msgData, i) => (
-              <div key={i} className="message">
+              <div
+                key={i}
+                className="message"
+                id={user.name === msgData.author ? "you" : "others"}
+              >
                 <div className="message-content">
                   <p>{msgData.message}</p>
                 </div>
