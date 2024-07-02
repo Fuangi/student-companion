@@ -24,6 +24,7 @@ function Conversation() {
       setMessageList((prevMsgs) => [...prevMsgs, message]);
     });
 
+    return () => socket.off("userJoined", () => console.log("Byeee Guiyzzz"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -32,10 +33,14 @@ function Conversation() {
       if (socket === null) return;
 
       socket.on("receiveMessage", (message) => {
+        console.log(message);
         setMessageList((prevMessages) => [...prevMessages, message]);
       });
+
+      return () =>
+        socket.off("receiveMessage", () => console.log("Message received"));
     },
-    [socket, userId, groupId]
+    [socket]
   );
 
   // Message handlers
@@ -44,7 +49,16 @@ function Conversation() {
 
     if (message === "") return;
 
-    socket.emit("sendMessage", { groupId, message, userId });
+    const msgData = {
+      group: groupId,
+      author: user.name,
+      message,
+      time:
+        new Date(Date.now()).getHours() +
+        ":" +
+        new Date(Date.now()).getMinutes(),
+    };
+    await socket.emit("sendMessage", msgData);
     setMessage("");
   }
 
@@ -72,7 +86,17 @@ function Conversation() {
         </div>
         <div className="message-list">
           {messageList.length > 0 ? (
-            messageList.map((msg, i) => <div key={i}>{msg.message}</div>)
+            messageList.map((msgData, i) => (
+              <div key={i} className="message">
+                <div className="message-content">
+                  <p>{msgData.message}</p>
+                </div>
+                <div className="message-meta">
+                  <p>{msgData.author}</p>
+                  <p>{msgData.time}</p>
+                </div>
+              </div>
+            ))
           ) : (
             <h3 className="no-msg">
               No Messages yet. Send a message for it to appear here!
@@ -85,8 +109,7 @@ function Conversation() {
             placeholder="Your message..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onKeyUp={handleTyping}
-            onKeyDown={handleTyping}
+            onKeyPress={handleTyping}
           />
           <button onClick={handleSendMessage}>Send</button>
         </div>
