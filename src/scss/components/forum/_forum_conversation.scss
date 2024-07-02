@@ -9,6 +9,8 @@
     display: flex;
     flex-direction: column;
     width: 75%;
+    border-left: 1px solid $grey-light;
+    border-right: 1px solid $grey-light;
 
     & .message-tab {
       display: flex;
@@ -33,10 +35,10 @@
     }
 
     & .message-list {
-      flex-grow: 1;
+      height: 75dvh;
       display: flex;
       flex-direction: column;
-      border: 1px solid red;
+      overflow-y: scroll;
       padding: 1rem;
 
       & .no-msg {
@@ -47,6 +49,7 @@
 
     & .message-input {
       display: flex;
+      margin-top: 0.7rem;
 
       & input {
         width: 30rem;

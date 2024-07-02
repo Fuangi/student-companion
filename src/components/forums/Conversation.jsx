@@ -44,8 +44,8 @@ function Conversation() {
   );
 
   // Message handlers
-  async function handleSendMessage(e) {
-    e.preventDefault();
+  async function handleSendMessage() {
+    // e.preventDefault();
 
     if (message === "") return;
 
