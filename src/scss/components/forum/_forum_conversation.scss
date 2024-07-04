@@ -50,6 +50,7 @@
 
     & .message-input {
       display: flex;
+      align-self: center;
       margin-top: 0.7rem;
 
       & input {
@@ -117,5 +118,19 @@
   & .message-meta {
     justify-content: flex-end;
     margin-right: 5px;
+  }
+}
+
+#joined {
+  justify-content: center;
+  align-self: center;
+  margin: 0.3rem;
+
+  & .message-content {
+    background: none;
+    color: $color-primary;
+    padding: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
   }
 }

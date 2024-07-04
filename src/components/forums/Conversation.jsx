@@ -2,28 +2,28 @@ import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ForumFiles from "./ForumFiles";
+import { MdSend } from "react-icons/md";
 
 function Conversation() {
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
-  const [typing, setTyping] = useState(false);
 
   const [searchParams] = useSearchParams();
 
   // Referemce for auto scroll
-  const msgRef = useRef(null);
+  const msgEndRef = useRef(null);
 
   // State from the slice
   const { socket } = useSelector((store) => store.message);
 
   const groupId = searchParams.get("id");
   const user = JSON.parse(localStorage.getItem("user"));
-  const userId = user._id;
+  // const userId = user._id;
 
   useEffect(function () {
     if (socket === null) return;
     socket.on("userJoined", (userId) => {
-      const message = { message: `User ${userId} joined` };
+      const message = { message: ` ${userId} joined this chat` };
       setMessageList((prevMsgs) => [...prevMsgs, message]);
     });
 
@@ -45,6 +45,14 @@ function Conversation() {
     [socket]
   );
 
+  const scrollToBottom = () => {
+    msgEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messageList]);
+
   // Message handlers
   async function handleSendMessage() {
     // e.preventDefault();
@@ -64,18 +72,6 @@ function Conversation() {
     setMessage("");
   }
 
-  const handleTyping = () => {
-    if (!typing) {
-      setTyping(true);
-      socket.emit("typing", { groupId, userId });
-    }
-
-    setTimeout(() => {
-      setTyping(false);
-      socket.emit("stopTyping", { groupId, userId });
-    }, 1000);
-  };
-
   return (
     <div className="forum-conversation">
       <div className="header-messages">
@@ -87,13 +83,19 @@ function Conversation() {
           </div>
         </div>
 
-        <div className="message-list" ref={msgRef}>
+        <div className="message-list">
           {messageList.length > 0 ? (
             messageList.map((msgData, i) => (
               <div
                 key={i}
                 className="message"
-                id={user.name === msgData.author ? "you" : "others"}
+                id={
+                  msgData.author
+                    ? user.name === msgData.author
+                      ? "you"
+                      : "others"
+                    : "joined"
+                }
               >
                 <div className="message-content">
                   <p>{msgData.message}</p>
@@ -102,6 +104,7 @@ function Conversation() {
                   <p>{msgData.author}</p>
                   <p>{msgData.time}</p>
                 </div>
+                <p ref={msgEndRef} style={{ display: "none" }}></p>
               </div>
             ))
           ) : (
@@ -117,9 +120,15 @@ function Conversation() {
             placeholder="Your message..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onKeyPress={handleTyping}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                handleSendMessage();
+              }
+            }}
           />
-          <button onClick={handleSendMessage}>Send</button>
+          <button onClick={handleSendMessage}>
+            <MdSend />
+          </button>
         </div>
       </div>
       <ForumFiles />

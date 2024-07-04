@@ -45,7 +45,6 @@
         background-color: rgba($color-secondary, 0.2);
         color: $color-secondary;
         font-weight: bold;
-        border-radius: 0.5rem;
         width: 10rem;
         text-align: center;
       }
@@ -62,7 +61,6 @@
         width: 90%;
         margin: auto;
         display: block;
-        border-radius: 1rem;
 
         &:placeholder-shown {
           padding-left: 1rem;
