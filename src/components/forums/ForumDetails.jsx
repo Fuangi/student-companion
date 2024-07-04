@@ -18,7 +18,7 @@ function ForumDetails({ group }) {
       <button onClick={handleJoinGroup}>
         <Link className="forum-info" to={`/forums/view?id=${group._id}`}>
           <h3>{group.name}</h3>
-          <p>Chat Desc</p>
+          <p>{group.description}</p>
         </Link>
       </button>
     </div>

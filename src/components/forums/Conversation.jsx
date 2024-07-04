@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ForumFiles from "./ForumFiles";
-import ScrollToBottom from "react-scroll-to-bottom";
 
 function Conversation() {
   const [message, setMessage] = useState("");
@@ -37,7 +36,6 @@ function Conversation() {
       if (socket === null) return;
 
       socket.on("receiveMessage", (message) => {
-        console.log(message);
         setMessageList((prevMessages) => [...prevMessages, message]);
       });
 
@@ -88,31 +86,31 @@ function Conversation() {
             <p>Participants</p>
           </div>
         </div>
-        <ScrollToBottom className="message-list">
-          <div className="message-list" ref={msgRef}>
-            {messageList.length > 0 ? (
-              messageList.map((msgData, i) => (
-                <div
-                  key={i}
-                  className="message"
-                  id={user.name === msgData.author ? "you" : "others"}
-                >
-                  <div className="message-content">
-                    <p>{msgData.message}</p>
-                  </div>
-                  <div className="message-meta">
-                    <p>{msgData.author}</p>
-                    <p>{msgData.time}</p>
-                  </div>
+
+        <div className="message-list" ref={msgRef}>
+          {messageList.length > 0 ? (
+            messageList.map((msgData, i) => (
+              <div
+                key={i}
+                className="message"
+                id={user.name === msgData.author ? "you" : "others"}
+              >
+                <div className="message-content">
+                  <p>{msgData.message}</p>
                 </div>
-              ))
-            ) : (
-              <h3 className="no-msg">
-                No Messages yet. Send a message for it to appear here!
-              </h3>
-            )}
-          </div>
-        </ScrollToBottom>
+                <div className="message-meta">
+                  <p>{msgData.author}</p>
+                  <p>{msgData.time}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <h3 className="no-msg">
+              No Messages yet. Send a message for it to appear here!
+            </h3>
+          )}
+        </div>
+
         <div className="message-input">
           <input
             type="text"

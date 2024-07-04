@@ -7,9 +7,7 @@ import Error from "../components/Layout/Error";
 const apiKey = "5a3d3bda13294d7f9b0b9708b186aedd";
 
 function Resources() {
-  const [techResources, setTechResources] = useState([]);
-  const [healthResources, setHealthResources] = useState([]);
-  const [bizResources, setBizResources] = useState([]);
+  const [resources, setResources] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -22,27 +20,24 @@ function Resources() {
       try {
         const res = await axios({
           method: "GET",
-          url: `https://newsapi.org/v2/top-headlines?category=${user.problem}&language=en&apiKey=${apiKey}`,
+          // url: `https://newsapi.org/v2/top-headlines?category=${user.problem}&language=en&apiKey=${apiKey}`,
+          url: `https://zenquotes.io/api/quotes`,
         });
-        console.log(res);
+        if (res.data.articles.length > 0) {
+          setResources(res.data.articles);
+        } else {
+          setError(true);
+        }
       } catch (err) {
         alert("An error occurred while fetching resources");
         console.log(err);
-      }
-    };
-
-    /*   .then(([techRes, healthRes, bizRes]) => {
-        setTechResources(techRes.articles);
-        setHealthResources(healthRes.articles);
-        setBizResources(bizRes.articles);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
         setIsLoading(false);
         setError(true);
-      }); */
+      }
+    };
     // setIsLoading(false);
+
+    getData();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -50,7 +45,10 @@ function Resources() {
   return (
     <DashLayout>
       {error ? (
-        <Error />
+        <Error
+          errCode="Sorry"
+          errMsg={`Either there was a problem fetching resources or No resources found for your problem: ${user.problem}`}
+        />
       ) : isLoading ? (
         <Loader />
       ) : (
@@ -58,23 +56,7 @@ function Resources() {
           <div className="resources-tech">
             <h3>Tech Resources</h3>
             <div className="content">
-              {techResources?.map((resource, index) => (
-                <TechResource key={index} article={resource} />
-              ))}
-            </div>
-          </div>
-          <div className="resources-health">
-            <h3>Health Resources</h3>
-            <div className="content">
-              {healthResources?.map((resource, index) => (
-                <TechResource key={index} article={resource} />
-              ))}
-            </div>
-          </div>
-          <div className="resources-health">
-            <h3>Business Resources</h3>
-            <div className="content">
-              {bizResources?.map((resource, index) => (
+              {resources?.map((resource, index) => (
                 <TechResource key={index} article={resource} />
               ))}
             </div>

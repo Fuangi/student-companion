@@ -6,6 +6,7 @@
   & .forum-list {
     width: 22%;
     margin-top: 1rem;
+    overflow: auto;
 
     & .list-header {
       height: 6rem;
@@ -72,19 +73,19 @@
         display: flex;
         margin-top: 0.5rem;
         padding: 1rem;
+        padding-bottom: 0.5rem;
         justify-content: space-between;
         align-items: center;
 
         & p {
-          font-size: 1.3rem;
+          font-size: 1.5rem;
           color: $grey-dark;
           font-weight: 700;
         }
 
-        & button {
-          background: rgba($color-secondary, 0.2);
+        & a {
           width: 2.5rem;
-          color: $color-secondary;
+          color: $color-primary;
           font-size: 1rem;
           padding: 0.5rem;
           border: none;
