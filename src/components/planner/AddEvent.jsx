@@ -17,6 +17,7 @@ function AddEvent() {
     const token = localStorage.getItem("token");
 
     const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
 
     const newEvent = {
       name: eventName,
