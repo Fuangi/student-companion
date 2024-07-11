@@ -190,6 +190,24 @@ function Planner() {
                 </div>
                 <div className="completed">
                   <h2>Completed Tasks</h2>
+                  {data.map(
+                    //checking it it's in the data array then display it on screen
+                    (plan) =>
+                      plan.status === "completed" &&
+                      plan.plans.map((val, i) => (
+                        <PlanCard plan={val} color="blue" key={i} />
+                      ))
+                  )}
+                  {missingStatuses.map(
+                    //checking it it's in the missing status array then display msg on screen
+                    (status, i) =>
+                      status === "pending" && (
+                        <NoResource
+                          key={i}
+                          msg="Completed plan(s) at the moment"
+                        />
+                      )
+                  )}
                 </div>
               </div>
             </div>

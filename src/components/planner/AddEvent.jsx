@@ -45,14 +45,14 @@ function AddEvent() {
 
   return (
     <form className="event_form">
-      <h3 className="events-form-head">Create a new event</h3>
+      <h3 className="events-form-head">Create a new plan</h3>
 
       <div className="form-input">
-        <label htmlFor="Ename">Event Name</label>
+        <label htmlFor="Ename">Plan Name</label>
         <input
           type="text"
           name="Ename"
-          placeholder="Event Name"
+          placeholder="Plan name"
           required
           onChange={(e) => setEventName(e.target.value)}
         />
@@ -64,13 +64,13 @@ function AddEvent() {
           cols="20"
           rows="5"
           required
-          placeholder="What is the event for?"
+          placeholder="What is the plan for?"
           // value={eventDesc}
           onChange={(e) => setEventDesc(e.target.value)}
         ></textarea>
       </div>
       <div className="form-input">
-        <label htmlFor="type">Event Type</label>
+        <label htmlFor="type">Plan Type</label>
         <select
           name="type"
           id="type"
@@ -85,7 +85,7 @@ function AddEvent() {
         </select>
       </div>
       <div className="form-input">
-        <label htmlFor="start">Event Start</label>
+        <label htmlFor="start">Plan Start</label>
         <input
           type="datetime-local"
           name="start"
@@ -95,7 +95,7 @@ function AddEvent() {
         />
       </div>
       <div className="form-input">
-        <label htmlFor="end">Event End</label>
+        <label htmlFor="end">Plan End</label>
         <input
           type="datetime-local"
           name="end"
@@ -104,7 +104,7 @@ function AddEvent() {
           onChange={(e) => setEventEnd(e.target.value)}
         />
       </div>
-      <button onClick={handleCreateEvent}>Create Event</button>
+      <button onClick={handleCreateEvent}>Create Plan</button>
     </form>
   );
 }
