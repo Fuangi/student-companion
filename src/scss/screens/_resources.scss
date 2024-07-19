@@ -36,3 +36,14 @@
     padding: 1rem;
   }
 }
+
+@media only screen and (max-width: 675px) {
+  .resources {
+    gap: 1.5rem;
+    justify-content: center;
+
+    & .tech-resource {
+      width: 35rem;
+    }
+  }
+}
