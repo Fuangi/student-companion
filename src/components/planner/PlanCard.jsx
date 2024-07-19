@@ -17,9 +17,8 @@ function PlanCard({ plan, color }) {
   const end = new Date(plan.eventEnd);
 
   async function handleCompletedPlan() {
-    setIsCompleted(!isCompleted);
-
-    const updateStatus = await updatePlan(plan._id, { isCompleted });
+    if (isCompleted) return;
+    const updateStatus = await updatePlan(plan._id, { isCompleted: true });
 
     console.log(updateStatus);
   }
