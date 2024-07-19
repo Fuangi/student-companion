@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
+// import axios from "axios";
 import { DashLayout, Loader } from "../components/Layout";
 import TechResource from "../components/resources/TechResource";
 import Error from "../components/Layout/Error";
@@ -58,11 +58,11 @@ const quotes = [
 ];
 
 function Resources() {
-  const [resources, setResources] = useState(quotes);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [resources] = useState(quotes);
+  const [isLoading] = useState(false);
+  const [error] = useState(false);
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  // const user = JSON.parse(localStorage.getItem("user"));
 
   /*   useEffect(() => {
     setIsLoading(!isLoading);
@@ -98,15 +98,22 @@ function Resources() {
       {error ? (
         <Error
           errCode="Sorry"
-          errMsg={`Either there was a problem fetching resources`}
+          errMsg={`There was a problem fetching resources`}
         />
       ) : isLoading ? (
         <Loader />
       ) : (
-        <div className="resources">
-          {resources?.map((resource, index) => (
-            <TechResource key={index} article={resource} />
-          ))}
+        <div className="res-container">
+          <div className="res-container-header">
+            <h2>Resources</h2>
+            <p>To help you get through your day...</p>
+          </div>
+
+          <div className="resources">
+            {resources?.map((resource, index) => (
+              <TechResource key={index} article={resource} />
+            ))}
+          </div>
         </div>
       )}
     </DashLayout>
