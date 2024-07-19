@@ -6,7 +6,6 @@
 
   & .mid-layout {
     display: flex;
-    // overflow-y: hidden;
 
     & .bottom-layout {
       display: flex;
@@ -235,5 +234,71 @@
     font-size: 1.3rem;
     padding: 0 1.5rem;
     text-decoration: none;
+  }
+}
+
+// MAKING THE DASHBOARD RESPONSIVE
+/* @media only screen and (max-width: 675px) {
+  .mid-layout {
+    flex-wrap: wrap;
+
+    & .bottom-layout {
+      border: 1px solid $color-primary;
+      width: 100%;
+    }
+    & .layout-children {
+      border: 1px solid red;
+      width: inherit;
+    }
+  }
+} */
+
+@media only screen and (max-width: 675px) {
+  .my-dashboard {
+    margin: 0;
+
+    & .dash-top {
+      flex-wrap: wrap;
+      gap: 2rem;
+
+      & .right {
+        width: 100%;
+      }
+
+      & .top-left {
+        width: 99%;
+
+        & .introduction {
+          width: inherit;
+          margin: 0;
+          margin-top: 0.5rem;
+          padding: 0.5rem;
+
+          & h2 {
+            font-size: 2rem;
+            padding: 0.2rem;
+          }
+
+          & p {
+            font-size: 1.2rem;
+            padding: 0.2rem;
+          }
+        }
+      }
+    }
+
+    & .head {
+      margin: 1rem 0.5rem;
+    }
+
+    & .statistics {
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      & .stats {
+        width: 30rem;
+      }
+    }
   }
 }
