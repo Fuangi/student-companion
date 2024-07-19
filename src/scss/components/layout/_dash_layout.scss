@@ -238,20 +238,11 @@
 }
 
 // MAKING THE DASHBOARD RESPONSIVE
-/* @media only screen and (max-width: 675px) {
-  .mid-layout {
-    flex-wrap: wrap;
-
-    & .bottom-layout {
-      border: 1px solid $color-primary;
-      width: 100%;
-    }
-    & .layout-children {
-      border: 1px solid red;
-      width: inherit;
-    }
+@media only screen and (max-width: 675px) {
+  .dash-layout {
+    background: none;
   }
-} */
+}
 
 @media only screen and (max-width: 675px) {
   .my-dashboard {
@@ -259,6 +250,7 @@
 
     & .dash-top {
       flex-wrap: wrap;
+      padding: 0.9rem;
       gap: 2rem;
 
       & .right {

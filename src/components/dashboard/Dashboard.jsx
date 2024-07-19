@@ -18,6 +18,7 @@ const goals = {
   name: "goals",
   desc1: "No saved goals yet",
 };
+
 function Dashboard() {
   return (
     <DashLayout>
