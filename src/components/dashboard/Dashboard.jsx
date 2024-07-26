@@ -3,21 +3,6 @@ import DashStats from "./DashStats";
 import { FaClipboard, FaList, FaPeopleGroup } from "react-icons/fa6";
 import DashCard from "./DashCard";
 
-const plans = {
-  name: "Plans",
-  desc1: "...",
-};
-const forums = {
-  name: "Forums",
-  desc1: "...",
-  desc2: "...",
-};
-
-const goals = {
-  name: "goals",
-  desc1: "...",
-};
-
 function Dashboard() {
   return (
     <DashLayout>
@@ -39,43 +24,40 @@ function Dashboard() {
                 name="Plans"
                 icon={<FaClipboard className="name-icon" />}
                 link="/plans"
-                total="..."
+                total="X"
               />
               <DashStats
                 name="Goals"
                 icon={<FaList className="name-icon" />}
                 link="/goals"
-                total="..."
+                total="X"
               />
               <DashStats
                 name="Forums"
                 icon={<FaPeopleGroup className="name-icon" />}
                 link="/forums"
-                total="..."
+                total="X"
               />
             </div>
           </div>
           <div className="right">
             <h2>Resources</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo</p>
             <p>
-              "The future belongs to those who believe in the beauty of their
-              dreams." — Eleanor Roosevel
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa,
+              libero?
             </p>
             <p>
-              "Show me a person who has never made a mistake and I'll show you
-              someone who has never achieved much."
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa,
+              libero?
             </p>
             <p>
-              "Amateurs sit and wait for inspiration, the rest of us just get up
-              and go to work." — Stephen King
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa,
+              libero?
             </p>
             <p>
-              "The greater the obstacle, the more glory in overcoming it." —
-              Molière
-            </p>
-            <p>
-              "The man who moves a mountain begins by carrying away small
-              stones." — Confucius
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa,
+              libero?
             </p>
             <button>More Resources</button>
           </div>
@@ -83,9 +65,9 @@ function Dashboard() {
 
         <h2 className="head">Your Recents</h2>
         <div className="dashboard-body">
-          <DashCard details={plans} />
-          <DashCard details={forums} />
-          <DashCard details={goals} />
+          <DashCard />
+          <DashCard />
+          <DashCard />
         </div>
       </div>
     </DashLayout>

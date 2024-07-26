@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function ForumDetails({ group }) {
   const { socket } = useSelector((store) => store.message);
@@ -16,10 +16,10 @@ function ForumDetails({ group }) {
     <div className="forum-intro">
       {/* <img src={forumPicture} alt="Forum's Profile" /> */}
       <button onClick={handleJoinGroup}>
-        <NavLink className="forum-info" to={`/forums/view?id=${group._id}`}>
+        <Link className="forum-info" to={`/forums/view?id=${group._id}`}>
           <h3>{group.name}</h3>
-          <p>{group.description}</p>
-        </NavLink>
+          <p>Chat Desc</p>
+        </Link>
       </button>
     </div>
   );

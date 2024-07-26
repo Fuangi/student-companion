@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import ForumDetails from "./ForumDetails";
-import { FaPlus } from "react-icons/fa6";
 
 function ForumList({ groups }) {
-  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div className="forum-list">
       <div className="list-header">Chats</div>
       <div className="user-details">
         <img src="" alt="Name" />
-        <h3>{user.name}</h3>
+        <h3>Username</h3>
         <p>status</p>
       </div>
       <div className="features">
@@ -21,10 +19,9 @@ function ForumList({ groups }) {
           placeholder="Search..."
         />
         <div className="new-chat">
-          <p>Forums</p>
-          <Link to="/forums/create">
-            <FaPlus />
-          </Link>
+          <p>Your chats</p>
+
+          <Link to="/forums/create">+</Link>
         </div>
       </div>
       {groups?.length > 0 ? (

@@ -1,11 +1,7 @@
-import { DashLayout, Loader } from "../components/Layout";
+import { DashLayout } from "../components/Layout";
 
 function Files() {
-  return (
-    <DashLayout>
-      <Loader />
-    </DashLayout>
-  );
+  return <DashLayout></DashLayout>;
 }
 
 export default Files;

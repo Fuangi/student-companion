@@ -8,10 +8,10 @@ function TechResource({ article }) {
         alt={article.title}
         style={{ width: "100%" }}
       />
-      <h3>{article.q}</h3>
-      <h5>{article.a}</h5>
-      <p>{article.h}</p>
-      {/* <Link to={article.url}>Read More</Link> */}
+      <h3>{article.title}</h3>
+      <h5>{article.description?.slice(0, 50)}</h5>
+      <p>{article.content?.slice(0, 100)}...</p>
+      <Link to={article.url}>Read More</Link>
     </div>
   );
 }

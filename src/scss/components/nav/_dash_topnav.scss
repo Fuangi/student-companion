@@ -6,7 +6,6 @@
   padding-right: 1.5rem;
   right: 0;
   justify-content: flex-end;
-  // background-color: $color-secondary;
 
   gap: 3rem;
 
@@ -22,15 +21,14 @@
     }
 
     & a {
-      color: $grey-light;
-      // color: $color-secondary;
+      // color: $grey-light;
+      color: $color-secondary;
       font-size: 2rem;
       font-weight: bold;
       padding: 0rem;
 
       &:active {
-        // background-color: rgba($color-secondary, 0.2);
-        color: $color-white;
+        background-color: rgba($color-secondary, 0.2);
         border-radius: 0.5rem;
       }
     }
