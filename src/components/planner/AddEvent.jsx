@@ -97,8 +97,12 @@ function AddEvent() {
       </div>
       <div className="form-input">
         <label htmlFor="end">Plan End</label>
-        <input type="date" name="startDate" id="" />
-        <input type="time" name="endTime" id="" />
+        <input
+          type="datetime-local"
+          name="end"
+          id=""
+          onChange={(e) => setEventEnd(e.target.value)}
+        />
       </div>
       <button onClick={handleCreateEvent}>Create Plan</button>
     </form>

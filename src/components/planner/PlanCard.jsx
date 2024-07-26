@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import {
   MdCheckBox,
@@ -17,10 +18,18 @@ function PlanCard({ plan, color }) {
   const end = new Date(plan.eventEnd);
 
   async function handleCompletedPlan() {
-    if (isCompleted) return;
-    const updateStatus = await updatePlan(plan._id, { isCompleted: true });
+    const updateStatus = await updatePlan(plan._id, {
+      isCompleted: true,
+    });
 
-    console.log(updateStatus);
+    window.location.reload();
+  }
+  async function handleUncompletePlan() {
+    const updateStatus = await updatePlan(plan._id, {
+      isCompleted: false,
+    });
+
+    window.location.reload();
   }
 
   return (
@@ -41,13 +50,17 @@ function PlanCard({ plan, color }) {
       <button onClick={() => navigate(`/plans/edit?id=${plan?._id}`)}>
         <MdEdit className="card-action edit" />
       </button>
-      <button onClick={() => handleCompletedPlan()}>
-        {isCompleted ? (
-          <MdCheckBox className="card-action complete" />
+      <div>
+        {isCompleted || plan.isCompleted ? (
+          <button onClick={handleUncompletePlan}>
+            <MdCheckBox className="card-action complete" />
+          </button>
         ) : (
-          <MdCheckBoxOutlineBlank className="card-action complete" />
+          <button onClick={handleCompletedPlan}>
+            <MdCheckBoxOutlineBlank className="card-action complete" />
+          </button>
         )}
-      </button>
+      </div>
     </div>
   );
 }
