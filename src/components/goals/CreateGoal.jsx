@@ -20,6 +20,7 @@ function CreateGoal() {
     };
 
     try {
+
       axios({
         method: "POST",
         // url: "http://localhost:4000/api/v1/goals",
@@ -29,6 +30,7 @@ function CreateGoal() {
           Authorization: `Bearer ${token}`,
         },
       });
+
 
       setTimeout(() => {
         alert(

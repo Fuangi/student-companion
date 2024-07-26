@@ -31,6 +31,7 @@ function AddEvent() {
     console.log(newEvent);
 
     setIsLoading(!isLoading);
+
     try {
       axios({
         method: "POST",
@@ -54,6 +55,7 @@ function AddEvent() {
         navigate("/plans");
       }, 1000);
     }
+
   }
 
   return (
