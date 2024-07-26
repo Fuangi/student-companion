@@ -6,6 +6,7 @@
   & .forum-list {
     width: 22%;
     margin-top: 1rem;
+    overflow: auto;
 
     & .list-header {
       height: 6rem;
@@ -44,7 +45,6 @@
         background-color: rgba($color-secondary, 0.2);
         color: $color-secondary;
         font-weight: bold;
-        border-radius: 0.5rem;
         width: 10rem;
         text-align: center;
       }
@@ -61,7 +61,6 @@
         width: 90%;
         margin: auto;
         display: block;
-        border-radius: 1rem;
 
         &:placeholder-shown {
           padding-left: 1rem;
@@ -72,19 +71,19 @@
         display: flex;
         margin-top: 0.5rem;
         padding: 1rem;
+        padding-bottom: 0.5rem;
         justify-content: space-between;
         align-items: center;
 
         & p {
-          font-size: 1.3rem;
+          font-size: 1.5rem;
           color: $grey-dark;
           font-weight: 700;
         }
 
-        & button {
-          background: rgba($color-secondary, 0.2);
+        & a {
           width: 2.5rem;
-          color: $color-secondary;
+          color: $color-primary;
           font-size: 1rem;
           padding: 0.5rem;
           border: none;
@@ -172,6 +171,33 @@
           width: 1.5rem;
           height: 1.5rem;
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 675px) {
+  .forum-container {
+    & .forum-list {
+      width: 100%;
+
+      & .user-details {
+        display: none;
+      }
+
+      & .list-header {
+        margin-bottom: 1.5rem;
+        height: 4rem;
+      }
+    }
+
+    & .conversations {
+      & .group-details {
+        display: none;
+      }
+
+      & .header-messages {
+        width: inherit;
       }
     }
   }

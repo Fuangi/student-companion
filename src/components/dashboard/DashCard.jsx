@@ -1,10 +1,10 @@
-function DashCard() {
+function DashCard({ details }) {
   return (
     <div className="dash-card">
-      <h2>Card name</h2>
+      <h2>{details.name}</h2>
       <div className="recents">
-        <p>Card deatails that will be placed here</p>
-        <p>Card deatails that will be placed here</p>
+        <p>{details.desc1}</p>
+        <p>{details.desc2}</p>
         <button>Continue</button>
       </div>
     </div>

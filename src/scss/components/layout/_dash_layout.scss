@@ -1,8 +1,7 @@
 @use "../../variables" as *;
 
 .dash-layout {
-  height: 100vh;
-  overflow-y: hidden;
+  height: 100dvh;
   background-color: #f0efef;
 
   & .mid-layout {
@@ -16,8 +15,7 @@
 
     & .layout-children {
       width: 100%;
-      overflow-y: scroll;
-      height: 100vh;
+      height: 95dvh;
       margin-top: 0;
     }
   }
@@ -236,5 +234,63 @@
     font-size: 1.3rem;
     padding: 0 1.5rem;
     text-decoration: none;
+  }
+}
+
+// MAKING THE DASHBOARD RESPONSIVE
+@media only screen and (max-width: 675px) {
+  .dash-layout {
+    background: none;
+  }
+}
+
+@media only screen and (max-width: 675px) {
+  .my-dashboard {
+    margin: 0;
+
+    & .dash-top {
+      flex-wrap: wrap;
+      padding: 0.9rem;
+      gap: 2rem;
+
+      & .right {
+        width: 100%;
+      }
+
+      & .top-left {
+        width: 99%;
+
+        & .introduction {
+          width: inherit;
+          margin: 0;
+          margin-top: 0.5rem;
+          padding: 0.5rem;
+
+          & h2 {
+            font-size: 2rem;
+            padding: 0.2rem;
+          }
+
+          & p {
+            font-size: 1.2rem;
+            padding: 0.2rem;
+          }
+        }
+      }
+    }
+
+    & .head {
+      margin: 1rem 0.5rem;
+    }
+
+    & .statistics {
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      & .stats {
+        width: 30rem;
+      }
+    }
   }
 }

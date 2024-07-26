@@ -42,7 +42,10 @@ function Planner() {
 
         let planner;
 
-        if (date < start) {
+        if (plan.isCompleted) {
+          //completed plans
+          planner = { ...plan, status: "completed" };
+        } else if (date < start) {
           planner = { ...plan, status: "pending" };
         } //future plans
         else if (date.getTime() === start.getTime()) {
@@ -51,6 +54,9 @@ function Planner() {
         } else if (date >= start && date < end) {
           //plans in range
           planner = { ...plan, status: "ongoing" };
+        } else if (plan.isCompleted) {
+          //completed plans
+          planner = { ...plan, status: "completed" };
         } else {
           planner = { ...plan, status: "past" }; //past
         }
@@ -84,7 +90,7 @@ function Planner() {
   }));
 
   function processStatuses(data) {
-    const allStatuses = ["pending", "ongoing", "past"]; // Define all possible statuses
+    const allStatuses = ["pending", "ongoing", "past", "completed"]; // Define all possible statuses
     const presentStatuses = new Set(data.map((group) => group.status)); // Get unique present statuses
 
     const missingStatuses = allStatuses.filter(
@@ -190,6 +196,24 @@ function Planner() {
                 </div>
                 <div className="completed">
                   <h2>Completed Tasks</h2>
+                  {data.map(
+                    //checking it it's in the data array then display it on screen
+                    (plan) =>
+                      plan.status === "completed" &&
+                      plan.plans.map((val, i) => (
+                        <PlanCard plan={val} color="purple" key={i} />
+                      ))
+                  )}
+                  {missingStatuses.map(
+                    //checking it it's in the missing status array then display msg on screen
+                    (status, i) =>
+                      status === "completed" && (
+                        <NoResource
+                          key={i}
+                          msg="Completed plan(s) at the moment"
+                        />
+                      )
+                  )}
                 </div>
               </div>
             </div>

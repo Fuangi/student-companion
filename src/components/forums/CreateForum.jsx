@@ -1,8 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CreateForum() {
   const [groupName, setGroupName] = useState("");
+  const [description, setDescription] = useState("");
+
+  const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
@@ -10,7 +14,7 @@ function CreateForum() {
   async function handleCreateGroup(e) {
     e.preventDefault();
     const userID = user._id;
-    const group = { name: groupName, members: [userID] };
+    const group = { name: groupName, admin: userID, description };
 
     try {
       const res = await axios({
@@ -22,6 +26,11 @@ function CreateForum() {
         },
         data: group,
       });
+
+      if (res.status === 201) {
+        alert("Group created successfully");
+        navigate(`/forums/view?id=${res.data.data.data._id}`);
+      }
       console.log(res);
     } catch (err) {
       console.log(err);
@@ -49,6 +58,17 @@ function CreateForum() {
           name="groupName"
           value={groupName}
           onChange={(e) => setGroupName(e.target.value)}
+        />
+      </div>
+      <div className="group-input">
+        <label htmlFor="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          required={true}
+          name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
       </div>
       <button onClick={handleCreateGroup}>Create Group</button>

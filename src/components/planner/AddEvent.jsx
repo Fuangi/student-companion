@@ -17,6 +17,7 @@ function AddEvent() {
     const token = localStorage.getItem("token");
 
     const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
 
     const newEvent = {
       name: eventName,
@@ -30,29 +31,43 @@ function AddEvent() {
     console.log(newEvent);
 
     setIsLoading(!isLoading);
-    axios({
-      method: "POST",
-      url: "https://companion-backend.onrender.com/api/v1/plans",
-      // url: "http://localhost:4000/api/v1/plans",
-      data: newEvent,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setIsLoading(false);
-    navigate("/plans");
+
+    try {
+      axios({
+        method: "POST",
+        url: "https://companion-backend.onrender.com/api/v1/plans",
+        // url: "http://localhost:4000/api/v1/plans",
+        data: newEvent,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setIsLoading(false);
+      setTimeout(() => {
+        alert(
+          "Plan created successfully, refresh the page to view updated plans"
+        );
+        navigate("/plans");
+      }, 1000);
+    } catch (error) {
+      setTimeout(() => {
+        alert("Sorry, failed to create plan");
+        navigate("/plans");
+      }, 1000);
+    }
+
   }
 
   return (
     <form className="event_form">
-      <h3 className="events-form-head">Create a new event</h3>
+      <h3 className="events-form-head">Create a new plan</h3>
 
       <div className="form-input">
-        <label htmlFor="Ename">Event Name</label>
+        <label htmlFor="Ename">Plan Name</label>
         <input
           type="text"
           name="Ename"
-          placeholder="Event Name"
+          placeholder="Plan name"
           required
           onChange={(e) => setEventName(e.target.value)}
         />
@@ -64,13 +79,13 @@ function AddEvent() {
           cols="20"
           rows="5"
           required
-          placeholder="What is the event for?"
+          placeholder="What is the plan for?"
           // value={eventDesc}
           onChange={(e) => setEventDesc(e.target.value)}
         ></textarea>
       </div>
       <div className="form-input">
-        <label htmlFor="type">Event Type</label>
+        <label htmlFor="type">Plan Type</label>
         <select
           name="type"
           id="type"
@@ -85,7 +100,7 @@ function AddEvent() {
         </select>
       </div>
       <div className="form-input">
-        <label htmlFor="start">Event Start</label>
+        <label htmlFor="start">Plan Start</label>
         <input
           type="datetime-local"
           name="start"
@@ -95,16 +110,15 @@ function AddEvent() {
         />
       </div>
       <div className="form-input">
-        <label htmlFor="end">Event End</label>
+        <label htmlFor="end">Plan End</label>
         <input
           type="datetime-local"
           name="end"
           id=""
-          required
           onChange={(e) => setEventEnd(e.target.value)}
         />
       </div>
-      <button onClick={handleCreateEvent}>Create Event</button>
+      <button onClick={handleCreateEvent}>Create Plan</button>
     </form>
   );
 }

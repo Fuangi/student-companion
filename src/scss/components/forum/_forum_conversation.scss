@@ -9,6 +9,9 @@
     display: flex;
     flex-direction: column;
     width: 75%;
+    height: 93vh;
+    border-left: 1px solid $grey-light;
+    border-right: 1px solid $grey-light;
 
     & .message-tab {
       display: flex;
@@ -33,7 +36,10 @@
     }
 
     & .message-list {
-      flex-grow: 1;
+      height: 75dvh;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
       padding: 1rem;
 
       & .no-msg {
@@ -44,6 +50,8 @@
 
     & .message-input {
       display: flex;
+      align-self: center;
+      margin-top: 0.7rem;
 
       & input {
         width: 30rem;
@@ -61,5 +69,68 @@
         width: 8rem;
       }
     }
+  }
+}
+
+// Styling the message
+.message {
+  width: 20rem;
+  min-width: 5rem;
+  margin: 1rem 0.5rem;
+
+  &-content {
+    color: white;
+    background-color: rgb(30, 23, 14);
+    padding: 1rem;
+    & p {
+      min-width: 25%;
+    }
+  }
+
+  &-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.2rem;
+  }
+}
+
+// styling your messgaes ang others
+#you {
+  align-self: flex-end;
+  & .message-content {
+    border-radius: 1rem 1rem 0 1rem;
+    justify-content: flex-start;
+  }
+
+  & .message-meta {
+    justify-content: flex-end;
+    margin-left: 5px;
+  }
+}
+
+#others {
+  & .message-content {
+    border-radius: 1rem 1rem 1rem 0;
+    background-color: gray;
+    justify-content: flex-end;
+  }
+
+  & .message-meta {
+    justify-content: flex-end;
+    margin-right: 5px;
+  }
+}
+
+#joined {
+  justify-content: center;
+  align-self: center;
+  margin: 0.3rem;
+
+  & .message-content {
+    background: none;
+    color: $color-primary;
+    padding: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
   }
 }

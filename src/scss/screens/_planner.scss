@@ -70,7 +70,7 @@
       width: 35%;
       height: 30rem;
       background-color: $color-white;
-      overflow: scroll;
+      overflow: auto;
       scroll-behavior: smooth;
       scrollbar-width: 1rem;
       scrollbar-color: $color-secondary;
@@ -79,14 +79,14 @@
     & .past {
       width: 35%;
       background-color: $color-white;
-      overflow: scroll;
+      overflow: auto;
       // height: 30rem;
     }
 
     & .completed {
       background-color: $color-white;
       width: 25%;
-      overflow: scroll;
+      overflow: auto;
       height: 30rem;
     }
   }

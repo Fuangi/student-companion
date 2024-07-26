@@ -23,8 +23,9 @@ export const getAllPlans = async () => {
 export const getPlan = async (id) => {
   const res = await axios({
     method: "GET",
+    // url: `http://localhost:4000/api/v1/plans/${id}`,
     url: `${webURL}/api/v1/plans/${id}`,
-    // url: `http://localhost:4000/api/v1/plans${id}`,
+
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -40,8 +41,10 @@ export const getPlan = async (id) => {
 export const deletePlan = async (id) => {
   const res = await axios({
     method: "DELETE",
+
+    // url: `http://localhost:4000/api/v1/plans/${id}`,
     url: `${webURL}/api/v1/plans${id}`,
-    // url: `http://localhost:4000/api/v1/plans${id}`,
+
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -53,9 +56,11 @@ export const deletePlan = async (id) => {
 export const updatePlan = async (id, body) => {
   const res = await axios({
     method: "PATCH",
+
+    // url: `http://localhost:4000/api/v1/plans/${id}`,
     url: `${webURL}/api/v1/plans/${id}`,
-    // url: `http://localhost:4000/api/v1/plans${id}`,
-    data: { body },
+    data: body,
+ },
     headers: {
       Authorization: `Bearer ${token}`,
     },

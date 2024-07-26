@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
 import {
   FaClipboardList,
-  FaFolder,
+  // FaFolder,
   FaHouse,
   FaList,
   FaNewspaper,
   FaPeopleGroup,
+  FaTimeline,
   FaTrash,
 } from "react-icons/fa6";
 import { MdClose, MdMenu, MdSettings } from "react-icons/md";
@@ -62,7 +63,7 @@ function DashSideNav() {
             </li>
             <li>
               <NavLink to="/files">
-                Files <FaFolder className="dash-side-icon" />
+                Timetable <FaClipboardList className="dash-side-icon" />
               </NavLink>
             </li>
             <li>
