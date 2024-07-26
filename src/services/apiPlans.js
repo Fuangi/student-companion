@@ -60,7 +60,6 @@ export const updatePlan = async (id, body) => {
     // url: `http://localhost:4000/api/v1/plans/${id}`,
     url: `${webURL}/api/v1/plans/${id}`,
     data: body,
- },
     headers: {
       Authorization: `Bearer ${token}`,
     },
