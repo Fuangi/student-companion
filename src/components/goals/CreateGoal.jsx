@@ -9,28 +9,31 @@ function CreateGoal() {
 
   function handleCreateGoal(e) {
     e.preventDefault();
+    const token = localStorage.getItem("token");
+    console.log(token);
+    const user = JSON.parse(localStorage.getItem("user"));
 
     const newGoal = {
       goal,
       category,
+      userId: user._id,
     };
 
     try {
-      axios.post(
-        "http://localhost:4000/api/v1/goals",
-        // "https://companion-backend.onrender.com/api/v1/goals",
-        {
-          data: newGoal,
-          headers: {
-            "content-type": "application/json",
-            mode: "cors",
-          },
-        }
-      );
+      axios({
+        method: "POST",
+        url: "http://localhost:4000/api/v1/goals",
+        // url: "https://companion-backend.onrender.com/api/v1/goals",
+        data: newGoal,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       setTimeout(() => {
         alert("Goal created successfully");
         navigate("/goals");
-      }, 5000);
+      }, 1000);
     } catch (error) {
       console.log("Failed to create goal", error);
     }
