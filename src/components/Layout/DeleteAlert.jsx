@@ -16,7 +16,8 @@ function DeleteAlert({ prevLoc, resId, res }) {
 
     axios({
       method: "DELETE",
-      url: `http://localhost:4000/api/v1/${res}/${resId}`,
+      // url: `http://localhost:4000/api/v1/${res}/${resId}`,
+      url: `https://companion-backend.onrender.com/api/v1/${res}/${resId}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },

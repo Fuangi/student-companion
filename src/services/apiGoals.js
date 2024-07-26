@@ -1,13 +1,13 @@
 import axios from "axios";
 const token = localStorage.getItem("token");
 
-// const webURL = "https://companion-backend.onrender.com";
+const webURL = "https://companion-backend.onrender.com";
 
 export const getAllGoals = async () => {
   const res = await axios({
     method: "GET",
-    url: "http://localhost:4000/api/v1/goals",
-    // url: `${webURL}/api/v1/goals`,
+    // url: "http://localhost:4000/api/v1/goals",
+    url: `${webURL}/api/v1/goals`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -22,8 +22,8 @@ export const getAllGoals = async () => {
 export const getGoal = async (id) => {
   const res = await axios({
     method: "GET",
-    url: `http://localhost:4000/api/v1/goals/${id}`,
-    // url: `${webURL}/api/v1/goals/${id}`,
+    // url: `http://localhost:4000/api/v1/goals/${id}`,
+    url: `${webURL}/api/v1/goals/${id}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -39,8 +39,8 @@ export const getGoal = async (id) => {
 export const deleteGoal = async (id) => {
   const res = await axios({
     method: "DELETE",
-    // url: `${webURL}/api/v1/goals/${id}`,
-    url: `http://localhost:4000/api/v1/goals/${id}`,
+    url: `${webURL}/api/v1/goals/${id}`,
+    // url: `http://localhost:4000/api/v1/goals/${id}`,
 
     headers: {
       Authorization: `Bearer ${token}`,
@@ -53,8 +53,8 @@ export const deleteGoal = async (id) => {
 export const updateGoal = async (id, body) => {
   const res = await axios({
     method: "PATCH",
-    // url: `${webURL}/api/v1/goals/${id}`,
-    url: `http://localhost:4000/api/v1/goals/${id}`,
+    url: `${webURL}/api/v1/goals/${id}`,
+    // url: `http://localhost:4000/api/v1/goals/${id}`,
     data: { body },
     headers: {
       Authorization: `Bearer ${token}`,

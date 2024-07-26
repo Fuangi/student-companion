@@ -22,8 +22,8 @@ function CreateGoal() {
     try {
       axios({
         method: "POST",
-        url: "http://localhost:4000/api/v1/goals",
-        // url: "https://companion-backend.onrender.com/api/v1/goals",
+        // url: "http://localhost:4000/api/v1/goals",
+        url: "https://companion-backend.onrender.com/api/v1/goals",
         data: newGoal,
         headers: {
           Authorization: `Bearer ${token}`,
