@@ -5,18 +5,17 @@ import DashCard from "./DashCard";
 
 const plans = {
   name: "Plans",
-  desc1: "Print and pass my report",
-  desc2: "Do ppt and pass refactor a little",
+  desc1: "...",
 };
 const forums = {
   name: "Forums",
-  desc1: "Forum: S14",
-  desc2: "Forum: Error",
+  desc1: "...",
+  desc2: "...",
 };
 
 const goals = {
   name: "goals",
-  desc1: "No saved goals yet",
+  desc1: "...",
 };
 
 function Dashboard() {
@@ -40,19 +39,19 @@ function Dashboard() {
                 name="Plans"
                 icon={<FaClipboard className="name-icon" />}
                 link="/plans"
-                total="5"
+                total="..."
               />
               <DashStats
                 name="Goals"
                 icon={<FaList className="name-icon" />}
                 link="/goals"
-                total="0"
+                total="..."
               />
               <DashStats
                 name="Forums"
                 icon={<FaPeopleGroup className="name-icon" />}
                 link="/forums"
-                total="4"
+                total="..."
               />
             </div>
           </div>
