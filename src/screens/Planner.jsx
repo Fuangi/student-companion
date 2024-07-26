@@ -90,7 +90,7 @@ function Planner() {
   }));
 
   function processStatuses(data) {
-    const allStatuses = ["pending", "ongoing", "past"]; // Define all possible statuses
+    const allStatuses = ["pending", "ongoing", "past", "completed"]; // Define all possible statuses
     const presentStatuses = new Set(data.map((group) => group.status)); // Get unique present statuses
 
     const missingStatuses = allStatuses.filter(
@@ -201,7 +201,7 @@ function Planner() {
                     (plan) =>
                       plan.status === "completed" &&
                       plan.plans.map((val, i) => (
-                        <PlanCard plan={val} color="blue" key={i} />
+                        <PlanCard plan={val} color="purple" key={i} />
                       ))
                   )}
                   {missingStatuses.map(

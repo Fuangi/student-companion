@@ -31,11 +31,16 @@ function CreateGoal() {
       });
 
       setTimeout(() => {
-        alert("Goal created successfully");
+        alert(
+          "Goal created successfully, refresh the page to view updated goals"
+        );
         navigate("/goals");
       }, 1000);
     } catch (error) {
-      console.log("Failed to create goal", error);
+      setTimeout(() => {
+        alert("Sorry, failed to create goal");
+        navigate("/goals");
+      }, 1000);
     }
   }
 

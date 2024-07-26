@@ -31,17 +31,29 @@ function AddEvent() {
     console.log(newEvent);
 
     setIsLoading(!isLoading);
-    axios({
-      method: "POST",
-      // url: "https://companion-backend.onrender.com/api/v1/plans",
-      url: "http://localhost:4000/api/v1/plans",
-      data: newEvent,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setIsLoading(false);
-    navigate("/plans");
+    try {
+      axios({
+        method: "POST",
+        // url: "https://companion-backend.onrender.com/api/v1/plans",
+        url: "http://localhost:4000/api/v1/plans",
+        data: newEvent,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setIsLoading(false);
+      setTimeout(() => {
+        alert(
+          "Plan created successfully, refresh the page to view updated plans"
+        );
+        navigate("/plans");
+      }, 1000);
+    } catch (error) {
+      setTimeout(() => {
+        alert("Sorry, failed to create plan");
+        navigate("/plans");
+      }, 1000);
+    }
   }
 
   return (
