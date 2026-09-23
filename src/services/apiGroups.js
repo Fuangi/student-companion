@@ -2,7 +2,8 @@ import axios from "axios";
 
 const token = localStorage.getItem("token");
 
-const webURL = "https://companion-backend.onrender.com";
+// const webURL = "https://companion-backend.onrender.com";
+const webURL = "http://localhost:4000";
 
 export const getAllGroups = async () => {
   const res = await axios({

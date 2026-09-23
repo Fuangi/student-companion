@@ -37,12 +37,12 @@ function DashSideNav() {
           <ul className="dash-side">
             <li>
               <NavLink to="/dashboard" end>
-                Home <FaHouse className="dash-side-icon" />
+                 <FaHouse className="dash-side-icon" /> Home
               </NavLink>
             </li>
             <li>
               <NavLink to="/plans">
-                Plans <FaClipboardList className="dash-side-icon" />
+                 <FaClipboardList className="dash-side-icon" /> Plans
               </NavLink>
             </li>
             <li>

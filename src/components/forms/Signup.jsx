@@ -51,8 +51,8 @@ function Signup() {
     try {
       const res = await axios({
         method: "POST",
-        url: "https://companion-backend.onrender.com/api/v1/users/signup",
-        // url: "http://localhost:4000/api/v1/users/signup",
+        // url: "https://companion-backend.onrender.com/api/v1/users/signup",
+        url: "http://localhost:4000/api/v1/users/signup",
         data: user,
       });
       console.log(res);
@@ -72,7 +72,7 @@ function Signup() {
     <form action="" className="form">
       <div className="form-head">
         <h1>Signup</h1>
-        <p>Hello there 👋. You're welcome</p>
+        <p>Welcome! 👋 Join us and let's grow together</p>
       </div>
       <div className="form-inputs">
         <label htmlFor="username">{<FaUser className="label" />}</label>

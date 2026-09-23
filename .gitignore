@@ -24,3 +24,10 @@ yarn-error.log*
 
 # My files that i don't want to be pushed
 ideas.yaml
+# Environment variables
+.env
+.env.*
+.config.env
+
+#Personal files
+my cover page.doc

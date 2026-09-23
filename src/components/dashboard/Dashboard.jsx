@@ -2,6 +2,10 @@ import DashLayout from "../Layout/DashLayout";
 import DashStats from "./DashStats";
 import { FaClipboard, FaList, FaPeopleGroup } from "react-icons/fa6";
 import DashCard from "./DashCard";
+import { useEffect, useState } from "react";
+import { getAllPlans } from "../../services/apiPlans";
+import { getAllGroups } from "../../services/apiGroups";
+import { getAllGoals } from "../../services/apiGoals";
 
 const plans = {
   name: "Plans",
@@ -19,6 +23,22 @@ const goals = {
 };
 
 function Dashboard() {
+  let [stats, setStats] = useState({});
+
+  useEffect(() => {
+    (async function (){
+      let data = {};
+      let response = await getAllPlans();
+      data.plans = response.length || "0";
+
+      response = await getAllGoals();
+      data.goals = response.length  || "0";
+
+      response = await getAllGroups();
+      data.forums = response.length  || "0";
+      setStats(data)
+    })()
+  }, [])
   return (
     <DashLayout>
       <div className="my-dashboard">
@@ -29,7 +49,7 @@ function Dashboard() {
               <p>
                 Looking for a place to reconcile your academic and social goals?
                 Looking for a place to plan and manage your schedule? Ah! I got
-                you Welcome to Combi.
+                you Welcome Mate.
               </p>
               <p style={{ fontWeight: "bolder" }}>Your handy Companion</p>
             </div>
@@ -39,19 +59,19 @@ function Dashboard() {
                 name="Plans"
                 icon={<FaClipboard className="name-icon" />}
                 link="/plans"
-                total="..."
+                total={stats.plans}
               />
               <DashStats
                 name="Goals"
                 icon={<FaList className="name-icon" />}
                 link="/goals"
-                total="..."
+                total={stats.goals}
               />
               <DashStats
                 name="Forums"
                 icon={<FaPeopleGroup className="name-icon" />}
                 link="/forums"
-                total="..."
+                total={stats.forums}
               />
             </div>
           </div>
